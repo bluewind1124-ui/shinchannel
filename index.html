@@ -236,6 +236,56 @@ header.small .hd{height:60px}
 .cmp tbody tr{opacity:0;transform:translateX(20px);transition:.5s var(--ease)}
 .who-bears.in .cmp tbody tr{opacity:1;transform:none}
 .who-bears.in tr:nth-child(2){transition-delay:.15s}.who-bears.in tr:nth-child(3){transition-delay:.3s}.who-bears.in tr:nth-child(4){transition-delay:.45s}.who-bears.in tr:nth-child(5){transition-delay:.6s}
+/* GA 시장의 변화 */
+.market{margin-top:88px;padding-top:56px;border-top:1px solid rgba(255,255,255,.12)}
+.mk-title{font-size:clamp(26px,3.6vw,42px);margin-bottom:32px}
+.mk-title em,.mk-big em{font-style:normal;color:var(--gold)}
+.mk-row{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:stretch}
+.mk-row2{margin-top:24px}
+.mk-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:24px 24px 18px}
+.mk-card h4{font-size:15px;color:rgba(255,255,255,.8);margin-bottom:12px;text-align:center}
+.mk-card h4 small{font-weight:400;color:rgba(255,255,255,.5)}
+.vchart{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;height:240px;align-items:end;border-bottom:1px solid rgba(255,255,255,.25)}
+.vb{height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
+.vb i{display:block;width:72%;height:var(--h);background:var(--navy3);border-radius:3px 3px 0 0;transform:scaleY(0);transform-origin:bottom;transition:transform 1s var(--ease)}
+.vb.now i{background:var(--gold)}
+.vb b{font:700 15px 'IBM Plex Sans KR';color:#fff;margin-bottom:6px;opacity:0;transition:opacity .5s}
+.vb.now b{color:var(--gold)}
+.vb span{position:absolute;bottom:-26px;font-size:12.5px;color:rgba(255,255,255,.65);white-space:nowrap}
+.vchart.in .vb i{transform:none}.vchart.in .vb b{opacity:1}
+.vchart.in .vb:nth-child(2) i{transition-delay:.12s}.vchart.in .vb:nth-child(3) i{transition-delay:.24s}.vchart.in .vb:nth-child(4) i{transition-delay:.36s}.vchart.in .vb:nth-child(5) i{transition-delay:.48s}
+.vchart.in .vb b{transition-delay:1s}
+.mk-axis{margin-top:34px;font-size:11.5px;color:rgba(255,255,255,.4);text-align:right}
+.mk-facts{display:flex;flex-direction:column;justify-content:center;gap:22px;padding:8px 4px}
+.mf .v{font:800 clamp(44px,5.4vw,68px)/1 'Gothic A1';color:#fff;font-variant-numeric:tabular-nums}
+.mf .v small{font-size:.45em;margin-left:4px;color:rgba(255,255,255,.7)}
+.mf.gold .v{color:var(--gold)}
+.mf p{margin-top:8px;font-size:14.5px;color:rgba(255,255,255,.75)}
+.mf-note{font-size:15px;color:#fff;border-left:3px solid var(--gold);padding-left:14px}
+.dchart{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;height:300px;margin-top:36px}
+.dchart::before{content:"";position:absolute;left:0;right:0;top:42%;height:1px;background:rgba(255,255,255,.35)}
+.dg{position:relative;display:flex;flex-direction:column;align-items:center}
+.dpair{position:relative;flex:1;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:0 4px;padding:0 10%}
+.dpair i{position:relative;display:block}
+.dpair i::before{content:"";position:absolute;left:0;right:0;transition:transform 1.1s var(--ease)}
+.dpair i.n::before{background:var(--navy3)}
+.dpair i.g::before{background:var(--gold)}
+.dpair i.pos::before{bottom:58%;height:var(--hh);transform:scaleY(0);transform-origin:bottom}
+.dpair i.neg::before{top:42%;height:var(--hh);transform:scaleY(0);transform-origin:top}
+.dchart.in .dpair i::before{transform:none}
+.dpair em{position:absolute;left:50%;transform:translateX(-50%);font-style:normal;font-size:13px;font-weight:700;color:#fff;white-space:nowrap;opacity:0;transition:opacity .5s 1s}
+.dpair i.pos em{bottom:calc(58% + var(--hh) + 6px)}
+.dpair i.neg em{top:calc(42% + var(--hh) + 6px)}
+.dchart.in .dpair em{opacity:1}
+.dg>span{font-size:13px;color:rgba(255,255,255,.75);margin-top:6px;white-space:nowrap}
+.legend{display:flex;gap:6px 16px;justify-content:center;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:rgba(255,255,255,.7)}
+.legend span{display:inline-block;width:10px;height:10px;margin:0 2px 0 10px;vertical-align:middle}
+.legend span.n{background:var(--navy3)}.legend span.g{background:var(--gold)}
+.mk-big{font-size:clamp(22px,2.6vw,30px);line-height:1.35}
+.mk-dl{display:grid;grid-template-columns:80px 1fr;gap:10px 14px;font-size:15px}
+.mk-dl dt{color:var(--gold-l);font-weight:700}
+.mk-dl dd{color:rgba(255,255,255,.85)}
+.market .src{margin-top:20px}
 .criteria{margin-top:72px}
 .criteria h3{font-size:clamp(22px,2.6vw,30px);margin-bottom:24px}
 .cr-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -499,6 +549,8 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 .rv.done,.ready .slide.on .txt>*,.done .step,.done .day,.done .badge,.done .p,.done .hi,.done .rs,.who-bears.done .cmp tbody tr,.done.photos img,.inji .umb.done img{opacity:1!important;transform:none!important;transition:none!important}
 .days.done .bar,.history.done .h-line i,.rule.done .rl i{width:100%!important;transition:none!important}
 .why-title.done em{background-size:100% 3px}
+.vchart.done .vb i,.dchart.done .dpair i::before{transform:none!important;transition:none!important}
+.vchart.done .vb b,.dchart.done .dpair em{opacity:1!important;transition:none!important}
 
 /* ── 화면 폭 대응 ── */
 .gnb a{white-space:nowrap}
@@ -521,7 +573,14 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   .menu-btn{display:block}
   .inji .grid,.rookie,.edu,.exec,.vip-grid,.wm,.apps,.tg,.tg.on,.move .grid,.faq .grid,.apply .grid,.ft-grid,.people .notes{grid-template-columns:1fr;gap:32px}
   .num-row{grid-template-columns:1fr 1fr;gap:32px 0}
-  .co-head,.philo,.why-grid,.cr-list{grid-template-columns:1fr;gap:16px}
+  .co-head,.philo,.why-grid,.cr-list,.mk-row{grid-template-columns:1fr;gap:16px}
+  .vchart{gap:6px;height:200px}
+  .vb b{font-size:12px}
+  .vb span{font-size:10.5px}
+  .dchart{gap:6px;height:240px}
+  .dpair{padding:0 4%}
+  .dpair em{font-size:11px}
+  .dg>span{font-size:11px;white-space:normal;text-align:center}
   .rule{grid-template-columns:1fr;gap:0;padding-top:0;padding-left:36px}
   .rl{left:6px;right:auto;top:0;bottom:0;width:2px;height:auto}
   .rl i{width:2px!important;height:0;transition:height 2.4s var(--ease)}
@@ -782,7 +841,53 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
       </div>
     </div>
 
-    <!-- ④ FC가 GA를 고르는 기준 -->
+    <!-- ④ GA 시장의 변화 (보험저널·보험연구원 자료) -->
+    <div class="market">
+      <p class="eyebrow rv">GA 시장의 변화</p>
+      <h3 class="mk-title rv">GA는 줄고, 설계사는<br><em>큰 회사로 모이고 있습니다</em></h3>
+
+      <div class="mk-row">
+        <div class="mk-card rv">
+          <h4>전체 법인보험대리점(GA) 수 <small>(개)</small></h4>
+          <div class="vchart" id="gaTotal">
+            <div class="vb"><b>4,530</b><i style="--h:84%"></i><span>2016</span></div>
+            <div class="vb"><b>4,495</b><i style="--h:81%"></i><span>2018</span></div>
+            <div class="vb"><b>4,501</b><i style="--h:82%"></i><span>2020</span></div>
+            <div class="vb"><b>4,432</b><i style="--h:76%"></i><span>2023.12</span></div>
+            <div class="vb now"><b>4,288</b><i style="--h:63%"></i><span>2025.6</span></div>
+          </div>
+          <p class="mk-axis">세로축은 3,500개부터 표시</p>
+        </div>
+        <div class="mk-facts rv d1">
+          <div class="mf"><div class="v"><b data-to="4288">4,288</b><small>개</small></div><p>전체 GA 수 (2025년 6월 말)</p></div>
+          <div class="mf gold"><div class="v"><b data-to="84.1" data-dec="1">84.1</b><small>%</small></div><p>설계사 500인 이상 대형 GA 74곳(전체의 1.7%)에 소속된 설계사 비중<br>전체 301,275명 중 253,445명</p></div>
+          <p class="mf-note">2026년 6월 말 대형 GA는 73곳, 소속 설계사 281,580명으로 1년 새 13% 늘었습니다.</p>
+        </div>
+      </div>
+
+      <div class="mk-row mk-row2">
+        <div class="mk-card rv">
+          <h4>2023년 12월 → 2025년 6월 규모별 증감률</h4>
+          <div class="dchart" id="gaSize">
+            <div class="dg"><div class="dpair"><i class="n" style="--v:5.7"><em>+5.7%</em></i><i class="g" style="--v:25.5"><em>+25.5%</em></i></div><span>대형 (500인 이상)</span></div>
+            <div class="dg"><div class="dpair"><i class="n" style="--v:-25.2"><em>-25.2%</em></i><i class="g" style="--v:-19.2"><em>-19.2%</em></i></div><span>중형 (100~499인)</span></div>
+            <div class="dg"><div class="dpair"><i class="n" style="--v:-2.9"><em>-2.9%</em></i><i class="g" style="--v:-15.8"><em>-15.8%</em></i></div><span>소형 (100인 미만)</span></div>
+          </div>
+          <p class="legend"><span class="n"></span>GA 수 증감률 <span class="g"></span>소속 설계사 수 증감률</p>
+        </div>
+        <div class="mk-facts rv d1">
+          <h4 class="mk-big">중간 규모 GA는 1년 반 만에<br><em>4곳 중 1곳</em>이 사라졌습니다</h4>
+          <dl class="mk-dl">
+            <dt>중형 GA</dt><dd>103곳 → 77곳<br>설계사 21,695명 → 17,524명</dd>
+            <dt>소형 GA</dt><dd>4,259곳 → 4,137곳 (122곳 순감)<br>설계사 36,012명 → 30,306명</dd>
+          </dl>
+          <p class="mf-note">설계사가 몰리는 곳은 오래 버틸 체력이 있는 큰 회사입니다. 생보 22개사·손보 12개사와 25년을 함께해 온 한국보험금융이 그 기반입니다.</p>
+        </div>
+      </div>
+      <p class="src rv">출처: 보험연구원 이슈보고서 2021-12(2016~2020), 보험저널 「대리점 수는 줄고, 설계사는 늘고」(2025.10.28, 협회 자료), 보험GA협회 대형 GA 실적 발표(2026.10.15, 보험저널). 중형(100~499인)은 전체에서 대형·소형을 뺀 계산값. 2026년 전체 GA 수는 미공개.</p>
+    </div>
+
+    <!-- ⑤ FC가 GA를 고르는 기준 -->
     <div class="criteria">
       <h3 class="rv">그래서 FC가 회사를 고르는 기준도 바뀝니다</h3>
       <div class="cr-list">
@@ -1155,12 +1260,14 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   sats.forEach(function(n,k){var a=k/sats.length*Math.PI*2-Math.PI/2,r=42;var d=document.createElement('div');d.className='sat';d.style.left=(50+r*Math.cos(a))+'%';d.style.top=(50+r*Math.sin(a))+'%';d.innerHTML='<span>'+n+'</span>';box.appendChild(d);});
 
   /* 스크롤 나타나기 · 숫자 세기 · 단계 애니메이션 */
-  function count(el){if(reduce||el.dataset.done)return;el.dataset.done=1;var to=+el.dataset.to,t0=performance.now(),d=1500,start=0;setTimeout(function(){el.textContent=to.toLocaleString('ko-KR')},d+400);(function f(t){var k=Math.min(1,(t-t0)/d),v=Math.round(start+(to-start)*(1-Math.pow(1-k,3)));el.textContent=v.toLocaleString('ko-KR');if(k<1)requestAnimationFrame(f)})(t0);}
+  function count(el){if(reduce||el.dataset.done)return;el.dataset.done=1;var to=+el.dataset.to,t0=performance.now(),d=1500,start=0,dec=+(el.dataset.dec||0),fmt=function(n){return n.toLocaleString('ko-KR',{minimumFractionDigits:dec,maximumFractionDigits:dec})};setTimeout(function(){el.textContent=fmt(to)},d+400);(function f(t){var k=Math.min(1,(t-t0)/d),v=start+(to-start)*(1-Math.pow(1-k,3));v=dec?v:Math.round(v);el.textContent=fmt(v);if(k<1)requestAnimationFrame(f)})(t0);}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');t.querySelectorAll('[data-to]').forEach(count);if(t.id==='ladder')climb();setTimeout(function(){t.classList.add('done')},(t.id==='days'||t.id==='history')?3400:1600);io.unobserve(t);})},{threshold:.18});
   /* 왜 신채널: 수수료 막대가 이전 ↔ 분급 이후로 번갈아 바뀜 */
   var bars=document.getElementById('bars'),ftag=document.getElementById('flowTag');
   if(bars){var after=false;setInterval(function(){after=!after;bars.classList.toggle('after',after);ftag.classList.toggle('after',after);ftag.textContent=after?'분급 이후':'이전';},reduce?1e9:3200);}
-  var watch=[].slice.call(document.querySelectorAll('.rv,#rule,#ladder,#days,#badges,#photos,#onname,#history,.inji .grid,.inji .umb,.nums .num-row,.vip .facts'));
+  /* GA 규모별 증감 막대: 값에 따라 위(+)·아래(-)로 높이 계산 (최대 30% 기준) */
+  document.querySelectorAll('.dpair i').forEach(function(i){var v=parseFloat(i.style.getPropertyValue('--v'));i.classList.add(v<0?'neg':'pos');i.style.setProperty('--hh',(Math.abs(v)/36*(v<0?48:46))+'%');});
+  var watch=[].slice.call(document.querySelectorAll('.rv,#rule,#gaTotal,#gaSize,#ladder,#days,#badges,#photos,#onname,#history,.inji .grid,.inji .umb,.nums .num-row,.vip .facts'));
   watch.forEach(function(el){io.observe(el)});
   /* 예비 장치: 화면 감지가 멈춘 환경에서도 화면 안에 들어온 요소는 보이게 */
   setInterval(function(){watch=watch.filter(function(t){if(t.classList.contains('in'))return false;var r=t.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0){t.classList.add('in');t.querySelectorAll('[data-to]').forEach(count);if(t.id==='ladder')climb();setTimeout(function(){t.classList.add('done')},(t.id==='days'||t.id==='history')?3400:1600);return false}return true})},500);

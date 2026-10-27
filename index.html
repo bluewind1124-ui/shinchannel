@@ -1383,7 +1383,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
         <li><div><b>지사 · FC 소개 캠페인</b><span>신규 지사와 원거리 FC 소개 시 지원합니다. (2026년 10~12월) <span class="draft">세부 기준 확인</span></span></div></li>
         <li><div><b>한보금ON 영업지원</b><span>영업일보, 직급자 코칭, 이달 예상 수입까지 숫자로 지사를 운영합니다.</span></div></li>
       </ol>
-      <figure class="who"><img src="img/model2a.webp" alt="여성 관리자 모델"><img src="img/model2b.webp" alt="남성 관리자 모델"><figcaption>* 이미지는 연출 사진입니다</figcaption></figure>
+      <figure class="who"><img src="img/model4.webp" alt="남색 재킷 차림의 40대 여성 관리자 모델"><img src="img/model2b.webp" alt="남성 관리자 모델"><figcaption>* 이미지는 연출 사진입니다</figcaption></figure>
     </div>
   </div>
 </section>
@@ -1530,12 +1530,12 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   }
 
   /* 신인 지원 · 모집 탭 */
-  /* 탭: 5초마다 자동으로 넘어가고, 누르면 그 화면에서 멈춤 */
+  /* 탭: 3초마다 자동으로 넘어가고, 누르면 그 화면에서 멈춤 */
   function autoTabs(btnSel,panelSel,key){
     var bs=[].slice.call(document.querySelectorAll(btnSel)),ps=[].slice.call(document.querySelectorAll(panelSel)),timer=null;
     function show(b){bs.forEach(function(x){x.classList.remove('on')});ps.forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.getElementById(b.dataset[key]).classList.add('on');}
     bs.forEach(function(b){b.onclick=function(){clearInterval(timer);timer=null;show(b);}});
-    if(bs.length>1&&!reduce)timer=setInterval(function(){var i=bs.findIndex(function(x){return x.classList.contains('on')});show(bs[(i+1)%bs.length]);},5000);
+    if(bs.length>1&&!reduce)timer=setInterval(function(){var i=bs.findIndex(function(x){return x.classList.contains('on')});show(bs[(i+1)%bs.length]);},3000);
   }
   autoTabs('.seg button','.rk','r');
   autoTabs('.tg-tabs button','.tg','t');

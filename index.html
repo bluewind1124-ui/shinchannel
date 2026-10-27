@@ -365,6 +365,50 @@ header.small .hd{height:60px}
 .mn-chart.done .ov,.mn-chart.done .top{transform:none!important;stroke-dashoffset:0!important;transition:none!important}
 .mn-chart.done .sales{opacity:1!important;transition:none!important}
 
+/* 세 겹의 안정 구조 */
+.stable{margin-top:24px;background:#fff;border-radius:8px;padding:40px}
+.st-head h3{font-size:clamp(22px,2.8vw,32px);color:var(--navy);line-height:1.4}
+.st-head h3 em{font-style:normal;color:var(--gold-t)}
+.st-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;margin-top:28px}
+.st-chart{position:relative;margin:0;background:var(--bg);border-radius:8px;padding:20px 20px 16px}
+.st-chart figcaption{font-size:12px;color:var(--mute)}
+.sc-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;height:260px;margin-top:10px;border-bottom:1px solid #C9D1DC}
+.sc{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;position:relative}
+.stack{width:64%;height:100%;display:flex;flex-direction:column-reverse}
+.stack i{display:block;height:var(--h);transform:scaleY(0);transform-origin:bottom;transition:transform .8s var(--ease)}
+.s1{background:var(--navy3)}.s2{background:var(--gold)}.s3{background:#1E6B4F}
+.stack i.s1{border-radius:0}.stack i:last-child{border-radius:3px 3px 0 0}
+.st-chart.in .stack i{transform:none}
+.st-chart.in .sc:nth-child(1) i.s2{transition-delay:.5s}
+.st-chart.in .sc:nth-child(2) i.s1{transition-delay:.2s}.st-chart.in .sc:nth-child(2) i.s2{transition-delay:.7s}.st-chart.in .sc:nth-child(2) i.s3{transition-delay:1.2s}
+.st-chart.in .sc:nth-child(3) i.s1{transition-delay:.4s}.st-chart.in .sc:nth-child(3) i.s2{transition-delay:.9s}.st-chart.in .sc:nth-child(3) i.s3{transition-delay:1.4s}
+.st-chart.in .sc:nth-child(4) i.s1{transition-delay:.6s}.st-chart.in .sc:nth-child(4) i.s2{transition-delay:1.1s}.st-chart.in .sc:nth-child(4) i.s3{transition-delay:1.6s}
+.st-chart.done .stack i{transform:none!important;transition:none!important}
+.sc span{position:absolute;bottom:-24px;font-size:12.5px;color:var(--ink2)}
+.sc-mark{position:absolute;left:36%;top:46px;font-size:11.5px;font-weight:700;color:#1E6B4F;line-height:1.35;padding-left:8px;border-left:2px dashed #1E6B4F}
+.sc-legend{margin-top:32px;font-size:12px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:center}
+.sc-legend em{font-style:normal;white-space:nowrap}
+.sc-legend span{display:inline-block;width:10px;height:10px;margin-right:4px;vertical-align:middle}
+.st-list{display:flex;flex-direction:column;gap:18px}
+.sl{display:grid;grid-template-columns:14px 1fr;gap:14px}
+.sl>i{width:14px;height:100%;min-height:56px;border-radius:3px}
+.sl b{color:var(--navy);font-size:17px}
+.sl p{font-size:14.5px;color:var(--ink2);margin-top:2px}
+.sl p b{font-size:inherit;color:#1E6B4F}
+.st-who{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.sw{border-radius:8px;padding:24px;background:var(--navy);color:#fff}
+.sw.fc{background:var(--gold-bg);color:var(--ink)}
+.sw-k{display:inline-block;font-size:12px;font-weight:700;padding:2px 12px;border-radius:999px;background:var(--gold);color:var(--navy)}
+.sw.fc .sw-k{background:var(--navy);color:var(--gold-l)}
+.sw h4{font:800 20px/1.4 'Gothic A1';margin:12px 0 8px}
+.sw.fc h4{color:var(--navy)}
+.sw p{font-size:14.5px;color:rgba(255,255,255,.78)}
+.sw.fc p{color:var(--ink2)}
+.sw ul{list-style:none;margin-top:12px}
+.sw li{font-size:14px;padding:5px 0 5px 18px;position:relative}
+.sw li::before{content:"";position:absolute;left:0;top:13px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.sw.fc li::before{background:var(--navy)}
+
 /* 신인 지원 탭 */
 .rookie{margin-top:72px;display:grid;grid-template-columns:1fr 1.25fr;gap:48px;align-items:start}
 .seg{display:inline-flex;background:#fff;border-radius:999px;padding:5px;margin:24px 0}
@@ -613,7 +657,10 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   .inji .grid,.rookie,.edu,.exec,.vip-grid,.wm,.apps,.tg,.tg.on,.move .grid,.faq .grid,.apply .grid,.ft-grid,.people .notes{grid-template-columns:1fr;gap:32px}
   .num-row{grid-template-columns:1fr 1fr;gap:32px 0}
   .co-head,.philo,.why-grid,.cr-list,.mk-row,.meaning,.ap-flow,.ap-3{grid-template-columns:1fr;gap:16px}
-  .meaning,.aipitch{padding:24px}
+  .meaning,.aipitch,.stable{padding:24px}
+  .st-grid,.st-who{grid-template-columns:1fr;gap:20px}
+  .sc-cols{height:210px;gap:10px}
+  .sc-mark{left:30%;top:42px}
   .ap-flow::before{display:none}
   .vchart{gap:6px;height:200px}
   .vb b{font-size:12px}
@@ -1006,6 +1053,39 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
       </figure>
     </div>
 
+    <!-- 세 겹의 안정 구조 -->
+    <div class="stable">
+      <div class="st-head rv">
+        <p class="eyebrow">세 겹의 안정 구조</p>
+        <h3>영업 · 오버라이딩 · 장기근속 성장지원금,<br><em>세 겹으로 영업에 안정성을 더합니다</em></h3>
+      </div>
+      <div class="st-grid">
+        <figure class="st-chart rv" id="stchart">
+          <figcaption>개념도 · 연차별 수입 구성</figcaption>
+          <div class="sc-cols">
+            <div class="sc"><div class="stack"><i class="s1" style="--h:52%"></i><i class="s2" style="--h:6%"></i></div><span>1년차</span></div>
+            <div class="sc"><div class="stack"><i class="s1" style="--h:52%"></i><i class="s2" style="--h:14%"></i><i class="s3" style="--h:10%"></i></div><span>2년차</span></div>
+            <div class="sc"><div class="stack"><i class="s1" style="--h:52%"></i><i class="s2" style="--h:22%"></i><i class="s3" style="--h:14%"></i></div><span>3년차</span></div>
+            <div class="sc"><div class="stack"><i class="s1" style="--h:52%"></i><i class="s2" style="--h:30%"></i><i class="s3" style="--h:17%"></i></div><span>4년차~</span></div>
+          </div>
+          <span class="sc-mark">15차월부터<br>성장지원금 시작</span>
+          <p class="sc-legend"><em><span class="s1"></span>개인 영업 수입</em><em><span class="s2"></span>오버라이딩</em><em><span class="s3"></span>장기근속 성장지원금</em></p>
+        </figure>
+        <div class="st-list">
+          <div class="sl rv"><i class="s1"></i><div><b>① 개인 영업 수입</b><p>내가 체결한 계약에서 나오는 기본 수입입니다. 상품 비교와 AI 보장분석으로 상담의 질을 높입니다.</p></div></div>
+          <div class="sl rv d1"><i class="s2"></i><div><b>② 리크루팅 오버라이딩</b><p>내가 소개한 FC의 실적에서 나오는 수익입니다. 조직이 자랄수록 두꺼워져, 달마다 오르내리는 영업 수입을 받쳐 줍니다.</p></div></div>
+          <div class="sl rv d2"><i class="s3"></i><div><b>③ 장기근속 성장지원금</b><p>1년간 안정적으로 근무한 뒤, 13회차 유지를 거쳐 <b>2년차(15차월)부터 매월</b> 정산월초P 기준으로 지급합니다. 오래 일할수록 쌓이는 구조입니다.</p></div></div>
+        </div>
+      </div>
+      <div class="st-who">
+        <div class="sw rv"><span class="sw-k">지사장</span><h4>수입 구조가 자리 잡을 때까지,<br>회사가 받칩니다</h4><p>지사를 새로 세우거나 이직한 직후에는 수입이 안정되기까지 시간이 걸립니다. 그 기간을 지사장 혼자 버티지 않도록 회사가 함께합니다.</p>
+          <ul><li>지사 규모별 점포 지원 (소형~초대형)</li><li>지사장 운영비 · 직급 수수료</li><li>정착지원 프로모션 <span class="draft">협의 중</span></li></ul></div>
+        <div class="sw fc rv d1"><span class="sw-k">FC</span><h4>세 가지 제도가<br>영업의 안정성을 뒷받침합니다</h4><p>한 달 실적이 아쉬워도 수입 전체가 흔들리지 않도록, 개인 영업 · 오버라이딩 · 장기근속 성장지원금이 서로를 받쳐 줍니다.</p>
+          <ul><li>개인 영업: 내 계약의 수수료</li><li>오버라이딩: 함께하는 FC의 실적에서</li><li>성장지원금: 2년차부터 매월</li></ul></div>
+      </div>
+      <p class="mn-note rv">그래프는 구조를 설명하기 위한 개념도이며 실제 금액 비율이 아닙니다. 지급 기준·요건은 회사 규정에 따르며, 제시된 내용은 소득을 보장하지 않습니다. <span class="draft">공개 범위 확인</span></p>
+    </div>
+
     <div class="notes">
       <div class="note rv"><h3>총괄 승격과 호칭</h3><p>지사를 분할·육성해 총괄로 승격하면 실적에 따라 상무 · 전무 · 부사장 호칭을 받습니다.</p><div class="chips"><span>분할 3개 지사</span><span>총괄 실적 수수료</span><span class="draft">수치 공개 범위 확인</span></div></div>
       <div class="note rv d1"><h3>지사 설립 점포 지원</h3><p>지사 규모(소형 5~10명부터 초대형 50명 이상)에 맞춰 점포를 지원합니다. 독립 지사를 꿈꾸는 관리자에게 미리 보여 드립니다.</p><div class="chips"><span>소형 · 중소형 · 중형</span><span>대형 · 특대형 · 초대형</span><span class="draft">위약금·BEP 기준 안내</span></div></div>
@@ -1360,7 +1440,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   if(bars){var after=false;setInterval(function(){after=!after;bars.classList.toggle('after',after);ftag.classList.toggle('after',after);ftag.textContent=after?'분급 이후':'이전';},reduce?1e9:3200);}
   /* GA 규모별 증감 막대: 값에 따라 위(+)·아래(-)로 높이 계산 (최대 30% 기준) */
   document.querySelectorAll('.dpair i').forEach(function(i){var v=parseFloat(i.style.getPropertyValue('--v'));i.classList.add(v<0?'neg':'pos');i.style.setProperty('--hh',(Math.abs(v)/36*(v<0?48:46))+'%');});
-  var watch=[].slice.call(document.querySelectorAll('.rv,#apflow,#rule,#gaTotal,#gaSize,#ladder,#days,#badges,#photos,#onname,#history,.inji .grid,.inji .umb,.nums .num-row,.vip .facts'));
+  var watch=[].slice.call(document.querySelectorAll('.rv,#stchart,#apflow,#rule,#gaTotal,#gaSize,#ladder,#days,#badges,#photos,#onname,#history,.inji .grid,.inji .umb,.nums .num-row,.vip .facts'));
   watch.forEach(function(el){io.observe(el)});
   /* 예비 장치: 화면 감지가 멈춘 환경에서도 화면 안에 들어온 요소는 보이게 */
   setInterval(function(){watch=watch.filter(function(t){if(t.classList.contains('in'))return false;var r=t.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0){t.classList.add('in');t.querySelectorAll('[data-to]').forEach(count);if(t.id==='ladder')climb();setTimeout(function(){t.classList.add('done')},(t.id==='days'||t.id==='history')?3400:1600);return false}return true})},500);

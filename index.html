@@ -337,7 +337,11 @@ header.small .hd{height:60px}
 .step h3{font-size:clamp(15px,1.6vw,20px);margin-top:4px}
 .step p{font-size:13px;color:var(--mute);margin-top:6px}
 .step:nth-child(6) p{color:rgba(255,255,255,.7)}
-.climber{position:absolute;bottom:0;left:0;width:44px;height:44px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px rgba(205,155,52,.25);display:grid;place-items:center;font:800 14px 'Gothic A1';color:var(--navy);transition:left 1.6s var(--ease),bottom 1.6s var(--ease);z-index:2}
+.climber{position:absolute;bottom:0;left:0;min-width:44px;height:44px;padding:0 12px;border-radius:22px;background:var(--gold);box-shadow:0 0 0 6px rgba(205,155,52,.25);display:grid;place-items:center;font:800 13px 'Gothic A1';color:var(--navy);white-space:nowrap;transition:left .9s var(--ease),bottom .9s var(--ease),opacity .4s;z-index:2;animation:hop 1.1s ease-in-out infinite}
+.climber.top{background:var(--navy);color:var(--gold);box-shadow:0 0 0 6px rgba(205,155,52,.45),0 0 24px rgba(205,155,52,.6)}
+@keyframes hop{50%{margin-bottom:6px}}
+.step.cur{box-shadow:0 0 0 2px var(--gold),0 10px 24px rgba(205,155,52,.25);transition:box-shadow .3s,transform .8s var(--ease),opacity .8s}
+.step:nth-child(6).cur{box-shadow:0 0 0 2px var(--gold),0 0 30px rgba(205,155,52,.45)}
 .people .notes{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
 .note{background:#fff;border-radius:8px;padding:28px}
 .note h3{font-size:20px;color:var(--navy);margin-bottom:8px}
@@ -1446,8 +1450,20 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   setInterval(function(){watch=watch.filter(function(t){if(t.classList.contains('in'))return false;var r=t.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0){t.classList.add('in');t.querySelectorAll('[data-to]').forEach(count);if(t.id==='ladder')climb();setTimeout(function(){t.classList.add('done')},(t.id==='days'||t.id==='history')?3400:1600);return false}return true})},500);
 
   /* 커리어패스: FC 표시가 계단을 오름 */
-  function climb(){var steps=[].slice.call(document.querySelectorAll('#ladder .step')),c=document.getElementById('climber'),L=document.getElementById('ladder'),k=0;
-    (function go(){var s=steps[k],r=s.getBoundingClientRect(),lr=L.getBoundingClientRect();c.style.left=(r.left-lr.left+r.width/2-22)+'px';c.style.bottom=(r.height+8)+'px';if(k===steps.length-1){c.textContent='총괄';c.style.width='56px';}k++;if(k<steps.length)setTimeout(go,reduce?0:700);})();}
+  /* 커리어패스: FC 표시가 계단을 한 칸씩 오르고, 총괄에 닿으면 잠시 쉬었다가 처음부터 다시 오름 (계속 반복) */
+  var climbing=false;
+  function climb(){if(climbing)return;climbing=true;var steps=[].slice.call(document.querySelectorAll('#ladder .step')),c=document.getElementById('climber'),L=document.getElementById('ladder'),k=0;
+    function place(s){var r=s.getBoundingClientRect(),lr=L.getBoundingClientRect();c.style.left=(r.left-lr.left+r.width/2-(c.offsetWidth/2))+'px';c.style.bottom=(r.height+8)+'px';}
+    function go(){steps.forEach(function(x,i){x.classList.toggle('cur',i===k)});
+      if(k===steps.length-1){c.textContent='총괄';c.classList.add('top');}else{c.textContent='FC';c.classList.remove('top');}
+      place(steps[k]);
+      if(reduce){return;}
+      if(k<steps.length-1){k++;setTimeout(go,1100);}
+      else{setTimeout(function(){c.style.transition='none';c.style.opacity='0';k=0;steps.forEach(function(x){x.classList.remove('cur')});c.textContent='FC';c.classList.remove('top');place(steps[0]);void c.offsetWidth;c.style.transition='';setTimeout(function(){c.style.opacity='1';go();},400);},2600);}
+    }
+    go();
+    addEventListener('resize',function(){place(steps[k])});
+  }
 
   /* 신인 지원 · 모집 탭 */
   document.querySelectorAll('.seg button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.seg button').forEach(function(x){x.classList.remove('on')});document.querySelectorAll('.rk').forEach(function(x){x.classList.remove('on')});b.classList.add('on');document.getElementById(b.dataset.r).classList.add('on');}});

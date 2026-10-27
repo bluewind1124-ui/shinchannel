@@ -413,6 +413,30 @@ header.small .hd{height:60px}
 .sw li::before{content:"";position:absolute;left:0;top:13px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
 .sw.fc li::before{background:var(--navy)}
 
+.sw-plus{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.18);font-size:14.5px;color:rgba(255,255,255,.85)}
+.sw-plus b{color:var(--gold)}
+/* 지사장 입장: 윈윈 */
+.winwin{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center;margin-top:24px;background:var(--navy);color:#fff;border-radius:8px;padding:44px;position:relative;overflow:hidden}
+.winwin .eyebrow{color:var(--gold-l)}
+.winwin h3{font-size:clamp(24px,3vw,36px);line-height:1.3}
+.winwin h3 em{font-style:normal;color:var(--gold)}
+.ww-lead{margin-top:14px;font-size:15.5px;color:rgba(255,255,255,.8)}
+.ww-list{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+.ww{padding:14px 18px;border-radius:8px;background:rgba(255,255,255,.06);border-left:3px solid var(--gold)}
+.ww b{color:var(--gold-l);font-size:16px}
+.ww p{font-size:14px;color:rgba(255,255,255,.78);margin-top:2px}
+.ww-end{margin-top:20px;font-size:15.5px;color:rgba(255,255,255,.85)}
+.ww-end b{color:var(--gold)}
+.ww-fig{margin:0;text-align:center}
+.ww-fig svg{width:100%;max-width:420px;height:auto}
+.ww-fig figcaption{font-size:13px;color:var(--gold-l);margin-top:6px}
+.ww-arc{stroke-dasharray:320;stroke-dashoffset:320;animation:wwdraw 3.2s ease-in-out infinite}
+.ww-arc.a2{animation-delay:1.6s}
+@keyframes wwdraw{0%{stroke-dashoffset:320}45%,75%{stroke-dashoffset:0}100%{stroke-dashoffset:-320}}
+.ww-spin{transform-origin:200px 200px;animation:spin 8s linear infinite}
+.ww-core{transform-origin:200px 200px;animation:wwbeat 2.4s ease-in-out infinite}
+@keyframes wwbeat{50%{transform:scale(1.08)}}
+
 /* 신인 지원 탭 */
 .rookie{margin-top:72px;display:grid;grid-template-columns:1fr 1.25fr;gap:48px;align-items:start}
 .seg{display:inline-flex;background:#fff;border-radius:999px;padding:5px;margin:24px 0}
@@ -662,7 +686,8 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   .num-row{grid-template-columns:1fr 1fr;gap:32px 0}
   .co-head,.philo,.why-grid,.cr-list,.mk-row,.meaning,.ap-flow,.ap-3{grid-template-columns:1fr;gap:16px}
   .meaning,.aipitch,.stable{padding:24px}
-  .st-grid,.st-who{grid-template-columns:1fr;gap:20px}
+  .st-grid,.st-who,.winwin{grid-template-columns:1fr;gap:20px}
+  .winwin{padding:24px}
   .sc-cols{height:210px;gap:10px}
   .sc-mark{left:30%;top:42px}
   .ap-flow::before{display:none}
@@ -1083,11 +1108,50 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
       </div>
       <div class="st-who">
         <div class="sw rv"><span class="sw-k">지사장</span><h4>수입 구조가 자리 잡을 때까지,<br>회사가 받칩니다</h4><p>지사를 새로 세우거나 이직한 직후에는 수입이 안정되기까지 시간이 걸립니다. 그 기간을 지사장 혼자 버티지 않도록 회사가 함께합니다.</p>
-          <ul><li>지사 규모별 점포 지원 (소형~초대형)</li><li>지사장 운영비 · 직급 수수료</li><li>정착지원 프로모션 <span class="draft">협의 중</span></li></ul></div>
+          <ul><li>지사 규모별 점포 지원 (소형~초대형)</li><li>지사장 운영비 · 직급 수수료</li><li>정착지원 프로모션 <span class="draft">협의 중</span></li></ul>
+          <p class="sw-plus"><b>그리고 조직의 성장은 FC와 함께 만들어 갑니다.</b> FC가 성장할수록 지사도 함께 자랍니다.</p></div>
         <div class="sw fc rv d1"><span class="sw-k">FC</span><h4>세 가지 제도가<br>영업의 안정성을 뒷받침합니다</h4><p>한 달 실적이 아쉬워도 수입 전체가 흔들리지 않도록, 개인 영업 · 오버라이딩 · 장기근속 성장지원금이 서로를 받쳐 줍니다.</p>
           <ul><li>개인 영업: 내 계약의 수수료</li><li>오버라이딩: 함께하는 FC의 실적에서</li><li>성장지원금: 2년차부터 매월</li></ul></div>
       </div>
       <p class="mn-note rv">그래프는 구조를 설명하기 위한 개념도이며 실제 금액 비율이 아닙니다. 지급 기준·요건은 회사 규정에 따르며, 제시된 내용은 소득을 보장하지 않습니다. <span class="draft">공개 범위 확인</span></p>
+    </div>
+
+    <!-- 지사장 입장: FC와 윈윈하는 조직 성장 -->
+    <div class="winwin">
+      <div class="ww-text">
+        <p class="eyebrow rv">지사장이라면</p>
+        <h3 class="rv">조직의 성장,<br><em>이제 혼자 고민하지 마세요</em></h3>
+        <p class="ww-lead rv d1">사람을 데려오고, 키우고, 붙잡아 두는 일. 지금까지는 지사장 혼자의 몫이었습니다. 신채널에서는 FC의 커리어패스가 곧 지사의 성장 동력이 되고, 그 사이를 회사가 받칩니다.</p>
+        <div class="ww-list">
+          <div class="ww rv"><b>FC가 자라면</b><p>FC는 리크루팅으로 부지점장 · 지점장이 되고, 오버라이딩으로 수입의 기둥을 하나 더 세웁니다.</p></div>
+          <div class="ww rv d1"><b>지사도 자랍니다</b><p>FC가 스스로 조직을 키우니, 지사장 한 사람이 모든 리크루팅을 떠안지 않아도 지사가 커집니다.</p></div>
+          <div class="ww rv d2"><b>그 사이를 회사가 받칩니다</b><p>신인 기본 교육은 본사가, 상담할 고객은 DB 지원으로, 코칭은 한보금ON 영업일보 숫자로 함께합니다.</p></div>
+        </div>
+        <p class="ww-end rv">지사장과 FC가 같은 방향으로 성장하는 구조, <b>함께 클수록 모두에게 이익이 되는 윈윈 구조</b>입니다.</p>
+      </div>
+      <figure class="ww-fig rv d1" aria-label="지사장과 FC가 서로를 키우고 가운데에서 회사가 받치는 순환 그림">
+        <svg viewBox="0 0 400 400">
+          <defs><marker id="arw" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#CD9B34"/></marker></defs>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(205,155,52,.18)" stroke-width="28"/>
+          <path class="ww-arc a1" d="M120 82 A150 150 0 0 1 318 120" fill="none" stroke="#CD9B34" stroke-width="3" marker-end="url(#arw)"/>
+          <path class="ww-arc a2" d="M280 318 A150 150 0 0 1 82 280" fill="none" stroke="#CD9B34" stroke-width="3" marker-end="url(#arw)"/>
+          <g class="ww-spin"><circle cx="200" cy="50" r="6" fill="#E6CF97"/><circle cx="200" cy="350" r="6" fill="#E6CF97"/></g>
+          <g font-family="Gothic A1" font-weight="800" text-anchor="middle">
+            <circle cx="88" cy="200" r="62" fill="#0F2340" stroke="#CD9B34" stroke-width="2"/>
+            <text x="88" y="196" fill="#CD9B34" font-size="20">지사장</text>
+            <text x="88" y="220" fill="#fff" font-size="12" font-family="IBM Plex Sans KR" font-weight="500">조직 확대</text>
+            <circle cx="312" cy="200" r="62" fill="#0F2340" stroke="#CD9B34" stroke-width="2"/>
+            <text x="312" y="196" fill="#CD9B34" font-size="22">FC</text>
+            <text x="312" y="220" fill="#fff" font-size="12" font-family="IBM Plex Sans KR" font-weight="500">승격 · 오버라이딩</text>
+            <circle class="ww-core" cx="200" cy="200" r="46" fill="#CD9B34"/>
+            <text x="200" y="196" fill="#0F2340" font-size="15">회사</text>
+            <text x="200" y="214" fill="#0F2340" font-size="11" font-family="IBM Plex Sans KR" font-weight="700">교육·DB·한보금ON</text>
+            <text x="200" y="68" fill="#E6CF97" font-size="13" font-family="IBM Plex Sans KR" font-weight="700">FC를 키우면</text>
+            <text x="200" y="342" fill="#E6CF97" font-size="13" font-family="IBM Plex Sans KR" font-weight="700">지사가 자라고</text>
+          </g>
+        </svg>
+        <figcaption>함께 클수록, 함께 이익이 되는 구조</figcaption>
+      </figure>
     </div>
 
     <div class="notes">

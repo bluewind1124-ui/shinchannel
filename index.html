@@ -345,6 +345,26 @@ header.small .hd{height:60px}
 .note .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .note .chips span{font-size:13px;padding:4px 12px;border-radius:999px;background:var(--gold-bg);color:var(--gold-t);font-weight:700}
 
+/* 커리어패스의 의미 */
+.meaning{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;margin-top:64px;background:#fff;border-radius:8px;padding:40px}
+.meaning h3{font-size:clamp(24px,3vw,34px);color:var(--navy);margin-bottom:24px}
+.meaning h3 em{font-style:normal;color:var(--gold-t)}
+.mn-list{display:flex;flex-direction:column;gap:18px}
+.mn{display:grid;grid-template-columns:40px 1fr;gap:14px}
+.mn i{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--navy);color:var(--gold);font:800 16px 'Gothic A1';font-style:normal}
+.mn b{display:block;color:var(--navy);font-size:17px}
+.mn p{font-size:14.5px;color:var(--ink2)}
+.mn-note{margin-top:20px;font-size:12.5px;color:var(--mute)}
+.mn-chart{margin:0;background:var(--bg);border-radius:8px;padding:20px}
+.mn-chart figcaption{font-size:12px;color:var(--mute);margin-bottom:6px}
+.mn-chart svg{width:100%;height:auto}
+.mn-chart .ov{transform-origin:50% 100%;transform-box:fill-box;transform:scaleY(0);transition:transform 1.4s .2s var(--ease)}
+.mn-chart .sales{opacity:0;transition:opacity 1s 1.2s}
+.mn-chart .top{stroke-dasharray:700;stroke-dashoffset:700;transition:stroke-dashoffset 1.8s 1.2s var(--ease)}
+.mn-chart.in .ov{transform:none}.mn-chart.in .sales{opacity:1}.mn-chart.in .top{stroke-dashoffset:0}
+.mn-chart.done .ov,.mn-chart.done .top{transform:none!important;stroke-dashoffset:0!important;transition:none!important}
+.mn-chart.done .sales{opacity:1!important;transition:none!important}
+
 /* 신인 지원 탭 */
 .rookie{margin-top:72px;display:grid;grid-template-columns:1fr 1.25fr;gap:48px;align-items:start}
 .seg{display:inline-flex;background:#fff;border-radius:999px;padding:5px;margin:24px 0}
@@ -462,6 +482,25 @@ header.small .hd{height:60px}
 .app ul{list-style:none;padding:20px 28px 28px}
 .app li{padding:9px 0 9px 26px;border-bottom:1px solid var(--line);font-size:15px;position:relative}
 .app li::before{content:"";position:absolute;left:0;top:17px;width:12px;height:12px;border-radius:50%;border:3px solid var(--gold)}
+/* 활동지원 강조 */
+.aipitch{margin-top:56px;background:var(--navy);color:#fff;border-radius:8px;padding:44px;position:relative;overflow:hidden}
+.aipitch::after{content:"";position:absolute;right:-90px;bottom:-120px;width:320px;height:320px;border-radius:50%;border:1px solid rgba(205,155,52,.35);animation:spin 40s linear infinite}
+.ap-head .eyebrow{color:var(--gold-l)}
+.ap-head h3{font-size:clamp(22px,2.8vw,32px);line-height:1.4}
+.ap-head h3 em{font-style:normal;color:var(--gold)}
+.ap-flow{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.ap-flow::before{content:"";position:absolute;left:8%;right:8%;top:24px;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 10px,transparent 10px 18px);animation:dash 1s linear infinite;background-size:36px 2px}
+.apf{position:relative;text-align:center;opacity:0;transform:translateY(16px);transition:.6s var(--ease)}
+.ap-flow.in .apf{opacity:1;transform:none}.ap-flow.in .apf:nth-child(2){transition-delay:.35s}.ap-flow.in .apf:nth-child(3){transition-delay:.7s}
+.ap-flow.done .apf{opacity:1!important;transform:none!important;transition:none!important}
+.apf i{display:grid;place-items:center;width:50px;height:50px;margin:0 auto 12px;border-radius:50%;background:var(--gold);color:var(--navy);font:800 18px 'Gothic A1';font-style:normal;position:relative;box-shadow:0 0 0 6px rgba(205,155,52,.2)}
+.apf b{display:block;font-size:17px}
+.apf span{display:block;font-size:13.5px;color:rgba(255,255,255,.72);margin-top:4px}
+.ap-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.ap3{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:20px}
+.ap3 b{font:800 22px 'Gothic A1';color:var(--gold)}
+.ap3 p{font-size:14px;color:rgba(255,255,255,.78);margin-top:6px}
+.ap-note{margin-top:20px;font-size:13px;color:rgba(255,255,255,.6)}
 .routine{margin-top:64px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;counter-reset:r}
 .routine::before{content:"";position:absolute;left:10%;right:10%;top:27px;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 14px);background-size:28px 2px;animation:dash 1.2s linear infinite}
 @keyframes dash{to{background-position:28px 0}}
@@ -573,7 +612,9 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   .menu-btn{display:block}
   .inji .grid,.rookie,.edu,.exec,.vip-grid,.wm,.apps,.tg,.tg.on,.move .grid,.faq .grid,.apply .grid,.ft-grid,.people .notes{grid-template-columns:1fr;gap:32px}
   .num-row{grid-template-columns:1fr 1fr;gap:32px 0}
-  .co-head,.philo,.why-grid,.cr-list,.mk-row{grid-template-columns:1fr;gap:16px}
+  .co-head,.philo,.why-grid,.cr-list,.mk-row,.meaning,.ap-flow,.ap-3{grid-template-columns:1fr;gap:16px}
+  .meaning,.aipitch{padding:24px}
+  .ap-flow::before{display:none}
   .vchart{gap:6px;height:200px}
   .vb b{font-size:12px}
   .vb span{font-size:10.5px}
@@ -932,6 +973,39 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
       <span class="climber" id="climber">FC</span>
     </div>
 
+    <!-- 커리어패스가 FC에게 주는 의미 -->
+    <div class="meaning">
+      <div class="mn-text">
+        <p class="eyebrow rv">커리어패스가 FC에게 주는 의미</p>
+        <h3 class="rv">관리자가 되는 길이자,<br><em>수입을 받쳐 주는 두 번째 기둥</em></h3>
+        <div class="mn-list">
+          <div class="mn rv"><i>1</i><div><b>조직장으로 성장</b><p>FC 2명 리크루팅으로 부지점장이 되고, 지점장 → 사업단장 → 본부장 → 지사장 → 총괄로 조직을 이끄는 리더가 됩니다.</p></div></div>
+          <div class="mn rv d1"><i>2</i><div><b>수입의 안정판, 오버라이딩</b><p>영업 수입은 달마다 오르내립니다. 리크루팅으로 함께하는 FC가 늘면 그 실적에서 나오는 오버라이딩 수익이 더해져, 영업 수입의 기복을 받쳐 줍니다.</p></div></div>
+          <div class="mn rv d2"><i>3</i><div><b>진정한 사업가의 길</b><p>조직이 자랄수록 내 수입도 조직과 함께 커집니다. 혼자 영업하는 FC에서, 사람을 키우고 지사를 운영하는 사업가로 나아갑니다.</p></div></div>
+        </div>
+        <p class="mn-note rv">오버라이딩 지급 기준과 직급별 요건은 회사 규정에 따르며, 제시된 내용은 소득을 보장하지 않습니다. <span class="draft">공개 범위 확인</span></p>
+      </div>
+      <figure class="mn-chart rv d1" id="mnchart">
+        <figcaption>개념도 · 월별 수입 구성</figcaption>
+        <svg viewBox="0 0 520 300" role="img" aria-label="영업 수입은 달마다 오르내리고, 오버라이딩 수익이 아래에서 점점 두꺼워지며 전체 수입을 받쳐 주는 개념도">
+          <defs>
+            <linearGradient id="ovg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CD9B34"/><stop offset="1" stop-color="#9C7A33"/></linearGradient>
+          </defs>
+          <line x1="30" y1="260" x2="510" y2="260" stroke="#C9D1DC"/>
+          <!-- 오버라이딩: 아래에서 점점 두꺼워짐 -->
+          <path class="ov" d="M30 260 L30 256 C120 252 170 244 230 232 C300 218 380 198 510 176 L510 260 Z" fill="url(#ovg)"/>
+          <!-- 영업 수입: 오버라이딩 위에 얹혀 오르내림 -->
+          <path class="sales" d="M30 256 L30 150 L90 110 L150 175 L210 120 L270 160 L330 105 L390 140 L450 92 L510 118 L510 176 C380 198 300 218 230 232 C170 244 120 252 30 256 Z" fill="#2E4A72" fill-opacity=".85"/>
+          <path class="top" d="M30 150 L90 110 L150 175 L210 120 L270 160 L330 105 L390 140 L450 92 L510 118" fill="none" stroke="#0F2340" stroke-width="2.5"/>
+          <g font-family="IBM Plex Sans KR" font-size="13" font-weight="700">
+            <text x="40" y="96" fill="#2E4A72">영업 수입 (달마다 오르내림)</text>
+            <text x="300" y="236" fill="#fff">오버라이딩 (조직이 자랄수록 두꺼워짐)</text>
+          </g>
+          <g font-family="IBM Plex Sans KR" font-size="11" fill="#667185"><text x="30" y="280">리크루팅 시작</text><text x="436" y="280">조직 성장</text></g>
+        </svg>
+      </figure>
+    </div>
+
     <div class="notes">
       <div class="note rv"><h3>총괄 승격과 호칭</h3><p>지사를 분할·육성해 총괄로 승격하면 실적에 따라 상무 · 전무 · 부사장 호칭을 받습니다.</p><div class="chips"><span>분할 3개 지사</span><span>총괄 실적 수수료</span><span class="draft">수치 공개 범위 확인</span></div></div>
       <div class="note rv d1"><h3>지사 설립 점포 지원</h3><p>지사 규모(소형 5~10명부터 초대형 50명 이상)에 맞춰 점포를 지원합니다. 독립 지사를 꿈꾸는 관리자에게 미리 보여 드립니다.</p><div class="chips"><span>소형 · 중소형 · 중형</span><span>대형 · 특대형 · 초대형</span><span class="draft">위약금·BEP 기준 안내</span></div></div>
@@ -1095,6 +1169,25 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
           <li>온라인 교육센터 · 상조 서비스 · 자동차 비교견적</li>
         </ul>
       </article>
+    </div>
+
+    <!-- 활동지원 강조: AI 보장분석 → 제안서 -->
+    <div class="aipitch">
+      <div class="ap-head rv">
+        <p class="eyebrow">한보금ON 활동지원의 핵심</p>
+        <h3>AI가 보장을 분석하고, 제안서까지 만듭니다<br><em>전문적이고 · 알기 쉽고 · 빠른 상담 준비</em></h3>
+      </div>
+      <div class="ap-flow" id="apflow">
+        <div class="apf"><i>1</i><b>증권 점검</b><span>고객 등록 · 동의 후<br>내보험찾아줌 붙여넣기, 증권 사진 판독으로 입력</span></div>
+        <div class="apf"><i>2</i><b>AI 보장분석</b><span>암 치료비 · 순환계 · 수술비 · 간병 등 분석 옵션 10가지<br>보장 점수와 부족 담보를 바로</span></div>
+        <div class="apf"><i>3</i><b>제안서 생성</b><span>기존 · 신규 · 합산 보험료와 보장 지도<br>PDF · HTML · 엑셀로 저장해 카톡 전송</span></div>
+      </div>
+      <div class="ap-3">
+        <div class="ap3 rv"><b>전문적</b><p>담보별 보장 금액을 근거로 부족한 보장과 겹치는 보장을 짚습니다. 감이 아니라 분석 결과로 상담합니다.</p></div>
+        <div class="ap3 rv d1"><b>알기 쉽게</b><p>보장 지도와 고객 리포트로, 고객이 한눈에 이해할 수 있는 화면을 보여 줍니다.</p></div>
+        <div class="ap3 rv d2"><b>빠르게</b><p>증권 입력부터 제안서 PDF까지 한 흐름. 상담 전 준비 시간을 크게 줄입니다.</p></div>
+      </div>
+      <p class="ap-note rv">고급형은 연금설계(은퇴 부족자금 · 3층 연금)와 자산설계(자산배분 · 절세계좌)까지 이어집니다. 고객 자료는 회사 서버가 아니라 FC의 기기에만 저장됩니다.</p>
     </div>
 
     <div class="routine">
@@ -1267,7 +1360,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   if(bars){var after=false;setInterval(function(){after=!after;bars.classList.toggle('after',after);ftag.classList.toggle('after',after);ftag.textContent=after?'분급 이후':'이전';},reduce?1e9:3200);}
   /* GA 규모별 증감 막대: 값에 따라 위(+)·아래(-)로 높이 계산 (최대 30% 기준) */
   document.querySelectorAll('.dpair i').forEach(function(i){var v=parseFloat(i.style.getPropertyValue('--v'));i.classList.add(v<0?'neg':'pos');i.style.setProperty('--hh',(Math.abs(v)/36*(v<0?48:46))+'%');});
-  var watch=[].slice.call(document.querySelectorAll('.rv,#rule,#gaTotal,#gaSize,#ladder,#days,#badges,#photos,#onname,#history,.inji .grid,.inji .umb,.nums .num-row,.vip .facts'));
+  var watch=[].slice.call(document.querySelectorAll('.rv,#apflow,#rule,#gaTotal,#gaSize,#ladder,#days,#badges,#photos,#onname,#history,.inji .grid,.inji .umb,.nums .num-row,.vip .facts'));
   watch.forEach(function(el){io.observe(el)});
   /* 예비 장치: 화면 감지가 멈춘 환경에서도 화면 안에 들어온 요소는 보이게 */
   setInterval(function(){watch=watch.filter(function(t){if(t.classList.contains('in'))return false;var r=t.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0){t.classList.add('in');t.querySelectorAll('[data-to]').forEach(count);if(t.id==='ladder')climb();setTimeout(function(){t.classList.add('done')},(t.id==='days'||t.id==='history')?3400:1600);return false}return true})},500);

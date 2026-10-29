@@ -557,8 +557,19 @@ header.small .hd{height:60px}
 .badge{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);opacity:0;transform:translateX(40px);transition:.7s var(--ease)}
 .badges.in .badge{opacity:1;transform:none}
 .badges.in .badge:nth-child(2){transition-delay:.12s}.badges.in .badge:nth-child(3){transition-delay:.24s}.badges.in .badge:nth-child(4){transition-delay:.36s}.badges.in .badge:nth-child(5){transition-delay:.48s}
-.badge b{font:800 18px 'Gothic A1';color:var(--gold);min-width:64px}
+.badge b{font:800 18px 'Gothic A1';color:var(--gold);min-width:72px;flex:0 0 72px;line-height:1.2}
+.badge b small{display:block;font:700 11px 'IBM Plex Sans KR';letter-spacing:.08em;color:var(--gold-l)}
 .badge span{font-size:14px;color:rgba(255,255,255,.75)}
+/* 등급별 특전 · 혜택 꼬리표 */
+.bns{display:flex;flex-wrap:wrap;gap:5px}
+.bn{font-style:normal;font-size:12.5px;line-height:1.5;padding:2px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.88);opacity:0;transform:translateY(6px);transition:.5s var(--ease)}
+.bn em{font-style:normal;color:rgba(255,255,255,.6)}
+.badges.in .bn{opacity:1;transform:none;transition-delay:.5s}
+.badges.done .bn{transition:none}
+.badge:last-child .bn{background:rgba(205,155,52,.18);border-color:rgba(230,207,151,.5)}
+.badge.pre{background:rgba(255,255,255,.03);border-style:dashed}
+.badge.pre b{color:var(--gold-l);font-size:16px}
+.badges.in .badge:nth-child(6){transition-delay:.6s}.badges.in .badge:nth-child(7){transition-delay:.72s}
 .badge:last-child{background:linear-gradient(90deg,rgba(205,155,52,.35),rgba(205,155,52,.08));border-color:var(--gold)}
 
 /* VIP 세미나 + WM 궤도 */
@@ -1454,11 +1465,13 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
         <p style="color:rgba(255,255,255,.75)">월 매출 실적(수정월초P) 기준으로 1년 단위로 평가합니다. 등급이 오를수록 건강검진, 임원 유지비, 통신비, 자기개발비, 상조 등 혜택이 커집니다. <span class="draft">기준·혜택 공개 범위 확인</span></p>
       </div>
       <div class="badges" id="badges">
-        <div class="badge"><b>명인</b><span>PRO · 별도 심사</span></div>
-        <div class="badge"><b>이사</b><span>임원 직함 시작</span></div>
-        <div class="badge"><b>상무</b><span>자기개발비 · 임원 유지비</span></div>
-        <div class="badge"><b>전무</b><span>임원 혜택 확대</span></div>
-        <div class="badge"><b>부사장</b><span>최고 등급 · 장기근속 성장지원금 한도 확대</span></div>
+        <div class="badge pre"><b>일반</b><div class="bns"><i class="bn">건강검진 A <em>(본인부담 일부)</em></i><i class="bn">장기근속 성장지원금 50%</i><i class="bn">성과보너스 50%</i></div></div>
+        <div class="badge pre"><b>챌린지</b><div class="bns"><i class="bn">건강검진 A</i><i class="bn">상조</i><i class="bn">장기근속 성장지원금 적용</i></div></div>
+        <div class="badge"><b>명인 <small>PRO</small></b><div class="bns"><i class="bn">건강검진 B</i><i class="bn">상조</i><i class="bn">통신비 월 3만</i><i class="bn">장기근속 성장지원금 적용</i></div></div>
+        <div class="badge"><b>이사</b><div class="bns"><i class="bn">건강검진 C</i><i class="bn">임원 유지비 월 20만</i><i class="bn">상조</i><i class="bn">통신비 월 5만</i><i class="bn">자기개발비 반기 50만</i></div></div>
+        <div class="badge"><b>상무</b><div class="bns"><i class="bn">건강검진 C</i><i class="bn">임원 유지비 월 50만</i><i class="bn">상조</i><i class="bn">통신비 월 7만</i><i class="bn">자기개발비 반기 100만</i></div></div>
+        <div class="badge"><b>전무</b><div class="bns"><i class="bn">건강검진 C</i><i class="bn">임원 유지비 월 100만</i><i class="bn">상조</i><i class="bn">통신비 월 10만</i><i class="bn">자기개발비 반기 200만</i></div></div>
+        <div class="badge"><b>부사장</b><div class="bns"><i class="bn">건강검진 C</i><i class="bn">임원 유지비 월 100만</i><i class="bn">상조</i><i class="bn">통신비 월 10만</i><i class="bn">자기개발비 반기 500만</i><i class="bn">장기근속 성장지원금 한도 2배(1억)</i></div></div>
       </div>
     </div>
   </div>

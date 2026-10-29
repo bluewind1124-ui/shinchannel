@@ -54,10 +54,10 @@
       <p class="cnt">등록된 지사 <b id="cnt">0</b>곳</p>
     </div>
     <table class="blist">
-      <thead><tr><th style="width:24%">지사명</th><th>주소</th><th style="width:13%">지사장</th><th style="width:16%">전화번호</th><th style="width:11%"></th></tr></thead>
+      <thead><tr><th style="width:24%">지사명</th><th>주소</th><th style="width:13%">지사장</th><th style="width:16%">연락처</th><th style="width:11%"></th></tr></thead>
       <tbody id="rows"></tbody>
     </table>
-    <p class="list-foot">* 지사 명단은 확인되는 대로 순차 등록합니다. <span class="draft">명단 확인 중</span></p>
+    <p class="list-foot">* 2026년 10월 기준. 지사를 누르면 지사 소개 페이지로 이동합니다.</p>
   </div>
 </section>
 
@@ -69,7 +69,7 @@
 <script src="js/branches.js"></script>
 <script>
 (function(){
-  var B = window.BRANCHES || [];
+  var B = (window.BRANCHES || []).slice().sort(function(a,b){return (a.no||99)-(b.no||99)});
   var esc = function(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
   var tbd = '<span class="tbd">확인 중</span>';
   var link = function(b){return 'branch.html?id='+encodeURIComponent(b.id)};
@@ -95,14 +95,15 @@
   if(!window.L){ note.hidden=false; note.innerHTML='지도를 불러오지 못했습니다. 아래 명단을 이용해 주세요.'; return; }
   var map = L.map('map',{scrollWheelZoom:false,zoomControl:true}).setView([36.35,127.8],7);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    maxZoom:19,
+    maxZoom:18,
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
   var icon = function(hl){return L.divIcon({className:'',html:'<div class="pin'+(hl?' hl':'')+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34],popupAnchor:[0,-30]})};
   var pts = [], marks = {};
   B.forEach(function(b,i){
     if(b.lat==null||b.lng==null) return;
-    var m = L.marker([b.lat,b.lng],{icon:icon(false)}).addTo(map)
+    var m = L.marker([b.lat,b.lng],{icon:icon(false),title:b.name}).addTo(map)
+      .bindTooltip(esc(b.name),{direction:'top',offset:[0,-30]})
       .bindPopup('<b>'+esc(b.name)+'</b>'+(b.addr?esc(b.addr)+'<br>':'')+(b.tel?esc(b.tel)+'<br>':'')+'<a href="'+link(b)+'">지사 소개 보기 →</a>');
     marks[b.id]=m; pts.push([b.lat,b.lng]);
     m.on('mouseover',function(){hl(b.id,true)}); m.on('mouseout',function(){hl(b.id,false)});

@@ -53,7 +53,7 @@
   h += '<section class="b-hero">'+((b.hero||b.poster)?'<div class="bg" style="background-image:url('+esc(b.hero||b.poster)+')"></div>':'')+
        '<div class="wrap"><p class="en">'+esc(b.en||'한국보험금융 신채널')+'</p><h1>'+esc(b.name)+'</h1>'+
        (b.tagline?'<p class="tag">'+esc(b.tagline)+'</p>':'')+
-       '<div class="cta">'+(b.video?'<a class="btn btn-gold" href="#tour">▶ 지사 둘러보기</a>':'')+'<a class="btn btn-line" href="index.html#apply">이 지사에 문의하기</a></div></div></section>';
+       '<div class="cta">'+(b.video?'<a class="btn btn-gold" href="#tour" id="playTour">▶ 지사 둘러보기</a>':'')+'<a class="btn btn-line" href="index.html#apply">이 지사에 문의하기</a></div></div></section>';
 
   /* 기본 정보 */
   h += '<section class="b-info"><div class="wrap grid"><div><p class="eyebrow">한국보험금융 직영채널</p>'+
@@ -65,7 +65,7 @@
 
   /* 소개 영상 */
   if(b.video) h += '<section class="b-video dark" id="tour"><div class="wrap"><p class="eyebrow">지사 둘러보기</p><h2>'+esc(b.name)+'를 영상으로 만나 보세요</h2>'+
-       '<video controls playsinline preload="metadata" poster="'+esc(b.poster||'')+'"><source src="'+esc(b.video)+'" type="video/mp4"></video></div></section>';
+       '<video id="tourVideo" controls loop playsinline preload="metadata" poster="'+esc(b.poster||'')+'"><source src="'+esc(b.video)+'" type="video/mp4"></video></div></section>';
 
   /* 지사 원칙 */
   if(b.philosophy) h += '<section class="b-quote"><div class="wrap"><small>OUR PHILOSOPHY</small><q>'+esc(b.philosophy)+'</q></div></section>';
@@ -86,6 +86,10 @@
        '<div class="wrap"><h2>'+esc(c.t)+'</h2><p>'+esc(c.d)+'</p><a class="btn btn-gold" href="index.html#apply">간편 문의하기</a></div></section>';
   P.innerHTML = h;
 
+  /* 「지사 둘러보기」를 누르면 영상으로 내려가서 반복 재생 */
+  var pt=document.getElementById('playTour'), tv=document.getElementById('tourVideo');
+  if(pt&&tv){pt.addEventListener('click',function(e){e.preventDefault();document.getElementById('tour').scrollIntoView({behavior:'smooth',block:'start'});tv.loop=true;tv.currentTime=0;var p=tv.play();if(p&&p.catch)p.catch(function(){tv.muted=true;tv.play()});});}
+
   /* 사진 카드가 화면에 들어오면 하나씩 떠오름 */
   var sp = [].slice.call(document.querySelectorAll('.sp'));
   if('IntersectionObserver' in window){
@@ -97,7 +101,7 @@
   /* 작은 지도 */
   if(window.L && document.getElementById('mini')){
     var m = L.map('mini',{scrollWheelZoom:false}).setView([b.lat,b.lng],15);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);
     L.marker([b.lat,b.lng],{icon:L.divIcon({className:'',html:'<div class="pin"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]})}).addTo(m);
   }
 })();

@@ -45,6 +45,9 @@ header{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:2px
 .map-sec{padding:64px 0 24px;background:var(--bg)}
 .map-box{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 12px 36px rgba(15,35,64,.12);background:#dfe5ec}
 #map{height:520px;width:100%}
+/* 지도를 단순한 회색 톤으로 (지사 핀만 눈에 띄게) */
+#map .leaflet-tile-pane,.mini-map .leaflet-tile-pane{filter:grayscale(1) brightness(1.06) contrast(.82)}
+.leaflet-container{background:#e9ecef}
 .map-note{position:absolute;left:16px;bottom:16px;z-index:500;background:rgba(15,35,64,.92);color:#fff;font-size:14px;padding:10px 16px;border-radius:8px;max-width:calc(100% - 32px)}
 .map-note b{color:var(--gold-l)}
 .pin{width:34px;height:34px;border-radius:50% 50% 50% 0;background:var(--navy);border:3px solid var(--gold);transform:rotate(-45deg);box-shadow:0 6px 14px rgba(0,0,0,.3);display:grid;place-items:center;animation:drop .6s var(--ease) both}

@@ -600,7 +600,7 @@ header.small .hd{height:60px}
 .day .who{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:700;color:var(--gold-t);background:var(--gold-bg);padding:1px 8px;border-radius:999px}
 
 /* 마케팅 임원 · 연도대상 */
-.exec{margin-top:96px;background:var(--navy);color:#fff;border-radius:8px;padding:56px;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+.exec{margin-top:96px;background:var(--navy);color:#fff;border-radius:8px;padding:56px;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;position:relative;overflow:hidden;overflow:clip}
 .exec::before{content:"";position:absolute;right:-120px;bottom:-160px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(205,155,52,.35);animation:spin 30s linear infinite}
 .badges{display:flex;flex-direction:column-reverse;gap:10px;position:relative}
 .badge{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);opacity:0;transform:translateX(40px);transition:.7s var(--ease)}
@@ -620,6 +620,45 @@ header.small .hd{height:60px}
 .badge.pre b{color:var(--gold-l);font-size:16px}
 .badges.in .badge:nth-child(6){transition-delay:.6s}.badges.in .badge:nth-child(7){transition-delay:.72s}
 .badge:last-child{background:linear-gradient(90deg,rgba(205,155,52,.35),rgba(205,155,52,.08));border-color:var(--gold)}
+
+/* KMI 건강검진 A·B·C */
+.kmi{grid-column:1/-1;margin-top:8px;padding-top:40px;border-top:1px solid rgba(255,255,255,.12);position:relative}
+.kmi-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:24px}
+.kmi-hd h3{font:800 clamp(20px,2.2vw,26px)/1.35 'Gothic A1';color:#fff;margin:6px 0 8px}
+.kmi-lead{color:rgba(255,255,255,.72);font-size:14.5px;max-width:640px}
+.kmi-pdf{flex:none;display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:6px;border:1px solid var(--gold);color:var(--gold-l);font-size:14px;font-weight:700;text-decoration:none;transition:.3s}
+.kmi-pdf::after{content:"↗";font-weight:400}
+.kmi-pdf:hover{background:var(--gold);color:var(--navy)}
+.kmi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.kc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:20px;display:flex;flex-direction:column;opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease),box-shadow .4s,border-color .4s}
+.kmi.in .kc{opacity:1;transform:none}
+.kmi.in .k-b{transition-delay:.15s}.kmi.in .k-c{transition-delay:.3s}
+.kmi.done .kc{transition:box-shadow .4s,border-color .4s}
+.kc .kh{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.kc .kh b{flex:none;width:52px;height:52px;border-radius:8px;display:grid;place-items:center;font:800 19px 'Gothic A1';background:var(--navy3);color:#fff}
+.k-b .kh b{background:var(--gold-l);color:var(--navy)}
+.k-c .kh b{background:var(--gold);color:var(--navy)}
+.kc h4{font:800 17px 'Gothic A1';color:#fff}
+.kc .kh p{font-size:12.5px;color:rgba(255,255,255,.6);margin-top:2px}
+.kc-who{font-size:13px;font-weight:700;color:var(--gold-l);background:rgba(205,155,52,.14);border-radius:4px;padding:5px 10px;margin-bottom:10px}
+.kc-who em{font-style:normal;font-weight:400;color:rgba(255,255,255,.6)}
+.kc-who::before{content:"대상 등급 · ";font-weight:400;color:rgba(255,255,255,.6)}
+.kc-base{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:10px}
+.kc-lab{font-size:12px;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-bottom:4px}
+.kc ul{list-style:none;margin:0 0 14px;flex:1}
+.kc li{font-size:13.5px;color:rgba(255,255,255,.88);padding:6px 0 6px 16px;border-bottom:1px dashed rgba(255,255,255,.1);position:relative}
+.kc li::before{content:"";position:absolute;left:2px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.k-a li::before{background:#8FA7C8}
+.kc li em{font-style:normal;font-size:12px;color:rgba(255,255,255,.55)}
+.kc dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.14);font-size:13px}
+.kc dt{color:rgba(255,255,255,.5)}
+.kc dd{color:rgba(255,255,255,.85);margin:0}
+.kc dd.pr{font:800 17px 'Gothic A1';color:var(--gold-l)}
+.kc.hit{border-color:var(--gold);box-shadow:0 0 0 2px rgba(205,155,52,.45),0 18px 40px rgba(0,0,0,.35)}
+.kmi-note{margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.7}
+.bn.hc{cursor:pointer;text-decoration:underline dotted rgba(230,207,151,.7);text-underline-offset:3px}
+.bn.hc:hover,.bn.hc:focus-visible{background:rgba(205,155,52,.3);border-color:var(--gold);outline:none}
+@media (max-width:960px){.kmi-grid{grid-template-columns:1fr}.kmi-hd{flex-direction:column;align-items:flex-start}}
 
 /* VIP 세미나 + WM 궤도 */
 .vip{background:var(--navy-d);color:#fff;overflow:hidden}
@@ -1517,13 +1556,29 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
         <p style="color:rgba(255,255,255,.75)">월 매출 실적(수정월초P) 기준으로 1년 단위로 평가합니다. 등급이 오를수록 건강검진, 임원 유지비, 통신비, 자기개발비, 상조 등 혜택이 커집니다. <span class="draft">기준·혜택 공개 범위 확인</span></p>
       </div>
       <div class="badges" id="badges">
-        <div class="badge pre"><b>일반</b><div class="bns"><i class="bn">건강검진 A <em>(본인부담 일부)</em></i><i class="bn">장기근속 성장지원금 50%</i><i class="bn">성과보너스 50%</i></div></div>
-        <div class="badge pre"><b>챌린지</b><div class="bns"><i class="bn">건강검진 A</i><i class="bn">상조</i><i class="bn">장기근속 성장지원금 적용</i></div></div>
-        <div class="badge"><b>명인 <small>PRO</small></b><div class="bns"><i class="bn">건강검진 B</i><i class="bn">상조</i><i class="bn">통신비 월 3만</i><i class="bn">장기근속 성장지원금 적용</i></div></div>
-        <div class="badge"><b>이사</b><div class="bns"><i class="bn">건강검진 C</i><i class="bn">임원 유지비 월 20만</i><i class="bn">상조</i><i class="bn">통신비 월 5만</i><i class="bn">자기개발비 반기 50만</i></div></div>
-        <div class="badge"><b>상무</b><div class="bns"><i class="bn">건강검진 C</i><i class="bn">임원 유지비 월 50만</i><i class="bn">상조</i><i class="bn">통신비 월 7만</i><i class="bn">자기개발비 반기 100만</i></div></div>
-        <div class="badge"><b>전무</b><div class="bns"><i class="bn">건강검진 C</i><i class="bn">임원 유지비 월 100만</i><i class="bn">상조</i><i class="bn">통신비 월 10만</i><i class="bn">자기개발비 반기 200만</i></div></div>
-        <div class="badge"><b>부사장</b><div class="bns"><i class="bn">건강검진 C</i><i class="bn">임원 유지비 월 100만</i><i class="bn">상조</i><i class="bn">통신비 월 10만</i><i class="bn">자기개발비 반기 500만</i><i class="bn">장기근속 성장지원금 한도 2배(1억)</i></div></div>
+        <div class="badge pre"><b>일반</b><div class="bns"><i class="bn hc" data-k="a" role="button" tabindex="0">건강검진 A <em>(본인부담 일부)</em></i><i class="bn">장기근속 성장지원금 50%</i><i class="bn">성과보너스 50%</i></div></div>
+        <div class="badge pre"><b>챌린지</b><div class="bns"><i class="bn hc" data-k="a" role="button" tabindex="0">건강검진 A</i><i class="bn">상조</i><i class="bn">장기근속 성장지원금 적용</i></div></div>
+        <div class="badge"><b>명인 <small>PRO</small></b><div class="bns"><i class="bn hc" data-k="b" role="button" tabindex="0">건강검진 B</i><i class="bn">상조</i><i class="bn">통신비 월 3만</i><i class="bn">장기근속 성장지원금 적용</i></div></div>
+        <div class="badge"><b>이사</b><div class="bns"><i class="bn hc" data-k="c" role="button" tabindex="0">건강검진 C</i><i class="bn">임원 유지비 월 20만</i><i class="bn">상조</i><i class="bn">통신비 월 5만</i><i class="bn">자기개발비 반기 50만</i></div></div>
+        <div class="badge"><b>상무</b><div class="bns"><i class="bn hc" data-k="c" role="button" tabindex="0">건강검진 C</i><i class="bn">임원 유지비 월 50만</i><i class="bn">상조</i><i class="bn">통신비 월 7만</i><i class="bn">자기개발비 반기 100만</i></div></div>
+        <div class="badge"><b>전무</b><div class="bns"><i class="bn hc" data-k="c" role="button" tabindex="0">건강검진 C</i><i class="bn">임원 유지비 월 100만</i><i class="bn">상조</i><i class="bn">통신비 월 10만</i><i class="bn">자기개발비 반기 200만</i></div></div>
+        <div class="badge"><b>부사장</b><div class="bns"><i class="bn hc" data-k="c" role="button" tabindex="0">건강검진 C</i><i class="bn">임원 유지비 월 100만</i><i class="bn">상조</i><i class="bn">통신비 월 10만</i><i class="bn">자기개발비 반기 500만</i><i class="bn">장기근속 성장지원금 한도 2배(1억)</i></div></div>
+      </div>
+
+      <!-- KMI 건강검진 안내 -->
+      <div class="kmi rv" id="kmi">
+        <div class="kmi-hd">
+          <div>
+            <p class="eyebrow">건강검진 A · B · C 안내</p>
+            <h3>한국의학연구소(KMI)와 함께하는 임원 건강검진</h3>
+            <p class="kmi-lead">KMI는 1985년 설립된 건강검진 전문기관으로, 전국 8개 검진센터에서 예방검진과 건강증진 서비스를 제공합니다. 등급에 따라 A형부터 C형까지 받으실 수 있습니다.</p>
+          </div>
+          <a class="kmi-pdf" href="docs/kmi-health-check.pdf" target="_blank" rel="noopener">KMI 원본 자료 보기 (PDF)</a>
+        </div>
+        <div class="kmi-grid">
+<article class="kc k-a" id="kmi-a"><div class="kh"><b>A형</b><div><h4>기본 건강검진</h4><p>기본적인 건강 상태 확인 중심</p></div></div><p class="kc-who">일반 <em>(본인부담 일부)</em> · 챌린지</p><p class="kc-base">기본 검사 항목</p><p class="kc-lab">기본 항목</p><ul><li>문진 및 건강상담</li><li>혈액검사 / 소변검사</li><li>흉부 X-ray</li><li>심전도 검사</li><li>복부초음파</li><li>위검사 <em>(위내시경·위장조영 선택)</em></li><li>체성분 검사</li><li>안과 검사</li><li>종양표지자 검사</li><li>간기능 / 신장기능 검사</li><li>당뇨 / 고지혈증 검사</li></ul><dl><dt>추천</dt><dd>일반 직장인 정기검진</dd><dt>검진비</dt><dd class="pr">250,000원</dd></dl></article><article class="kc k-b" id="kmi-b"><div class="kh"><b>B형</b><div><h4>정밀 추가검사형</h4><p>CT · MRI · 초음파 등 정밀검사 추가</p></div></div><p class="kc-who">명인 PRO</p><p class="kc-base">A형 포함 + 선택 정밀검사</p><p class="kc-lab">추가 가능 항목</p><ul><li>MRI / MRA 검사</li><li>뇌CT / 폐CT / 목CT / 허리CT</li><li>심장초음파</li><li>경동맥초음파</li><li>갑상선초음파</li><li>유방초음파</li><li>동맥경화 검사</li><li>스트레스 검사(HRV)</li><li>폐암 표지자 검사</li><li>알레르기 검사</li><li>잠복결핵 검사</li><li>유전자 검사</li></ul><dl><dt>추천</dt><dd>가족력 · 만성질환 관리가 필요한 분</dd><dt>검진비</dt><dd class="pr">350,000원</dd></dl></article><article class="kc k-c" id="kmi-c"><div class="kh"><b>C형</b><div><h4>프리미엄 정밀검진형</h4><p>암 · 치매 · 심혈관 등 정밀검사 확대</p></div></div><p class="kc-who">이사 · 상무 · 전무 · 부사장</p><p class="kc-base">B형 포함 + 프리미엄 정밀검사</p><p class="kc-lab">프리미엄 정밀검사</p><ul><li>NK세포 활성도 검사</li><li>알츠하이머 위험도 검사</li><li>간섬유화 검사</li><li>폐섬유화 검사</li><li>얼리텍 대장암 유전자 검사</li><li>심혈관 위험인자 검사</li><li>유전자 암 검사</li><li>대장 수면내시경</li><li>MRI / MRA 정밀촬영</li><li>심장CT(관상동맥 칼슘석회화)</li><li>여성 정밀검사</li></ul><dl><dt>추천</dt><dd>40대 이상 또는 프리미엄 검진을 원하는 분</dd><dt>검진비</dt><dd class="pr">프리미엄 옵션별 상이</dd></dl></article>
+        </div>
+        <p class="kmi-note">* 검진 항목과 비용은 KMI 자료(2024.05 기준)이며 센터 사정에 따라 바뀔 수 있습니다. 추가 검사는 선택 사항으로 전문의 상담 후 정하며, 정확한 구성과 비용은 KMI 건강검진센터에 확인해 주세요. 등급별 적용 범위와 본인부담 기준은 회사 규정을 따릅니다. <span class="draft">공개 범위 확인</span></p>
       </div>
     </div>
   </div>
@@ -1962,6 +2017,20 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
     if(cx+z*0.45>W)cx=W-z*0.55;
     mk.style.width=mk.style.height=z+'px';mk.style.left=(cx-z/2)+'px';mk.style.top=(cy-z/2)+'px';}
   place();addEventListener('resize',place);
+})();
+</script>
+<script>
+/* 건강검진 꼬리표 → KMI 안내 해당 형으로 이동 */
+(function(){
+  var go=function(k){var c=document.getElementById('kmi-'+k);if(!c)return;
+    document.getElementById('kmi').classList.add('in');
+    var r=c.getBoundingClientRect();window.scrollTo({top:r.top+scrollY-Math.max(80,(innerHeight-r.height)/2),behavior:'smooth'});
+    document.querySelectorAll('.kc.hit').forEach(function(x){x.classList.remove('hit')});
+    c.classList.add('hit');setTimeout(function(){c.classList.remove('hit')},2600);};
+  document.querySelectorAll('.bn.hc').forEach(function(b){
+    b.addEventListener('click',function(){go(b.dataset.k)});
+    b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go(b.dataset.k)}});
+  });
 })();
 </script>
 </body>

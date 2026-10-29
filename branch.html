@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>지사 소개 | 한국보험금융 신채널</title>
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#0F2340">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="한국보험금융 신채널">
+<meta property="og:title" content="한국보험금융 신채널 | 지사 소개">
+<meta property="og:image" content="https://bluewind1124-ui.github.io/shinchannel/img/og-image.jpg">
+<!-- 심의 전 초안: 검색엔진 노출 막음 (정식 공개 때 지우기) -->
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="css/branch.css">
+</head>
+<body>
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="index.html"><img src="img/logo-on-navy.png" alt="한국보험금융"><span>신채널</span></a>
+    <nav><a href="index.html">홈</a><a class="on" href="branches.html">지사 소개</a><a href="index.html#apply">간편 문의</a></nav>
+  </div>
+</header>
+
+<main id="page"></main>
+
+<footer>
+  <div class="wrap"><b>한국보험금융(주)</b> · 서울 용산구 한강대로 257, 14층(갈월동, 청룡빌딩) · TEL 02-771-5050</div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/branches.js"></script>
+<script>
+(function(){
+  var esc = function(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var id = new URLSearchParams(location.search).get('id');
+  var b = (window.BRANCHES||[]).filter(function(x){return x.id===id})[0];
+  var P = document.getElementById('page');
+  if(!b){
+    P.innerHTML = '<section class="top dark"><div class="wrap"><p class="eyebrow">지사 소개</p><h1>지사를 찾을 수 없습니다</h1><p>지사 명단에서 다시 선택해 주세요.</p><a class="btn btn-gold" style="margin-top:24px" href="branches.html">지사 명단 보기</a></div></section>';
+    return;
+  }
+  document.title = b.name + ' | 한국보험금융 신채널';
+  var tbd = '<span class="tbd">확인 중</span>';
+  var h = '';
+
+  /* 첫 화면 */
+  h += '<section class="b-hero">'+((b.hero||b.poster)?'<div class="bg" style="background-image:url('+esc(b.hero||b.poster)+')"></div>':'')+
+       '<div class="wrap"><p class="en">'+esc(b.en||'한국보험금융 신채널')+'</p><h1>'+esc(b.name)+'</h1>'+
+       (b.tagline?'<p class="tag">'+esc(b.tagline)+'</p>':'')+
+       '<div class="cta">'+(b.video?'<a class="btn btn-gold" href="#tour">▶ 지사 둘러보기</a>':'')+'<a class="btn btn-line" href="index.html#apply">이 지사에 문의하기</a></div></div></section>';
+
+  /* 기본 정보 */
+  h += '<section class="b-info"><div class="wrap grid"><div><p class="eyebrow">한국보험금융 직영채널</p>'+
+       (b.intro?'<p class="lead">'+esc(b.intro)+'</p>':'')+
+       '<a class="back" href="branches.html">← 전체 지사 명단</a></div>'+
+       '<div><dl><dt>지사명</dt><dd>'+esc(b.name)+'</dd><dt>주소</dt><dd>'+(b.addr?esc(b.addr):tbd)+'</dd>'+
+       '<dt>지사장</dt><dd>'+(b.ceo?esc(b.ceo):tbd)+'</dd><dt>전화번호</dt><dd>'+(b.tel?'<a href="tel:'+esc(b.tel.replace(/[^0-9]/g,''))+'">'+esc(b.tel)+'</a>':tbd)+'</dd></dl>'+
+       (b.lat!=null&&b.lng!=null?'<div class="mini-map" id="mini"></div>':'')+'</div></div></section>';
+
+  /* 소개 영상 */
+  if(b.video) h += '<section class="b-video dark" id="tour"><div class="wrap"><p class="eyebrow">지사 둘러보기</p><h2>'+esc(b.name)+'를 영상으로 만나 보세요</h2>'+
+       '<video controls playsinline preload="metadata" poster="'+esc(b.poster||'')+'"><source src="'+esc(b.video)+'" type="video/mp4"></video></div></section>';
+
+  /* 지사 원칙 */
+  if(b.philosophy) h += '<section class="b-quote"><div class="wrap"><small>OUR PHILOSOPHY</small><q>'+esc(b.philosophy)+'</q></div></section>';
+
+  /* 공간 소개 */
+  if(b.spaces&&b.spaces.length){
+    h += '<section class="b-spaces"><div class="wrap"><p class="eyebrow">공간 소개</p><h2>FC가 영업에만 집중할 수 있도록</h2><div class="sp-grid">';
+    b.spaces.forEach(function(s,i){
+      h += '<figure class="sp" style="transition-delay:'+((i%4)*.08)+'s"><img src="'+esc(s.img)+'" alt="'+esc(s.t)+'" loading="lazy">'+
+           '<figcaption class="cap"><small>'+esc(s.tag)+'</small><h3>'+esc(s.t)+'</h3><p>'+esc(s.d)+'</p></figcaption></figure>';
+    });
+    h += '</div><p class="tbd" style="margin-top:14px">* 사진은 지사 소개 영상의 장면입니다.</p></div></section>';
+  }
+
+  /* 마무리 */
+  var c = b.closing || {t:'이제, 당신의 차례입니다', d:'신채널 '+b.name+'에서 함께 시작하세요'};
+  h += '<section class="b-close dark">'+(c.img?'<div class="bg" style="background-image:url('+esc(c.img)+')"></div>':'')+
+       '<div class="wrap"><h2>'+esc(c.t)+'</h2><p>'+esc(c.d)+'</p><a class="btn btn-gold" href="index.html#apply">간편 문의하기</a></div></section>';
+  P.innerHTML = h;
+
+  /* 사진 카드가 화면에 들어오면 하나씩 떠오름 */
+  var sp = [].slice.call(document.querySelectorAll('.sp'));
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+    sp.forEach(function(e){io.observe(e)});
+  }
+  setInterval(function(){sp.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight*.95&&r.bottom>0)e.classList.add('in')})},600);
+
+  /* 작은 지도 */
+  if(window.L && document.getElementById('mini')){
+    var m = L.map('mini',{scrollWheelZoom:false}).setView([b.lat,b.lng],15);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);
+    L.marker([b.lat,b.lng],{icon:L.divIcon({className:'',html:'<div class="pin"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]})}).addTo(m);
+  }
+})();
+</script>
+</body>
+</html>

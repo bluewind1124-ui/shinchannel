@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>지사 소개 | 한국보험금융 신채널</title>
+<meta name="description" content="한국보험금융 신채널 전국 지사 위치와 명단. 지사를 누르면 지사별 소개 페이지로 이동합니다.">
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#0F2340">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="한국보험금융 신채널">
+<meta property="og:title" content="한국보험금융 신채널 | 지사 소개">
+<meta property="og:description" content="전국 신채널 지사의 위치와 지사별 소개를 확인하세요.">
+<meta property="og:image" content="https://bluewind1124-ui.github.io/shinchannel/img/og-image.jpg">
+<meta property="og:url" content="https://bluewind1124-ui.github.io/shinchannel/branches.html">
+<!-- 심의 전 초안: 검색엔진 노출 막음 (정식 공개 때 지우기) -->
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="css/branch.css">
+</head>
+<body>
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="index.html"><img src="img/logo-on-navy.png" alt="한국보험금융"><span>신채널</span></a>
+    <nav><a href="index.html">홈</a><a class="on" href="branches.html">지사 소개</a><a href="index.html#apply">간편 문의</a></nav>
+  </div>
+</header>
+
+<section class="top dark">
+  <div class="wrap">
+    <p class="eyebrow">지사 소개</p>
+    <h1>가까운 곳에서 만나는<br><em>신채널 지사</em></h1>
+    <p>지도에서 위치를 확인하고, 아래 명단에서 지사를 누르면 지사별 소개 페이지로 이동합니다.</p>
+  </div>
+</section>
+
+<section class="map-sec">
+  <div class="wrap">
+    <div class="map-box">
+      <div id="map" role="region" aria-label="신채널 지사 위치 지도"></div>
+      <p class="map-note" id="mapNote" hidden></p>
+    </div>
+  </div>
+</section>
+
+<section class="list-sec">
+  <div class="wrap">
+    <div class="list-head">
+      <h2>지사 명단</h2>
+      <p class="cnt">등록된 지사 <b id="cnt">0</b>곳</p>
+    </div>
+    <table class="blist">
+      <thead><tr><th style="width:24%">지사명</th><th>주소</th><th style="width:13%">지사장</th><th style="width:16%">전화번호</th><th style="width:11%"></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="list-foot">* 지사 명단은 확인되는 대로 순차 등록합니다. <span class="draft">명단 확인 중</span></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><b>한국보험금융(주)</b> · 서울 용산구 한강대로 257, 14층(갈월동, 청룡빌딩) · TEL 02-771-5050</div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/branches.js"></script>
+<script>
+(function(){
+  var B = window.BRANCHES || [];
+  var esc = function(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var tbd = '<span class="tbd">확인 중</span>';
+  var link = function(b){return 'branch.html?id='+encodeURIComponent(b.id)};
+
+  /* 명단 */
+  document.getElementById('cnt').textContent = B.length;
+  var rows = document.getElementById('rows');
+  B.forEach(function(b){
+    var tr = document.createElement('tr');
+    tr.dataset.id = b.id;
+    tr.innerHTML =
+      '<td><div class="nm">'+esc(b.name)+(b.en?'<small>'+esc(b.en)+'</small>':'')+'</div></td>'+
+      '<td data-k="주소">'+(b.addr?esc(b.addr):tbd)+'</td>'+
+      '<td data-k="지사장">'+(b.ceo?esc(b.ceo):tbd)+'</td>'+
+      '<td data-k="전화">'+(b.tel?'<a href="tel:'+esc(b.tel.replace(/[^0-9]/g,''))+'" onclick="event.stopPropagation()">'+esc(b.tel)+'</a>':tbd)+'</td>'+
+      '<td><a class="go" href="'+link(b)+'">소개 보기 →</a></td>';
+    tr.onclick = function(){location.href = link(b)};
+    rows.appendChild(tr);
+  });
+
+  /* 지도 (위치가 있는 지사만 표시) */
+  var note = document.getElementById('mapNote');
+  if(!window.L){ note.hidden=false; note.innerHTML='지도를 불러오지 못했습니다. 아래 명단을 이용해 주세요.'; return; }
+  var map = L.map('map',{scrollWheelZoom:false,zoomControl:true}).setView([36.35,127.8],7);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    maxZoom:19,
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  var icon = function(hl){return L.divIcon({className:'',html:'<div class="pin'+(hl?' hl':'')+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34],popupAnchor:[0,-30]})};
+  var pts = [], marks = {};
+  B.forEach(function(b,i){
+    if(b.lat==null||b.lng==null) return;
+    var m = L.marker([b.lat,b.lng],{icon:icon(false)}).addTo(map)
+      .bindPopup('<b>'+esc(b.name)+'</b>'+(b.addr?esc(b.addr)+'<br>':'')+(b.tel?esc(b.tel)+'<br>':'')+'<a href="'+link(b)+'">지사 소개 보기 →</a>');
+    marks[b.id]=m; pts.push([b.lat,b.lng]);
+    m.on('mouseover',function(){hl(b.id,true)}); m.on('mouseout',function(){hl(b.id,false)});
+  });
+  function hl(id,on){
+    var tr = rows.querySelector('tr[data-id="'+id+'"]'); if(tr) tr.classList.toggle('hl',on);
+    if(marks[id]) marks[id].setIcon(icon(on));
+  }
+  rows.querySelectorAll('tr').forEach(function(tr){
+    tr.addEventListener('mouseenter',function(){hl(tr.dataset.id,true)});
+    tr.addEventListener('mouseleave',function(){hl(tr.dataset.id,false)});
+  });
+  if(pts.length===1) map.setView(pts[0],14);
+  else if(pts.length>1) map.fitBounds(pts,{padding:[50,50]});
+  var missing = B.filter(function(b){return b.lat==null||b.lng==null}).length;
+  if(missing){ note.hidden=false; note.innerHTML='<b>'+missing+'곳</b>은 주소 확인 후 지도에 표시됩니다.'; }
+  map.on('click',function(){map.scrollWheelZoom.enable()});
+})();
+</script>
+</body>
+</html>

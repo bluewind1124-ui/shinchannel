@@ -72,7 +72,7 @@ header.small .hd{height:60px}
 .logo img{height:34px;width:auto}
 .logo span{font:800 15px 'Gothic A1',sans-serif;color:var(--gold-l);padding-left:12px;border-left:1px solid rgba(255,255,255,.25)}
 .gnb{display:flex;gap:4px;margin-left:auto;list-style:none}
-.gnb a{display:block;padding:8px 11px;color:rgba(255,255,255,.85);font-weight:500;font-size:15px;border-radius:999px;transition:.2s}
+.gnb a{display:block;padding:8px 9px;color:rgba(255,255,255,.85);font-weight:500;font-size:14.5px;border-radius:999px;transition:.2s}
 .gnb a:hover,.gnb a.on{color:var(--navy);background:var(--gold-l)}
 .hd .btn{padding:10px 22px}
 .menu-btn{display:none;margin-left:auto;background:none;border:0;width:40px;height:40px;cursor:pointer}
@@ -726,7 +726,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 .vchart.done .vb b,.dchart.done .dpair em{opacity:1!important;transition:none!important}
 
 /* ── 화면 폭 대응 ── */
-.gnb a{white-space:nowrap}
+.gnb a,.hd .btn{white-space:nowrap}
 @media (max-width:1180px){
   .gnb{display:none;position:fixed;top:72px;left:0;right:0;flex-direction:column;background:var(--navy);padding:12px 24px 24px;border-bottom:2px solid var(--gold)}
   .gnb.open{display:flex}
@@ -851,6 +851,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
       <li><a href="#sys">지원 시스템</a></li>
       <li><a href="#on">한보금ON</a></li>
       <li><a href="#target">모집 안내</a></li>
+      <li><a href="branches.html">지사 소개</a></li>
       <li><a href="#faq">자주 묻는 질문</a></li>
     </ul>
     <a class="btn btn-gold" href="#apply">간편 지원</a>
@@ -1584,6 +1585,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 <footer>
   <div class="wrap">
     <nav class="ft-links">
+      <a href="branches.html">지사 소개</a>
       <a class="gold" href="#">개인정보처리방침</a>
       <a href="#">금융소비자보호 기준</a>
       <a href="#">내부통제기준</a>

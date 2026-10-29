@@ -16,7 +16,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="css/branch.css">
 </head>
 <body>
@@ -33,7 +32,7 @@
   <div class="wrap"><b>한국보험금융(주)</b> · 서울 용산구 한강대로 257, 14층(갈월동, 청룡빌딩) · TEL 02-771-5050</div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/korea-map.js"></script>
 <script src="js/branches.js"></script>
 <script>
 (function(){
@@ -57,11 +56,11 @@
 
   /* 기본 정보 */
   h += '<section class="b-info"><div class="wrap grid"><div><p class="eyebrow">한국보험금융 직영채널</p>'+
-       (b.intro?'<p class="lead">'+esc(b.intro)+'</p>':'')+
+       '<p class="lead">'+esc(b.intro||(b.name+'는 한국보험금융 신채널 지사입니다. 가까운 지사에서 지사장과 직접 상담하고, 본사 교육과 한보금ON 영업 지원을 함께 받을 수 있습니다.'))+'</p>'+
        '<a class="back" href="branches.html">← 전체 지사 명단</a></div>'+
        '<div><dl><dt>지사명</dt><dd>'+esc(b.name)+'</dd><dt>주소</dt><dd>'+(b.addr?esc(b.addr):tbd)+'</dd>'+
        '<dt>지사장</dt><dd>'+(b.ceo?esc(b.ceo):tbd)+'</dd><dt>전화번호</dt><dd>'+(b.tel?'<a href="tel:'+esc(b.tel.replace(/[^0-9]/g,''))+'">'+esc(b.tel)+'</a>':tbd)+'</dd></dl>'+
-       (b.lat!=null&&b.lng!=null?'<div class="mini-map" id="mini"></div>':'')+'</div></div></section>';
+       (b.lat!=null&&b.lng!=null?'<div class="mini-map"><div class="kmap" id="mini"></div></div>':'')+(b.addr?'<div class="map-links"><a href="https://map.naver.com/p/search/'+encodeURIComponent(b.addr)+'" target="_blank" rel="noopener">네이버 지도에서 보기</a><a href="https://map.kakao.com/?q='+encodeURIComponent(b.addr)+'" target="_blank" rel="noopener">카카오맵에서 보기</a></div>':'')+'</div></div></section>';
 
   /* 소개 영상 */
   if(b.video) h += '<section class="b-video dark" id="tour"><div class="wrap"><p class="eyebrow">지사 둘러보기</p><h2>'+esc(b.name)+'를 영상으로 만나 보세요</h2>'+
@@ -99,10 +98,14 @@
   setInterval(function(){sp.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight*.95&&r.bottom>0)e.classList.add('in')})},600);
 
   /* 작은 지도 */
-  if(window.L && document.getElementById('mini')){
-    var m = L.map('mini',{scrollWheelZoom:false}).setView([b.lat,b.lng],15);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);
-    L.marker([b.lat,b.lng],{icon:L.divIcon({className:'',html:'<div class="pin"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34]})}).addTo(m);
+  /* 작은 지도: 지사 주변을 SVG 시도 경계로 그리고 위치 표시 (외부 지도 서버 없음) */
+  var mini=document.getElementById('mini'), M=window.KOREA_MAP;
+  if(mini&&M){
+    var q=window.KOREA_XY(b.lat,b.lng), W=150, Hh=90, vb=[q[0]-W/2,q[1]-Hh/2,W,Hh];
+    var svg='<svg viewBox="'+vb.join(' ')+'" preserveAspectRatio="xMidYMid slice" aria-hidden="true">';
+    M.paths.forEach(function(p){svg+='<path class="pv'+(p.c==='11'?' seoul':'')+'" d="'+p.d+'"/>'});
+    svg+='</svg><span class="kpin lab d-r" style="left:50%;top:50%"><i></i><span>'+esc(b.name)+'</span></span>';
+    mini.innerHTML=svg; mini.style.aspectRatio=W+' / '+Hh;
   }
 })();
 </script>

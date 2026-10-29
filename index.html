@@ -461,6 +461,15 @@ header.small .hd{height:60px}
 .rookie figure{position:relative;margin:0}
 .rookie figure img{border-radius:8px;width:100%}
 
+/* 지사 소개 바로가기 띠 */
+.brband{padding:0 0 72px;background:#fff}
+.brb{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--navy);color:#fff;border-radius:12px;padding:32px 40px;position:relative;overflow:hidden}
+.brb::after{content:"";position:absolute;right:180px;top:-90px;width:240px;height:240px;border-radius:50%;border:1px dashed rgba(205,155,52,.4);animation:spin 40s linear infinite}
+.brb .eyebrow{color:var(--gold-l);margin-bottom:8px}
+.brb h2{font-size:clamp(22px,2.6vw,30px)}
+.brb h2 b{color:var(--gold)}
+.brb p{color:rgba(255,255,255,.75);font-size:15px;margin-top:6px}
+.brb .btn{position:relative;z-index:1;white-space:nowrap}
 /* ── DB 영업 지원 ── */
 .dbs{background:var(--navy);overflow:hidden}
 .dbs::before{content:"";position:absolute;left:-200px;bottom:-220px;width:560px;height:560px;border-radius:50%;border:1px solid rgba(205,155,52,.22);animation:spin 70s linear infinite}
@@ -838,6 +847,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   .dpair em{font-size:11px}
   .dg>span{font-size:11px;white-space:normal;text-align:center}
   .rule{grid-template-columns:1fr;gap:0;padding-top:0;padding-left:36px}
+  .brb{flex-direction:column;align-items:flex-start;padding:26px 22px}
   .db-types{grid-template-columns:1fr}
   .db-grid{grid-template-columns:1fr 1fr}
   .db-chips button{padding:8px 14px;font-size:14px}
@@ -1633,6 +1643,16 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 </section>
 
 <!-- 이직 고민 (2단계 예정) -->
+<!-- 지사 소개 바로가기 -->
+<section class="brband">
+  <div class="wrap">
+    <div class="brb rv">
+      <div><p class="eyebrow">지사 소개</p><h2>전국 <b data-to="13">13</b>개 신채널 지사,<br class="m-br"> 가까운 곳에서 시작하세요</h2><p>서울 · 경기 · 강원 · 충청 · 대전. 지도에서 위치를 보고, 지사별 소개를 확인하세요.</p></div>
+      <a class="btn btn-gold" href="branches.html">지사 소개 보기 →</a>
+    </div>
+  </div>
+</section>
+
 <section class="move" id="move">
   <div class="wrap">
     <p class="eyebrow rv">이직을 고민 중이라면 · 1,200% 룰 · 분급제 쉽게 보기</p>

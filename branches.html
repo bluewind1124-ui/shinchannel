@@ -19,7 +19,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="css/branch.css">
 </head>
 <body>
@@ -40,9 +39,9 @@
 
 <section class="map-sec">
   <div class="wrap">
-    <div class="map-box">
-      <div id="map" role="region" aria-label="신채널 지사 위치 지도"></div>
-      <p class="map-note" id="mapNote" hidden></p>
+    <div class="kmap-wrap" role="region" aria-label="신채널 지사 위치 지도">
+      <div class="kmap-panel"><p class="kmap-cap">전국</p><div class="kmap" id="kAll"></div></div>
+      <div class="kmap-panel metro"><p class="kmap-cap">수도권 확대 <small>지사 10곳</small></p><div class="kmap" id="kMetro"></div></div>
     </div>
   </div>
 </section>
@@ -65,7 +64,7 @@
   <div class="wrap"><b>한국보험금융(주)</b> · 서울 용산구 한강대로 257, 14층(갈월동, 청룡빌딩) · TEL 02-771-5050</div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/korea-map.js"></script>
 <script src="js/branches.js"></script>
 <script>
 (function(){
@@ -90,37 +89,47 @@
     rows.appendChild(tr);
   });
 
-  /* 지도 (위치가 있는 지사만 표시) */
-  var note = document.getElementById('mapNote');
-  if(!window.L){ note.hidden=false; note.innerHTML='지도를 불러오지 못했습니다. 아래 명단을 이용해 주세요.'; return; }
-  var map = L.map('map',{scrollWheelZoom:false,zoomControl:true}).setView([36.35,127.8],7);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    maxZoom:18,
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
-  var icon = function(hl){return L.divIcon({className:'',html:'<div class="pin'+(hl?' hl':'')+'"><i></i></div>',iconSize:[34,34],iconAnchor:[17,34],popupAnchor:[0,-30]})};
-  var pts = [], marks = {};
-  B.forEach(function(b,i){
-    if(b.lat==null||b.lng==null) return;
-    var m = L.marker([b.lat,b.lng],{icon:icon(false),title:b.name}).addTo(map)
-      .bindTooltip(esc(b.name),{direction:'top',offset:[0,-30]})
-      .bindPopup('<b>'+esc(b.name)+'</b>'+(b.addr?esc(b.addr)+'<br>':'')+(b.tel?esc(b.tel)+'<br>':'')+'<a href="'+link(b)+'">지사 소개 보기 →</a>');
-    marks[b.id]=m; pts.push([b.lat,b.lng]);
-    m.on('mouseover',function(){hl(b.id,true)}); m.on('mouseout',function(){hl(b.id,false)});
-  });
+  /* 지도: 외부 지도 서버 없이 시도 경계를 SVG로 그림 + 지사 위치 표시 */
+  var M = window.KOREA_MAP, XY = window.KOREA_XY;
+  var METRO = {lng0:126.70, lng1:127.22, lat0:37.43, lat1:37.80};
+  /* 수도권 확대 지도에서 이름표가 겹치지 않게 놓을 방향 */
+  var LBL = {acemullae:'l', epercul:'bl', jamsil:'t', songpa:'b', heritage:'r', thedream:'t', therich:'l', bucheon:'b', ilsan:'r', uijeongbu:'r'};
+  var inMetro = function(b){return b.lng>=METRO.lng0&&b.lng<=METRO.lng1&&b.lat>=METRO.lat0&&b.lat<=METRO.lat1};
+  var short = function(n){return n.replace(/ ?금융지사$|지사$/,'')};
+  function draw(box, vb, opt){
+    if(!M||!box) return;
+    var svg = '<svg viewBox="'+vb.join(' ')+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true">';
+    M.paths.forEach(function(p,i){svg += '<path class="pv'+(p.c==='11'?' seoul':'')+'" style="animation-delay:'+(i*0.03)+'s" d="'+p.d+'"/>'});
+    if(opt.labels) M.labels.forEach(function(l){svg += '<text class="pl'+(l.big?' big':'')+'" x="'+l.x+'" y="'+l.y+'">'+l.t+'</text>'});
+    if(opt.metroBox){var a=XY(METRO.lat1,METRO.lng0),c=XY(METRO.lat0,METRO.lng1);svg += '<rect class="mbox" x="'+a[0]+'" y="'+a[1]+'" width="'+(c[0]-a[0])+'" height="'+(c[1]-a[1])+'"/>';}
+    if(opt.seoulLabel){var sx=XY(37.545,126.99);svg += '<text class="pl seoul-l" x="'+sx[0]+'" y="'+sx[1]+'">서울</text>';}
+    svg += '</svg>';
+    box.innerHTML = svg;
+    box.style.aspectRatio = vb[2]+' / '+vb[3];
+    B.forEach(function(b,i){
+      if(b.lat==null||b.lng==null) return;
+      var m = inMetro(b); if(opt.only==='metro'&&!m) return;
+      var q = XY(b.lat,b.lng), x=(q[0]-vb[0])/vb[2]*100, y=(q[1]-vb[1])/vb[3]*100;
+      var a = document.createElement('a');
+      a.className = 'kpin'+(opt.only==='metro'||!m?' lab':'')+' d-'+(opt.only==='metro'?(LBL[b.id]||'r'):'r');
+      a.href = link(b); a.dataset.id = b.id; a.title = b.name+(b.addr?' · '+b.addr:'');
+      a.style.left = x+'%'; a.style.top = y+'%'; a.style.animationDelay = (0.4+i*0.08)+'s';
+      a.innerHTML = '<i></i><span>'+esc(short(b.name))+'</span>';
+      a.addEventListener('mouseenter',function(){hl(b.id,true)}); a.addEventListener('mouseleave',function(){hl(b.id,false)});
+      box.appendChild(a);
+    });
+  }
+  var a0 = XY(METRO.lat1,METRO.lng0), a1 = XY(METRO.lat0,METRO.lng1);
+  draw(document.getElementById('kAll'), [-10,-10,(M?M.w:1000)+20,(M?M.h:950)+20], {labels:true, metroBox:true});
+  draw(document.getElementById('kMetro'), [a0[0],a0[1],a1[0]-a0[0],a1[1]-a0[1]], {only:'metro', seoulLabel:true});
   function hl(id,on){
     var tr = rows.querySelector('tr[data-id="'+id+'"]'); if(tr) tr.classList.toggle('hl',on);
-    if(marks[id]) marks[id].setIcon(icon(on));
+    document.querySelectorAll('.kpin[data-id="'+id+'"]').forEach(function(p){p.classList.toggle('hl',on)});
   }
   rows.querySelectorAll('tr').forEach(function(tr){
     tr.addEventListener('mouseenter',function(){hl(tr.dataset.id,true)});
     tr.addEventListener('mouseleave',function(){hl(tr.dataset.id,false)});
   });
-  if(pts.length===1) map.setView(pts[0],14);
-  else if(pts.length>1) map.fitBounds(pts,{padding:[50,50]});
-  var missing = B.filter(function(b){return b.lat==null||b.lng==null}).length;
-  if(missing){ note.hidden=false; note.innerHTML='<b>'+missing+'곳</b>은 주소 확인 후 지도에 표시됩니다.'; }
-  map.on('click',function(){map.scrollWheelZoom.enable()});
 })();
 </script>
 </body>

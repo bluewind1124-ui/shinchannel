@@ -461,6 +461,64 @@ header.small .hd{height:60px}
 .rookie figure{position:relative;margin:0}
 .rookie figure img{border-radius:8px;width:100%}
 
+/* ── DB 영업 지원 ── */
+.dbs{background:var(--navy);overflow:hidden}
+.dbs::before{content:"";position:absolute;left:-200px;bottom:-220px;width:560px;height:560px;border-radius:50%;border:1px solid rgba(205,155,52,.22);animation:spin 70s linear infinite}
+.dbs .sec-lead{color:rgba(255,255,255,.78)}
+.db-types{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;margin-top:48px}
+.db-type{position:relative;border-radius:12px;padding:28px 30px 26px;overflow:hidden}
+.db-type.paid{background:linear-gradient(135deg,#1D3557,#2E4A72);border:1px solid rgba(230,207,151,.35)}
+.db-type.low{background:linear-gradient(135deg,#8B6A35,#A57C2E);color:#fff}
+.db-k{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--gold-l)}
+.db-type.low .db-k{color:#FBF0D6}
+.db-type h3{font-size:24px;margin:4px 0 2px}
+.db-big{font:800 clamp(40px,4.6vw,58px)/1.1 'Gothic A1';color:var(--gold)}
+.db-big b{font-weight:800}
+.db-type.low .db-big{color:#fff;font-size:clamp(32px,3.4vw,44px)}
+.db-type p{font-size:15px;color:rgba(255,255,255,.8);margin:6px 0 18px}
+.db-gauge{position:relative;height:30px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden}
+.db-gauge i{position:absolute;right:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#E8C98A,var(--gold));border-radius:999px;transition:width 1.6s .3s var(--ease)}
+.db-type.in .db-gauge i{width:var(--g)}
+.db-gauge span,.db-gauge em{position:absolute;top:50%;transform:translateY(-50%);font-size:12.5px;font-style:normal;font-weight:700}
+.db-gauge span{left:14px;color:rgba(255,255,255,.75)}
+.db-gauge em{right:14px;color:var(--navy);opacity:0;transition:opacity .5s 1.5s}
+.db-type.in .db-gauge em{opacity:1}
+.db-gauge.part{background:rgba(255,255,255,.18)}
+.db-gauge.part i{background:repeating-linear-gradient(45deg,#fff 0 8px,rgba(255,255,255,.55) 8px 16px)}
+.db-gauge.part span{color:#fff}
+.db-chips{display:flex;flex-wrap:wrap;gap:10px;margin:44px 0 22px}
+.db-chips button{border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;padding:10px 20px;border-radius:999px;font:700 15px 'IBM Plex Sans KR';cursor:pointer;transition:.25s}
+.db-chips button:hover{border-color:var(--gold-l)}
+.db-chips button.on{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.db-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.db-card{background:#fff;color:var(--ink);border-radius:12px;padding:0 0 18px;display:flex;flex-direction:column;border-top:6px solid var(--c);opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s var(--ease),filter .4s,box-shadow .3s}
+.db-card.in{opacity:1;transform:none}
+.db-card.in:not(.done):nth-child(2){transition-delay:.12s}.db-card.in:not(.done):nth-child(3){transition-delay:.24s}.db-card.in:not(.done):nth-child(4){transition-delay:.36s}
+.db-card.in.off{opacity:.28;filter:grayscale(.8);transform:scale(.97)}
+.db-card.in.hit{box-shadow:0 0 0 3px var(--gold),0 18px 40px rgba(0,0,0,.35);transform:translateY(-6px)}
+.db-head{padding:20px 20px 12px}
+.db-badge{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.db-badge.paid{background:var(--navy);color:#fff}
+.db-badge.low{background:#A57C2E;color:#fff}
+.db-name{font:800 23px 'Gothic A1';color:var(--c);margin-top:10px;letter-spacing:-.01em}
+.db-name small{font-size:16px;color:var(--ink2);margin-left:4px}
+.db-attr{display:grid;grid-template-columns:54px 1fr;gap:0;margin:0 20px;border-top:1px solid var(--line);flex:1}
+.db-attr dt,.db-attr dd{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.db-attr dt{font-weight:700;color:var(--mute);font-size:12.5px;padding-top:12px}
+.db-attr dd{color:var(--ink)}
+.db-attr dd b{color:var(--navy)}
+.db-attr dd small{display:block;font-size:12px;color:var(--mute);line-height:1.5;margin-top:2px}
+.pill{display:inline-block;margin:0 4px 4px 0;padding:1px 9px;border-radius:999px;background:var(--bg);border:1px solid var(--line);font-size:12.5px;color:var(--ink2)}
+.db-flow{list-style:none;display:grid;gap:6px}
+.db-flow li{display:flex;align-items:center;gap:8px;background:var(--gold-bg);border-radius:6px;padding:6px 8px;font-size:13.5px;font-weight:700;color:var(--navy);opacity:0;transform:translateX(-10px);transition:.5s var(--ease)}
+.db-flow li i{font-style:normal;display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#A57C2E;color:#fff;font-size:11px}
+.db-card.in .db-flow li{opacity:1;transform:none}
+.db-card.in .db-flow li:nth-child(2){transition-delay:.5s}.db-card.in .db-flow li:nth-child(3){transition-delay:1s}
+.db-use{margin:14px 20px 0;background:var(--gold-bg);border-radius:8px;padding:12px 14px;font-size:14px;line-height:1.55;color:var(--ink)}
+.db-use b{display:block;font-size:12.5px;color:var(--gold-t);margin-bottom:2px}
+.db-use em{font-style:normal;font-weight:700;color:var(--navy)}
+.db-end{margin-top:36px;text-align:center;background:linear-gradient(90deg,#E8C98A,var(--gold));color:var(--navy);border-radius:10px;padding:18px 20px;font:800 clamp(17px,1.8vw,21px)/1.5 'Gothic A1'}
+.dbs .src{margin-top:18px;color:rgba(255,255,255,.55)}
 /* ── 5. 지원 시스템 (支) ── */
 .sys{background:#fff}
 .sys-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
@@ -769,6 +827,9 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   .dpair em{font-size:11px}
   .dg>span{font-size:11px;white-space:normal;text-align:center}
   .rule{grid-template-columns:1fr;gap:0;padding-top:0;padding-left:36px}
+  .db-types{grid-template-columns:1fr}
+  .db-grid{grid-template-columns:1fr 1fr}
+  .db-chips button{padding:8px 14px;font-size:14px}
   .mv{padding:28px 20px 22px}
   .m-br{display:inline}
   .ms{grid-template-columns:1fr;gap:26px;margin-top:28px;padding-left:40px}
@@ -832,6 +893,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   form{grid-template-columns:1fr;padding:24px}
 }
 @media (max-width:560px){
+  .db-grid{grid-template-columns:1fr}
   .wrap{padding:0 16px}
   .sys-grid{grid-template-columns:1fr}
   .hanja{flex-direction:column}
@@ -1269,6 +1331,87 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   </div>
 </section>
 
+<!-- ============ DB 영업 지원 (FC 갈 곳 부여) ============ -->
+<section class="dbs dark" id="db">
+  <div class="wrap">
+    <p class="eyebrow rv">DB 영업 지원 · FC 갈 곳 부여</p>
+    <h2 class="sec-title rv">고객군이 분명한 플랫폼 접점에,<br>회사의 비용 지원을 더합니다</h2>
+    <p class="sec-lead rv d1">FC가 만날 고객을 회사가 함께 찾습니다. 생활 플랫폼에서 나온 DB는 고객군과 상담 주제가 분명해, 첫 상담을 준비하기 쉽습니다.</p>
+
+    <!-- 지원 방식 2종 -->
+    <div class="db-types">
+      <div class="db-type paid rv">
+        <span class="db-k">지원 종류 ①</span>
+        <h3>유료 DB</h3>
+        <div class="db-big">최대 <b data-to="50">50</b>%</div>
+        <p>회사 비용 지원 · 플랫폼 DB 3종</p>
+        <div class="db-gauge"><i style="--g:50%"></i><span>FC 부담</span><em>회사 지원</em></div>
+      </div>
+      <div class="db-type low rv d1">
+        <span class="db-k">지원 종류 ②</span>
+        <h3>저가 DB</h3>
+        <div class="db-big">일부 지원</div>
+        <p>회사 비용 일부 지원 · 보험 점검 상담형</p>
+        <div class="db-gauge part"><i style="--g:28%"></i><span>DB별 지원 범위 상이</span></div>
+      </div>
+    </div>
+
+    <!-- 속성 고르기 -->
+    <div class="db-chips rv" role="tablist" aria-label="DB 속성으로 보기">
+      <button class="on" data-f="all">전체</button>
+      <button data-f="paid">유료 DB · 최대 50%</button>
+      <button data-f="low">저가 DB · 일부 지원</button>
+      <button data-f="family">가족 보장</button>
+      <button data-f="child">자녀 · 육아</button>
+      <button data-f="check">보장 점검</button>
+    </div>
+
+    <div class="db-grid">
+      <article class="db-card" data-tags="paid family" style="--c:#2F4F7A">
+        <div class="db-head"><span class="db-badge paid">유료 DB · 최대 50%</span><h3 class="db-name">MILIPASS <small>밀리패스</small></h3></div>
+        <dl class="db-attr">
+          <dt>플랫폼</dt><dd>장병 · 군무원 · 가족 인증 플랫폼</dd>
+          <dt>규모</dt><dd><b>약 110만 명</b> 이용 <small>삼성 월렛 연계 · 2026.01 공식 발표 기준</small></dd>
+          <dt>고객군</dt><dd><span class="pill">군인</span><span class="pill">군인 가족</span></dd>
+          <dt>접점</dt><dd>군인 · 가족 인증 기반</dd>
+        </dl>
+        <p class="db-use"><b>FC 활용 포인트</b>군인 · 가족 특성에 맞춘 <em>가족 보장 상담</em></p>
+      </article>
+      <article class="db-card" data-tags="paid family" style="--c:#3D6AF2">
+        <div class="db-head"><span class="db-badge paid">유료 DB · 최대 50%</span><h3 class="db-name">아파트아이</h3></div>
+        <dl class="db-attr">
+          <dt>플랫폼</dt><dd>관리비 조회 · 납부와 아파트 생활</dd>
+          <dt>규모</dt><dd><b>1,200만 세대</b> <small>전국 약 3만 단지 · 공식 서비스 제공 규모</small></dd>
+          <dt>고객군</dt><dd><span class="pill">아파트 입주민</span><span class="pill">가구 단위</span></dd>
+          <dt>접점</dt><dd>일상 속 주거 생활</dd>
+        </dl>
+        <p class="db-use"><b>FC 활용 포인트</b>입주민의 생활 관심사를 <em>가족 · 주거 보장 상담</em>으로</p>
+      </article>
+      <article class="db-card" data-tags="paid family child" style="--c:#E07A9A">
+        <div class="db-head"><span class="db-badge paid">유료 DB · 최대 50%</span><h3 class="db-name">LUVMOM <small>럽맘</small></h3></div>
+        <dl class="db-attr">
+          <dt>플랫폼</dt><dd>임신부터 출산 · 육아까지 함께하는 앱</dd>
+          <dt>특징</dt><dd><b>임신 · 출산 · 육아</b> 생애주기 특화 <small>임신 주수 · 산모수첩, 육아 정보와 커뮤니티</small></dd>
+          <dt>고객군</dt><dd><span class="pill">예비맘</span><span class="pill">육아 가정</span></dd>
+          <dt>접점</dt><dd>출산 · 자녀 성장 시기</dd>
+        </dl>
+        <p class="db-use"><b>FC 활용 포인트</b>출산 · 자녀 성장 시기에 맞춘 <em>자녀 · 가족 보장 상담</em></p>
+      </article>
+      <article class="db-card" data-tags="low check" style="--c:#A57C2E">
+        <div class="db-head"><span class="db-badge low">저가 DB · 일부 지원</span><h3 class="db-name">무료점검 DB</h3></div>
+        <dl class="db-attr">
+          <dt>유형</dt><dd>보험 점검 상담형</dd>
+          <dt>흐름</dt><dd><ol class="db-flow"><li><i>01</i>가입내역 확인</li><li><i>02</i>중복 · 부족 보장 점검</li><li><i>03</i>필요 보장 상담</li></ol></dd>
+        </dl>
+        <p class="db-use"><b>FC 활용 포인트</b>가입한 보험을 살펴보며 <em>보장 점검 상담</em>으로 연결</p>
+      </article>
+    </div>
+
+    <p class="db-end rv">양질의 유료 DB 공급부터 <b>최대 50% 비용 지원</b>까지, FC가 갈 곳을 회사가 함께 만듭니다</p>
+    <p class="src rv">* 플랫폼 규모는 공식 서비스 자료 기준이며, 제공 DB 수량이나 계약 성과를 의미하지 않습니다. 회사 지원은 사내 기준을 적용하며 공급회사에 따라 지원 금액이 다를 수 있습니다. <span class="draft">공개 범위 확인</span><br>출처: 밀리패스 · 삼성전자 뉴스룸(2026.01) / 아파트아이 공식 사이트 / 럽맘 공식 사이트 · 앱 소개</p>
+  </div>
+</section>
+
 <!-- ============ 4. 지원 시스템 (支) ============ -->
 <section class="sys" id="sys">
   <div class="wrap">
@@ -1653,7 +1796,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   if(bars){var after=false;setInterval(function(){after=!after;bars.classList.toggle('after',after);ftag.classList.toggle('after',after);ftag.textContent=after?'분급 이후':'이전';},reduce?1e9:3200);}
   /* GA 규모별 증감 막대: 값에 따라 위(+)·아래(-)로 높이 계산 (최대 30% 기준) */
   document.querySelectorAll('.dpair i').forEach(function(i){var v=parseFloat(i.style.getPropertyValue('--v'));i.classList.add(v<0?'neg':'pos');i.style.setProperty('--hh',(Math.abs(v)/36*(v<0?48:46))+'%');});
-  var watch=[].slice.call(document.querySelectorAll('.rv,.mv,#stchart,#apflow,#rule,#gaTotal,#gaSize,#ladder,#days,#badges,#photos,#onname,#history,.inji .grid,.inji .umb,.nums .num-row,.vip .facts'));
+  var watch=[].slice.call(document.querySelectorAll('.rv,.mv,.db-card,#stchart,#apflow,#rule,#gaTotal,#gaSize,#ladder,#days,#badges,#photos,#onname,#history,.inji .grid,.inji .umb,.nums .num-row,.vip .facts'));
   watch.forEach(function(el){io.observe(el)});
   /* 예비 장치: 화면 감지가 멈춘 환경에서도 화면 안에 들어온 요소는 보이게 */
   setInterval(function(){watch=watch.filter(function(t){if(t.classList.contains('in'))return false;var r=t.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0){t.classList.add('in');t.querySelectorAll('[data-to]').forEach(count);if(t.id==='ladder')climb();setTimeout(function(){t.classList.add('done')},(t.id==='days'||t.id==='history')?3400:1600);return false}return true})},500);
@@ -1687,6 +1830,13 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   }
   autoTabs('.seg button','.rk','r');
   autoTabs('.tg-tabs button','.tg','t');
+  /* DB 영업 지원: 속성 버튼으로 해당 DB 강조 (3초마다 자동, 누르면 멈춤) */
+  (function(){var bs=[].slice.call(document.querySelectorAll('.db-chips button')),cs=[].slice.call(document.querySelectorAll('.db-card')),tm=null;
+    function pick(b){bs.forEach(function(x){x.classList.toggle('on',x===b)});var f=b.dataset.f;cs.forEach(function(c){var hit=f==='all'||(' '+c.dataset.tags+' ').indexOf(' '+f+' ')>-1;c.classList.toggle('off',!hit);c.classList.toggle('hit',hit&&f!=='all');});}
+    bs.forEach(function(b){b.onclick=function(){clearInterval(tm);tm=null;pick(b);}});
+    if(bs.length&&!reduce)tm=setInterval(function(){var i=bs.findIndex(function(x){return x.classList.contains('on')});pick(bs[(i+1)%bs.length]);},3000);
+  })();
+
 
   /* 진행 막대 · 머리 메뉴 · 맨 위로 · 현재 메뉴 표시 */
   var pg=document.getElementById('progress'),hd=document.getElementById('hd'),tb=document.getElementById('topBtn'),links=[].slice.call(document.querySelectorAll('.gnb a'));

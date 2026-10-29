@@ -65,6 +65,7 @@
 </footer>
 
 <script src="js/korea-map.js"></script>
+<script src="js/kmap.js"></script>
 <script src="js/branches.js"></script>
 <script>
 (function(){
@@ -89,39 +90,9 @@
     rows.appendChild(tr);
   });
 
-  /* 지도: 외부 지도 서버 없이 시도 경계를 SVG로 그림 + 지사 위치 표시 */
-  var M = window.KOREA_MAP, XY = window.KOREA_XY;
-  var METRO = {lng0:126.70, lng1:127.22, lat0:37.43, lat1:37.80};
-  /* 수도권 확대 지도에서 이름표가 겹치지 않게 놓을 방향 */
-  var LBL = {acemullae:'l', epercul:'bl', jamsil:'t', songpa:'b', heritage:'r', thedream:'t', therich:'l', bucheon:'b', ilsan:'r', uijeongbu:'r'};
-  var inMetro = function(b){return b.lng>=METRO.lng0&&b.lng<=METRO.lng1&&b.lat>=METRO.lat0&&b.lat<=METRO.lat1};
-  var short = function(n){return n.replace(/ ?금융지사$|지사$/,'')};
-  function draw(box, vb, opt){
-    if(!M||!box) return;
-    var svg = '<svg viewBox="'+vb.join(' ')+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true">';
-    M.paths.forEach(function(p,i){svg += '<path class="pv'+(p.c==='11'?' seoul':'')+'" style="animation-delay:'+(i*0.03)+'s" d="'+p.d+'"/>'});
-    if(opt.labels) M.labels.forEach(function(l){svg += '<text class="pl'+(l.big?' big':'')+'" x="'+l.x+'" y="'+l.y+'">'+l.t+'</text>'});
-    if(opt.metroBox){var a=XY(METRO.lat1,METRO.lng0),c=XY(METRO.lat0,METRO.lng1);svg += '<rect class="mbox" x="'+a[0]+'" y="'+a[1]+'" width="'+(c[0]-a[0])+'" height="'+(c[1]-a[1])+'"/>';}
-    if(opt.seoulLabel){var sx=XY(37.545,126.99);svg += '<text class="pl seoul-l" x="'+sx[0]+'" y="'+sx[1]+'">서울</text>';}
-    svg += '</svg>';
-    box.innerHTML = svg;
-    box.style.aspectRatio = vb[2]+' / '+vb[3];
-    B.forEach(function(b,i){
-      if(b.lat==null||b.lng==null) return;
-      var m = inMetro(b); if(opt.only==='metro'&&!m) return;
-      var q = XY(b.lat,b.lng), x=(q[0]-vb[0])/vb[2]*100, y=(q[1]-vb[1])/vb[3]*100;
-      var a = document.createElement('a');
-      a.className = 'kpin'+(opt.only==='metro'||!m?' lab':'')+' d-'+(opt.only==='metro'?(LBL[b.id]||'r'):'r');
-      a.href = link(b); a.dataset.id = b.id; a.title = b.name+(b.addr?' · '+b.addr:'');
-      a.style.left = x+'%'; a.style.top = y+'%'; a.style.animationDelay = (0.4+i*0.08)+'s';
-      a.innerHTML = '<i></i><span>'+esc(short(b.name))+'</span>';
-      a.addEventListener('mouseenter',function(){hl(b.id,true)}); a.addEventListener('mouseleave',function(){hl(b.id,false)});
-      box.appendChild(a);
-    });
-  }
-  var a0 = XY(METRO.lat1,METRO.lng0), a1 = XY(METRO.lat0,METRO.lng1);
-  draw(document.getElementById('kAll'), [-10,-10,(M?M.w:1000)+20,(M?M.h:950)+20], {labels:true, metroBox:true});
-  draw(document.getElementById('kMetro'), [a0[0],a0[1],a1[0]-a0[0],a1[1]-a0[1]], {only:'metro', seoulLabel:true});
+  /* 지도: 외부 지도 서버 없이 시도 경계를 SVG로 그림 (js/kmap.js) */
+  KMAP.draw(document.getElementById('kAll'),'all',B,{onHover:function(id,on){hl(id,on)}});
+  KMAP.draw(document.getElementById('kMetro'),'metro',B,{onHover:function(id,on){hl(id,on)}});
   function hl(id,on){
     var tr = rows.querySelector('tr[data-id="'+id+'"]'); if(tr) tr.classList.toggle('hl',on);
     document.querySelectorAll('.kpin[data-id="'+id+'"]').forEach(function(p){p.classList.toggle('hl',on)});

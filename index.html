@@ -123,15 +123,19 @@ header.small .hd{height:60px}
 .on-logo.emblem img{border-radius:50%;animation:glow 3s ease-in-out infinite alternate,turn 18s ease-in-out infinite}
 @keyframes turn{0%,100%{transform:perspective(800px) rotateY(-18deg)}50%{transform:perspective(800px) rotateY(18deg)}}
 /* 첫 화면: 노란 우산이 돌며 사라지고, 그 자리에서 회사 마크가 나타남 (첫 장이 보일 때마다 다시) */
-.on-logo.emblem .emb{display:block}
-.on-logo.emblem .umb-gold{position:absolute;left:-7%;top:-7%;width:114%;max-width:none;z-index:2;opacity:0;pointer-events:none;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35))}
-.slide.on .on-logo.emblem .umb-gold{animation:umbOut 3.4s cubic-bezier(.5,0,.3,1) .3s both}
-.slide.on .on-logo.emblem .emb{animation:embIn 3.4s cubic-bezier(.2,.7,.2,1) .3s both}
-.on-logo.emblem::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--gold);opacity:0;pointer-events:none;z-index:3}
-.slide.on .on-logo.emblem::after{animation:flashRing 3.4s ease-out .3s both}
-@keyframes umbOut{0%{opacity:0;transform:scale(.94) rotate(-6deg)}12%{opacity:1;transform:scale(1) rotate(0)}40%{opacity:1;transform:scale(1) rotate(30deg);filter:brightness(1) drop-shadow(0 10px 30px rgba(0,0,0,.35))}68%{opacity:0;transform:scale(.7) rotate(140deg);filter:brightness(1.9) blur(3px)}100%{opacity:0;transform:scale(.7) rotate(140deg)}}
-@keyframes embIn{0%,42%{opacity:0;transform:scale(.55) rotate(-140deg);filter:blur(6px)}76%{opacity:1;transform:scale(1.05) rotate(0);filter:blur(0)}100%{opacity:1;transform:scale(1) rotate(0)}}
-@keyframes flashRing{0%,52%{opacity:0;transform:scale(.75)}62%{opacity:.9}100%{opacity:0;transform:scale(1.55)}}
+.hero-mark{position:absolute;inset:0;z-index:1;pointer-events:none;animation:zoom 24s ease-in-out infinite alternate}
+.mark{position:absolute;opacity:0;transition:opacity .9s ease}
+.hero.s0 .mark{opacity:1}
+.mark .umb-gold,.mark .emb{position:absolute;inset:0;display:block}
+.mark .umb-gold{width:100%;height:100%;opacity:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.mark .emb img{width:100%;height:100%;border-radius:50%;animation:glow 3s ease-in-out infinite alternate,turn 18s ease-in-out infinite}
+.hero.s0 .mark .umb-gold{animation:umbOut 3.6s cubic-bezier(.5,0,.3,1) .5s both}
+.hero.s0 .mark .emb{animation:embIn 3.6s cubic-bezier(.2,.7,.2,1) .5s both}
+.mark::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--gold);opacity:0;pointer-events:none}
+.hero.s0 .mark::after{animation:flashRing 3.6s ease-out .5s both}
+@keyframes umbOut{0%{opacity:0;transform:rotate(-4deg)}14%{opacity:1;transform:rotate(0)}42%{opacity:1;transform:rotate(36deg);filter:brightness(1) drop-shadow(0 8px 18px rgba(0,0,0,.45))}70%{opacity:0;transform:scale(.96) rotate(120deg);filter:brightness(1.9) blur(2px)}100%{opacity:0;transform:scale(.96) rotate(120deg)}}
+@keyframes embIn{0%,44%{opacity:0;transform:rotate(-120deg) scale(.96);filter:blur(4px)}74%{opacity:1;transform:rotate(0) scale(1.02);filter:blur(0)}100%{opacity:1;transform:none}}
+@keyframes flashRing{0%,54%{opacity:0;transform:scale(.95)}64%{opacity:.9}100%{opacity:0;transform:scale(1.45)}}
 .hero-bar{position:relative;z-index:3;border-top:1px solid rgba(255,255,255,.14)}
 .hero-bar .wrap{display:flex;align-items:center;gap:24px;height:88px}
 .dots{display:flex;gap:10px}
@@ -461,15 +465,51 @@ header.small .hd{height:60px}
 .rookie figure{position:relative;margin:0}
 .rookie figure img{border-radius:8px;width:100%}
 
-/* 지사 소개 바로가기 띠 */
-.brband{padding:0 0 72px;background:#fff}
-.brb{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--navy);color:#fff;border-radius:12px;padding:32px 40px;position:relative;overflow:hidden}
-.brb::after{content:"";position:absolute;right:180px;top:-90px;width:240px;height:240px;border-radius:50%;border:1px dashed rgba(205,155,52,.4);animation:spin 40s linear infinite}
-.brb .eyebrow{color:var(--gold-l);margin-bottom:8px}
-.brb h2{font-size:clamp(22px,2.6vw,30px)}
-.brb h2 b{color:var(--gold)}
-.brb p{color:rgba(255,255,255,.75);font-size:15px;margin-top:6px}
-.brb .btn{position:relative;z-index:1;white-space:nowrap}
+/* ── 지사 소개: 당신 곁에 한국보험금융 ── */
+.near{background:var(--bg)}
+.gold-n{color:var(--gold-t)}
+.near-maps{display:grid;grid-template-columns:1fr 1.15fr;gap:18px;margin-top:40px}
+.kmap-panel{position:relative;background:#fff;border-radius:12px;box-shadow:0 12px 36px rgba(15,35,64,.08);padding:18px 18px 14px;display:flex;flex-direction:column}
+.kmap-panel.metro{background:linear-gradient(180deg,#fff,#F7F3EA)}
+.kmap-cap{font:800 15px 'Gothic A1';color:var(--navy);margin-bottom:6px}
+.kmap-cap small{font:500 13px 'IBM Plex Sans KR';color:var(--gold-t);margin-left:6px}
+.kmap{position:relative;width:100%;margin:auto 0;overflow:hidden;border-radius:8px}
+.kmap svg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.kmap .pv{fill:#E4E9EF;stroke:#fff;stroke-width:1.4;vector-effect:non-scaling-stroke;opacity:0;transition:fill .3s}
+.near-maps.in .kmap .pv{animation:pvIn .6s ease forwards}
+.kmap .pv.seoul{fill:#D2DAE4}
+@keyframes pvIn{to{opacity:1}}
+.kmap .pl{font:700 22px 'IBM Plex Sans KR';fill:#9AA6B5;text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+.kmap .pl.big{font-size:28px}
+.kmap .seoul-l{font-size:3px;fill:#8A97A8}
+.kmap .mbox{fill:rgba(205,155,52,.08);stroke:var(--gold);stroke-width:1.5;stroke-dasharray:5 4;vector-effect:non-scaling-stroke;animation:mdash 1.2s linear infinite}
+@keyframes mdash{to{stroke-dashoffset:-18}}
+.kpin{position:absolute;width:0;height:0;z-index:2;opacity:0}
+.near-maps.in .kpin{animation:pinIn .55s cubic-bezier(.3,1.5,.5,1) both}
+.kpin i{position:absolute;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);box-shadow:0 3px 8px rgba(15,35,64,.35);transition:transform .25s}
+.kpin i::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--gold);opacity:0}
+.kpin span{position:absolute;white-space:nowrap;font:700 12.5px/1 'IBM Plex Sans KR';color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;box-shadow:0 3px 10px rgba(15,35,64,.12);opacity:0;pointer-events:none;transition:.2s}
+.kpin.lab span{opacity:1}
+.kpin.d-r span{left:12px;top:-11px}.kpin.d-l span{right:12px;top:-11px}
+.kpin.d-t span{left:50%;bottom:12px;transform:translateX(-50%)}.kpin.d-b span{left:50%;top:12px;transform:translateX(-50%)}
+.kpin.d-bl span{right:8px;top:9px}
+.kpin:hover,.kpin.hl{z-index:5}
+.kpin:hover i,.kpin.hl i{transform:scale(1.35);background:var(--gold);border-color:var(--navy)}
+.kpin:hover i::after,.kpin.hl i::after{animation:ping2 1.2s ease-out infinite}
+.kpin:hover span,.kpin.hl span{opacity:1;background:var(--navy);color:#fff;border-color:var(--navy)}
+@keyframes ping2{from{opacity:.9;transform:scale(.6)}to{opacity:0;transform:scale(1.6)}}
+@keyframes pinIn{from{opacity:0;transform:translateY(-18px)}to{opacity:1}}
+.near-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:24px}
+.nb-card{position:relative;display:block;background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px 14px;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s,opacity .6s;opacity:0;transform:translateY(20px)}
+.near-list.in .nb-card{opacity:1;transform:none}
+.nb-card:hover,.nb-card.hl{border-color:var(--gold);box-shadow:0 10px 24px rgba(15,35,64,.12);transform:translateY(-4px)}
+.nb-card .rg{font-size:12.5px;font-weight:700;color:var(--gold-t)}
+.nb-card h3{font-size:18px;color:var(--navy);margin:2px 0 8px}
+.nb-card p{font-size:14px;color:var(--ink2);line-height:1.6}
+.nb-card p span,.nb-card p a{display:block;white-space:nowrap}
+.nb-card p a{color:var(--navy);font-weight:700;font-size:15px}
+.nb-card .vid{position:absolute;right:12px;top:12px;font-size:11px;font-weight:700;color:#fff;background:var(--navy);border-radius:999px;padding:2px 8px}
+.near-cta{text-align:center;margin-top:32px}
 /* ── DB 영업 지원 ── */
 .dbs{background:var(--navy);overflow:hidden}
 .dbs::before{content:"";position:absolute;left:-200px;bottom:-220px;width:560px;height:560px;border-radius:50%;border:1px solid rgba(205,155,52,.22);animation:spin 70s linear infinite}
@@ -847,7 +887,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   .dpair em{font-size:11px}
   .dg>span{font-size:11px;white-space:normal;text-align:center}
   .rule{grid-template-columns:1fr;gap:0;padding-top:0;padding-left:36px}
-  .brb{flex-direction:column;align-items:flex-start;padding:26px 22px}
+  .near-maps{grid-template-columns:1fr}
   .db-types{grid-template-columns:1fr}
   .db-grid{grid-template-columns:1fr 1fr}
   .db-chips button{padding:8px 14px;font-size:14px}
@@ -909,6 +949,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   .exec{padding:32px 24px}
   .orbit{opacity:.5;right:-30%}
   .on-logo{opacity:.25!important;right:-10%}
+  .hero-mark{opacity:.5}
   .photos{height:320px}
   .tg .who{height:300px}
   form{grid-template-columns:1fr;padding:24px}
@@ -943,7 +984,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
       <li><a href="#sys">지원 시스템</a></li>
       <li><a href="#on">한보금ON</a></li>
       <li><a href="#target">모집 안내</a></li>
-      <li><a href="branches.html">지사 소개</a></li>
+      <li><a href="#branches">지사 소개</a></li>
       <li><a href="#faq">자주 묻는 질문</a></li>
     </ul>
     <a class="btn btn-gold" href="#apply">간편 지원</a>
@@ -954,9 +995,11 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 <main id="top">
 
 <!-- ============ 1. 첫 화면 (들어오는 길) ============ -->
-<section class="hero" aria-label="한국보험금융 신채널 소개">
+<section class="hero s0" aria-label="한국보험금융 신채널 소개">
   <div class="hero-bg"></div>
   <div class="hero-shade"></div>
+  <!-- 사진 속 노란 우산 자리에 우산 → 회사 마크 (배경과 같이 천천히 확대) -->
+  <div class="hero-mark"><div class="mark" id="heroMark"><img class="umb-gold" src="img/umbrella-gold.png" alt="" aria-hidden="true"><span class="emb"><img src="img/emblem-round.png" alt="한국보험금융 엠블럼"></span></div></div>
   <div class="orbit" aria-hidden="true">
     <svg viewBox="0 0 400 400">
       <g class="r1"><ellipse cx="200" cy="200" rx="190" ry="70" fill="none" stroke="#CD9B34" stroke-opacity=".55" stroke-width="1.5" transform="rotate(-22 200 200)"/><circle class="dot" cx="20" cy="160" r="5" fill="#E6CF97"/></g>
@@ -972,7 +1015,6 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
         <p>2002년 창립 때부터 비전속 GA의 길을 걸어 온 회사. 생명보험 22개사, 손해보험 12개사와 함께합니다.</p>
         <div class="cta"><a class="btn btn-gold" href="#company">회사 소개 보기</a><a class="btn btn-line" href="#inji">신채널 만나기</a></div>
       </div></div>
-      <div class="on-logo emblem"><img class="umb-gold" src="img/umbrella-gold.png" alt="" aria-hidden="true"><span class="emb"><img src="img/emblem-round.png" alt="한국보험금융 엠블럼"></span></div>
     </div>
     <div class="slide" data-i="1">
       <div class="wrap"><div class="txt">
@@ -1643,13 +1685,18 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 </section>
 
 <!-- 이직 고민 (2단계 예정) -->
-<!-- 지사 소개 바로가기 -->
-<section class="brband">
+<!-- ============ 지사 소개: 당신 곁에 한국보험금융 ============ -->
+<section class="near" id="branches">
   <div class="wrap">
-    <div class="brb rv">
-      <div><p class="eyebrow">지사 소개</p><h2>전국 <b data-to="13">13</b>개 신채널 지사,<br class="m-br"> 가까운 곳에서 시작하세요</h2><p>서울 · 경기 · 강원 · 충청 · 대전. 지도에서 위치를 보고, 지사별 소개를 확인하세요.</p></div>
-      <a class="btn btn-gold" href="branches.html">지사 소개 보기 →</a>
+    <p class="eyebrow rv">지사 소개</p>
+    <h2 class="sec-title rv">당신 곁에 한국보험금융</h2>
+    <p class="sec-lead rv d1">서울 · 경기부터 강원 · 충청 · 대전까지, 전국 <b class="gold-n" data-to="13">13</b>개 신채널 지사가 가까운 곳에서 함께합니다. 지사를 누르면 지사별 소개를 볼 수 있습니다.</p>
+    <div class="near-maps rv">
+      <div class="kmap-panel"><p class="kmap-cap">전국</p><div class="kmap" id="nAll"></div></div>
+      <div class="kmap-panel metro"><p class="kmap-cap">수도권 확대 <small>지사 10곳</small></p><div class="kmap" id="nMetro"></div></div>
     </div>
+    <div class="near-list" id="nearList"></div>
+    <div class="near-cta rv"><a class="btn btn-gold" href="branches.html">지사 소개 페이지에서 자세히 보기 →</a></div>
   </div>
 </section>
 
@@ -1805,7 +1852,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 
   /* 첫 화면 슬라이드 */
   var slides=[].slice.call(document.querySelectorAll('.slide')),dots=[].slice.call(document.querySelectorAll('#dots button')),lbl=document.getElementById('lbl'),cur=0,timer;
-  function show(i){cur=i;slides.forEach(function(s,k){s.classList.toggle('on',k===i)});dots.forEach(function(d,k){d.classList.remove('on');void d.offsetWidth;if(k===i)d.classList.add('on')});lbl.textContent='0'+(i+1)+' / 03';clearTimeout(timer);if(!reduce)timer=setTimeout(function(){show((cur+1)%slides.length)},6500);}
+  function show(i){cur=i;slides.forEach(function(s,k){s.classList.toggle('on',k===i)});var hh=document.querySelector('.hero');if(hh){hh.classList.remove('s0');void hh.offsetWidth;if(i===0)hh.classList.add('s0');}dots.forEach(function(d,k){d.classList.remove('on');void d.offsetWidth;if(k===i)d.classList.add('on')});lbl.textContent='0'+(i+1)+' / 03';clearTimeout(timer);if(!reduce)timer=setTimeout(function(){show((cur+1)%slides.length)},6500);}
   dots.forEach(function(d,k){d.onclick=function(){show(k)}});show(0);
 
 
@@ -1882,6 +1929,40 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 
 /* 간편 지원: 아직 접수처가 연결되지 않아 안내만 띄움 */
 function applyForm(e){e.preventDefault();var t=document.getElementById('toast');t.textContent='초안 화면입니다. 접수처(구글 폼 등)를 연결하면 실제로 신청됩니다.';t.classList.add('show');setTimeout(function(){t.classList.remove('show')},3500);return false;}
+</script>
+<script src="js/branches.js"></script>
+<script src="js/korea-map.js"></script>
+<script src="js/kmap.js"></script>
+<script>
+/* 당신 곁에 한국보험금융: 지도 2개 + 지사 카드 (카드 ↔ 지도 점 함께 강조) */
+(function(){
+  if(!window.BRANCHES||!window.KMAP) return;
+  var B=window.BRANCHES.slice().sort(function(a,b){return (a.no||99)-(b.no||99)}), list=document.getElementById('nearList'), esc=KMAP.esc;
+  var SIDO={'서울특별시':'서울','서울시':'서울','서율시':'서울','서울':'서울','경기도':'경기','강원특별자치도':'강원','대전광역시':'대전','충청남도':'충남','인천광역시':'인천'};
+  function region(a){var t=String(a||'').split(/\s+/);return (SIDO[t[0]]||t[0]||'')+' '+(t[1]||'').replace(/,$/,'');}
+  function hl(id,on){document.querySelectorAll('#branches [data-id="'+id+'"]').forEach(function(e){e.classList.toggle('hl',on)});}
+  B.forEach(function(b,i){
+    var a=document.createElement('a'); a.className='nb-card'; a.href=KMAP.link(b); a.dataset.id=b.id; a.style.transitionDelay=(i*0.04)+'s';
+    a.innerHTML='<span class="rg">'+esc(region(b.addr))+'</span><h3>'+esc(b.name)+'</h3>'+(b.video?'<span class="vid">▶ 영상 소개</span>':'')+
+      '<p><span>지사장 '+esc(b.ceo||'-')+'</span>'+(b.tel?'<a href="tel:'+esc(b.tel.replace(/[^0-9]/g,''))+'" onclick="event.stopPropagation()">'+esc(b.tel)+'</a>':'')+'</p>';
+    a.addEventListener('mouseenter',function(){hl(b.id,true)}); a.addEventListener('mouseleave',function(){hl(b.id,false)});
+    list.appendChild(a);
+  });
+  KMAP.draw(document.getElementById('nAll'),'all',B,{onHover:hl});
+  KMAP.draw(document.getElementById('nMetro'),'metro',B,{onHover:hl});
+  /* 화면에 들어오면 지도 · 카드가 나타남 */
+  var t=[document.querySelector('#branches .near-maps'),list];
+  function chk(){t.forEach(function(e){if(e&&!e.classList.contains('in')){var r=e.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>0)e.classList.add('in')}})}
+  addEventListener('scroll',chk,{passive:true}); setInterval(chk,600); chk();
+})();
+</script>
+<script>
+(function(){var h=document.querySelector('.hero'),mk=document.getElementById('heroMark');if(!h||!mk)return;
+  function place(){var W=h.clientWidth,H=h.clientHeight,s=Math.max(W/1920,H/1080),z=382*s,cx=W/2+(1219-960)*s,cy=H/2+(529-540)*s;
+    if(cx+z*0.45>W)cx=W-z*0.55;
+    mk.style.width=mk.style.height=z+'px';mk.style.left=(cx-z/2)+'px';mk.style.top=(cy-z/2)+'px';}
+  place();addEventListener('resize',place);
+})();
 </script>
 </body>
 </html>

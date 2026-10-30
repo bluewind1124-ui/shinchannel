@@ -2052,7 +2052,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v2.0 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v2.1 (2026.10.30)</p>
       </div>
     </div>
   </div>
@@ -2156,12 +2156,13 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
   /* 신채널 특징 탭 (움직이는 알약) */
   var ft=$('#featTabs'),pill=$('.pill',ft),fbs=$$('button',ft);
   function movePill(b){pill.style.left=b.offsetLeft+'px';pill.style.width=b.offsetWidth+'px';}
-  function featShow(k){fbs.forEach(function(b){var on=b.dataset.f===k;b.classList.toggle('on',on);if(on)movePill(b)});$$('.fp').forEach(function(p){p.classList.toggle('on',p.id==='fp-'+k)});}
-  var fVis=false,fUser=0;
-  fbs.forEach(function(b){b.onclick=function(){featShow(b.dataset.f);fUser=Date.now()+9000}});movePill(fbs[0]);
-  /* 화면에 보이는 동안 4초마다 FC ↔ 지점장. 탭을 직접 누르면 9초 쉬었다가 다시 */
-  if(!reduce){new IntersectionObserver(function(es){fVis=es[0].isIntersecting},{threshold:.35}).observe($('#feature'));
-    setInterval(function(){if(!fVis||document.hidden||Date.now()<fUser)return;featShow($('button.on',ft).dataset.f==='fc'?'mgr':'fc')},4000);}addEventListener('resize',function(){movePill($('button.on',ft))});
+  function featShow(k){fbs.forEach(function(b){var on=b.dataset.f===k;b.classList.toggle('on',on);if(on)movePill(b)});$$('.fp').forEach(function(p){p.classList.toggle('on',p.id==='fp-'+k)});if(k==='fc'&&hooks.baRestart)hooks.baRestart();}
+  /* FC 화면은 사진이 '시작하기 전 → 신채널 FC'로 다 넘어간 뒤 잠시 보여 주고(6.5초) 지점장(5초)으로 넘어감. 탭을 직접 누르면 9초 쉼 */
+  var fVis=false,fUser=0,fDue=0,FD={fc:6500,mgr:5000};
+  function fKey(){return $('button.on',ft).dataset.f}
+  fbs.forEach(function(b){b.onclick=function(){featShow(b.dataset.f);fUser=Date.now()+9000;fDue=fUser}});movePill(fbs[0]);
+  if(!reduce){new IntersectionObserver(function(es){var was=fVis;fVis=es[0].isIntersecting;if(fVis&&!was){fDue=Date.now()+FD[fKey()];if(fKey()==='fc'&&hooks.baRestart)hooks.baRestart();}},{threshold:.35}).observe($('#feature'));
+    setInterval(function(){if(!fVis||document.hidden||Date.now()<fUser||Date.now()<fDue)return;var nk=fKey()==='fc'?'mgr':'fc';featShow(nk);fDue=Date.now()+FD[nk]},200);}addEventListener('resize',function(){movePill($('button.on',ft))});
 
   /* 변신 슬라이더: 화면에 보이는 동안 '전 → 후 → 전'을 저절로 반복. 손으로 움직이면 잠시 멈췄다가 다시 이어감 */
   var ba=$('#ba'),bin=$('input',ba),cur=100,goal=0,from=100,t0=0,hold=0,visible=false,userUntil=0,raf=0;
@@ -2172,13 +2173,15 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
     if(t<userUntil||t<hold){raf=requestAnimationFrame(tick);return}
     if(!t0){t0=t;from=cur}
     var k=Math.min(1,(t-t0)/1900);setP(from+(goal-from)*ease(k));
-    if(k>=1){hold=t+(goal===0?2600:1600);goal=goal===0?100:0;t0=0}
+    if(k>=1){hold=t+(goal===0?4000:1600);goal=goal===0?100:0;t0=0}
     raf=requestAnimationFrame(tick);
   }
   function stopUser(){userUntil=performance.now()+3500;t0=0;}
   bin.addEventListener('input',function(){stopUser();setP(+bin.value)});
   bin.addEventListener('pointerdown',stopUser);
   hooks.ba=function(){};
+  /* FC 탭이 열릴 때마다 '시작하기 전'에서 다시 시작 (0.8초 보여 준 뒤 넘어감) */
+  hooks.baRestart=function(){if(reduce)return;setP(100);goal=0;t0=0;userUntil=0;hold=performance.now()+800;};
   if(reduce){setP(50);ba.classList.add('sb','sa')}else new IntersectionObserver(function(es){visible=es[0].isIntersecting;if(visible&&!raf)raf=requestAnimationFrame(tick)},{threshold:.3}).observe(ba);
 
   /* 제휴 보험사 로고: 두 줄이 서로 반대로 흐름 (끊김 없게 두 번 채움) */

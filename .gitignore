@@ -7,11 +7,10 @@ img/g-db.jpg
 img/g-intro.jpg
 img/g-team.jpg
 img/hero.jpg
-img/logo-on-white.png
 img/on-activity.webp
 img/on-sales.webp
-img/seminar-16.jpg
-img/seminar-24.jpg
-img/seminar-8.jpg
 Thumbs.db
 desktop.ini
+
+# 2탄 작업 도구 (공개 안 함)
+v2/make_single_file.py

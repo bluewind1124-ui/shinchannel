@@ -787,6 +787,11 @@ header.small .hd{height:60px}
 .it-txt .t2{margin-top:clamp(14px,2vw,26px);font:700 clamp(15px,1.7vw,24px) 'Nanum Myeongjo','Gowun Batang',serif;letter-spacing:.32em;color:var(--gold-l);opacity:0;text-shadow:0 0 18px rgba(10,24,48,.9)}
 .it-bolt{position:absolute;left:56%;top:-6vh;height:112vh;width:auto;transform:translateX(-50%);opacity:0;filter:drop-shadow(0 0 18px rgba(200,220,255,.7));clip-path:inset(0 0 100% 0)}
 .it-flash{position:absolute;inset:0;background:radial-gradient(circle at 56% 40%,#fff 0,#EAF2FF 35%,rgba(205,155,52,.55) 75%);opacity:0;mix-blend-mode:screen;pointer-events:none}
+.it-gate{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:#F2F5FA;text-align:center;pointer-events:none;z-index:2;opacity:0}
+.it-gate .ig-ic{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(230,207,151,.6);background:rgba(10,24,48,.45);color:var(--gold-l)}
+.it-gate b{font:800 clamp(20px,2.2vw,28px) 'Gothic A1',sans-serif;letter-spacing:.04em;text-shadow:0 0 18px rgba(10,24,48,.9)}
+.it-gate small{font-size:14px;color:rgba(230,207,151,.85);letter-spacing:.08em}
+#intro .snd-intro{display:none!important}
 .it-skip{position:absolute;right:24px;bottom:24px;z-index:2;border:1px solid rgba(255,255,255,.35);background:rgba(10,24,48,.4);color:rgba(255,255,255,.8);font:600 13px 'IBM Plex Sans KR';padding:7px 14px;border-radius:999px;cursor:pointer}
 .it-skip:hover{background:rgba(205,155,52,.35);color:#fff}
 @media (max-width:760px){.it-bolt{left:60%;height:100vh;top:0}.it-sky{--x:60%}.it-txt .t1{white-space:normal;font-size:clamp(28px,8.4vw,40px)}.it-txt .t2{letter-spacing:.16em}}
@@ -1192,6 +1197,10 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   </div>
   <img class="it-bolt" src="img/intro-bolt.webp" alt="">
   <div class="it-flash"></div>
+  <div class="it-gate" aria-hidden="true">
+    <span class="ig-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></span>
+    <b>화면을 눌러 입장하세요</b><small>소리와 함께 시작합니다</small>
+  </div>
   <button type="button" class="it-skip">건너뛰기</button>
 </div>
 <div id="progress"></div>
@@ -2180,7 +2189,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:#E6CF97">신채널 홈페이지 1탄 · v1.9 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:#E6CF97">신채널 홈페이지 1탄 · v2.0 (2026.10.30)</p>
       </div>
     </div>
   </div>
@@ -2352,7 +2361,7 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
 })();
 </script>
 <script>
-/* 첫 화면 앞 연출 (약 7초, 누르면 건너뜀)
+/* 첫 화면 앞 연출: 화면을 누르면 시작 (약 7초, 다시 누르면 건너뜀)
    0~5초 짙은 운무가 흐르고 문구가 한 글자씩 피어오름 → 5초 큰 번개, 글자가 부서짐
    → 번개 맞은 자리부터 운무에 구멍이 뚫리고 구름 속을 뚫고 나가듯 첫 화면이 다가옴
    '움직임 줄이기' 설정에서도 보이도록 Web Animations로 움직임 */
@@ -2370,43 +2379,57 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
     a.onfinish=function(){it.remove();root.style.overflow=ov;};
     if(!it.classList.contains('open')&&window.heroShow)window.heroShow(0);
     if(window.SND)SND.startBgm(T&&performance.now()-t00>T?1600:400);}
-  /* 운무가 계속 흐름 */
-  A(fog,[{transform:'scale(1.06)'},{transform:'scale(1.16) translateX(-1.5%)'}],{duration:5200,easing:'linear'});
-  A(m1,[{transform:'translateX(-8%) scale(1.25)'},{transform:'translateX(6%) scale(1.32)'}],{duration:6000,easing:'linear'});
-  A(m2,[{transform:'translateX(7%) scale(1.35)',opacity:.3},{transform:'translateX(-7%) scale(1.42)',opacity:.6}],{duration:6000,easing:'linear'});
-  /* 1.1초~: 문구가 운무 속에서 한 글자씩 피어오름 */
-  t1.forEach(function(c,k){A(c,[{opacity:0,filter:'blur(14px)',transform:'translateY(14px) scale(1.15)'},{opacity:1,filter:'blur(0)',transform:'none'}],{duration:1100,delay:1100+k*95,easing:'cubic-bezier(.2,.7,.2,1)'})});
-  A(t2,[{opacity:0,filter:'blur(8px)',letterSpacing:'.6em'},{opacity:1,filter:'blur(0)',letterSpacing:'.32em'}],{duration:1400,delay:3300,easing:'ease-out'});
-  /* 문구 위로 옅은 안개가 한 번 지나감 */
-  A(m3,[{opacity:0,transform:'translateX(30%) scale(1.5)'},{opacity:.35,transform:'translateX(0) scale(1.5)'},{opacity:0,transform:'translateX(-30%) scale(1.5)'}],{duration:3200,delay:1600,easing:'linear',fill:'none'});
-  /* 2.2초 · 3.9초: 멀리서 번쩍 */
-  [2200,3900].forEach(function(ms,k){at(ms,function(){fl.animate([{opacity:0},{opacity:k?.28:.18},{opacity:0},{opacity:k?.16:.1},{opacity:0}],{duration:440});if(window.SND)SND.rumble(k?.7:.4);})});
-  /* 5.0초: 큰 번개 */
-  T=5000;
-  at(T,function(){
-    if(window.SND)SND.thunder();
-    bolt.animate([{opacity:0,clipPath:'inset(0 0 100% 0)'},{opacity:1,clipPath:'inset(0 0 0% 0)'}],{duration:110,easing:'ease-out',fill:'forwards'});
-    bolt.animate([{opacity:1},{opacity:.3},{opacity:1},{opacity:.7},{opacity:0}],{duration:1100,delay:120,fill:'forwards'});
-    fl.animate([{opacity:0},{opacity:1},{opacity:.35},{opacity:.9},{opacity:0}],{duration:700,delay:50,easing:'ease-out',fill:'forwards'});
-    it.animate([{transform:'none'},{transform:'translate(-9px,6px)'},{transform:'translate(7px,-5px)'},{transform:'translate(-4px,3px)'},{transform:'none'}],{duration:360,delay:70});
-    [fog,m1,m2].forEach(function(el){el.animate([{filter:'brightness(1)'},{filter:'brightness(2.6)'},{filter:'brightness(1.3)'}],{duration:650,fill:'forwards'})});
-    /* 글자가 하얗게 달아오르다 사방으로 부서짐 */
-    t1.concat([t2]).forEach(function(c,k){var dx=(Math.random()-.5)*260,dy=(Math.random()-.3)*-220,rt=(Math.random()-.5)*70;
-      c.animate([{opacity:1,filter:'blur(0) brightness(1)',transform:'none',color:'#fff'},{opacity:1,filter:'blur(0) brightness(3)',transform:'none',offset:.18},{opacity:0,filter:'blur(10px) brightness(1)',transform:'translate('+dx+'px,'+dy+'px) rotate('+rt+'deg) scale(1.6)'}],{duration:900,delay:120+Math.random()*120,easing:'cubic-bezier(.3,0,.2,1)',fill:'forwards'});});
-  });
-  /* 5.25초: 번개 맞은 자리부터 운무에 구멍 → 구름을 뚫고 나가듯 첫 화면 */
-  at(T+250,function(){
-    it.style.background='transparent';it.classList.add('open');
-    if(window.heroShow)window.heroShow(0);
-    var t0=performance.now(),D=1500;
-    (function step(now){var k=Math.min(1,(now-t0)/D),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
-      sky.style.setProperty('--r',(e*150)+'%');if(k<1)raf=requestAnimationFrame(step);})(t0);
-    [fog,m1,m2].forEach(function(el,n){el.animate([{transform:'scale(1.16)'},{transform:'scale('+(2.6+n*.4)+')'}],{duration:1500,easing:'cubic-bezier(.55,0,.35,1)',fill:'forwards'})});
-    if(hero)hero.animate([{transform:'scale(1.14)',filter:'brightness(1.8) blur(3px)'},{transform:'none',filter:'none'}],{duration:1700,easing:'cubic-bezier(.2,.7,.2,1)'});
-  });
-  at(T+1850,finish);
-  it.addEventListener('click',finish);
-  addEventListener('keydown',function(e){if(e.key==='Escape')finish();},{once:true});
+  /* 입장 전: 운무가 천천히 흐르고 「화면을 눌러 입장하세요」 (브라우저가 소리를 막는 첫 방문자도 천둥을 듣도록)
+     소리가 이미 허용된 브라우저는 안내 없이 바로 시작 */
+  var started=false,gate=q('.it-gate'),idle=[
+    fog.animate([{transform:'scale(1.06)'},{transform:'scale(1.1) translateX(-1%)'}],{duration:9000,iterations:Infinity,direction:'alternate',easing:'ease-in-out'}),
+    m1.animate([{transform:'translateX(-8%) scale(1.25)'},{transform:'translateX(4%) scale(1.3)'}],{duration:12000,iterations:Infinity,direction:'alternate',easing:'ease-in-out'}),
+    m2.animate([{transform:'translateX(7%) scale(1.35)',opacity:.3},{transform:'translateX(-5%) scale(1.4)',opacity:.55}],{duration:14000,iterations:Infinity,direction:'alternate',easing:'ease-in-out'}),
+    gate.animate([{opacity:0,transform:'translate(-50%,-44%)'},{opacity:1,transform:'translate(-50%,-50%)'}],{duration:1000,delay:300,fill:'both',easing:'ease-out'}),
+    q('.ig-ic').animate([{boxShadow:'0 0 0 0 rgba(230,207,151,.55)'},{boxShadow:'0 0 0 22px rgba(230,207,151,0)'}],{duration:1800,iterations:Infinity})];
+  function go(){
+    if(started)return;started=true;t00=performance.now();idle.forEach(function(a){a.cancel()});
+    gate.animate([{opacity:1},{opacity:0,transform:'translate(-50%,-50%) scale(.92)'}],{duration:500,fill:'forwards'});
+    /* 운무가 계속 흐름 */
+    A(fog,[{transform:'scale(1.06)'},{transform:'scale(1.16) translateX(-1.5%)'}],{duration:5200,easing:'linear'});
+    A(m1,[{transform:'translateX(-8%) scale(1.25)'},{transform:'translateX(6%) scale(1.32)'}],{duration:6000,easing:'linear'});
+    A(m2,[{transform:'translateX(7%) scale(1.35)',opacity:.3},{transform:'translateX(-7%) scale(1.42)',opacity:.6}],{duration:6000,easing:'linear'});
+    /* 1.1초~: 문구가 운무 속에서 한 글자씩 피어오름 */
+    t1.forEach(function(c,k){A(c,[{opacity:0,filter:'blur(14px)',transform:'translateY(14px) scale(1.15)'},{opacity:1,filter:'blur(0)',transform:'none'}],{duration:1100,delay:1100+k*95,easing:'cubic-bezier(.2,.7,.2,1)'})});
+    A(t2,[{opacity:0,filter:'blur(8px)',letterSpacing:'.6em'},{opacity:1,filter:'blur(0)',letterSpacing:'.32em'}],{duration:1400,delay:3300,easing:'ease-out'});
+    /* 문구 위로 옅은 안개가 한 번 지나감 */
+    A(m3,[{opacity:0,transform:'translateX(30%) scale(1.5)'},{opacity:.35,transform:'translateX(0) scale(1.5)'},{opacity:0,transform:'translateX(-30%) scale(1.5)'}],{duration:3200,delay:1600,easing:'linear',fill:'none'});
+    /* 2.2초 · 3.9초: 멀리서 번쩍 */
+    [2200,3900].forEach(function(ms,k){at(ms,function(){fl.animate([{opacity:0},{opacity:k?.28:.18},{opacity:0},{opacity:k?.16:.1},{opacity:0}],{duration:440});if(window.SND)SND.rumble(k?.7:.4);})});
+    /* 5.0초: 큰 번개 */
+    T=5000;
+    at(T,function(){
+      if(window.SND)SND.thunder();
+      bolt.animate([{opacity:0,clipPath:'inset(0 0 100% 0)'},{opacity:1,clipPath:'inset(0 0 0% 0)'}],{duration:110,easing:'ease-out',fill:'forwards'});
+      bolt.animate([{opacity:1},{opacity:.3},{opacity:1},{opacity:.7},{opacity:0}],{duration:1100,delay:120,fill:'forwards'});
+      fl.animate([{opacity:0},{opacity:1},{opacity:.35},{opacity:.9},{opacity:0}],{duration:700,delay:50,easing:'ease-out',fill:'forwards'});
+      it.animate([{transform:'none'},{transform:'translate(-9px,6px)'},{transform:'translate(7px,-5px)'},{transform:'translate(-4px,3px)'},{transform:'none'}],{duration:360,delay:70});
+      [fog,m1,m2].forEach(function(el){el.animate([{filter:'brightness(1)'},{filter:'brightness(2.6)'},{filter:'brightness(1.3)'}],{duration:650,fill:'forwards'})});
+      /* 글자가 하얗게 달아오르다 사방으로 부서짐 */
+      t1.concat([t2]).forEach(function(c,k){var dx=(Math.random()-.5)*260,dy=(Math.random()-.3)*-220,rt=(Math.random()-.5)*70;
+        c.animate([{opacity:1,filter:'blur(0) brightness(1)',transform:'none',color:'#fff'},{opacity:1,filter:'blur(0) brightness(3)',transform:'none',offset:.18},{opacity:0,filter:'blur(10px) brightness(1)',transform:'translate('+dx+'px,'+dy+'px) rotate('+rt+'deg) scale(1.6)'}],{duration:900,delay:120+Math.random()*120,easing:'cubic-bezier(.3,0,.2,1)',fill:'forwards'});});
+    });
+    /* 5.25초: 번개 맞은 자리부터 운무에 구멍 → 구름을 뚫고 나가듯 첫 화면 */
+    at(T+250,function(){
+      it.style.background='transparent';it.classList.add('open');
+      if(window.heroShow)window.heroShow(0);
+      var t0=performance.now(),D=1500;
+      (function step(now){var k=Math.min(1,(now-t0)/D),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
+        sky.style.setProperty('--r',(e*150)+'%');if(k<1)raf=requestAnimationFrame(step);})(t0);
+      [fog,m1,m2].forEach(function(el,n){el.animate([{transform:'scale(1.16)'},{transform:'scale('+(2.6+n*.4)+')'}],{duration:1500,easing:'cubic-bezier(.55,0,.35,1)',fill:'forwards'})});
+      if(hero)hero.animate([{transform:'scale(1.14)',filter:'brightness(1.8) blur(3px)'},{transform:'none',filter:'none'}],{duration:1700,easing:'cubic-bezier(.2,.7,.2,1)'});
+    });
+    at(T+1850,finish);
+  }
+  setTimeout(function(){if(!started&&window.SND&&SND.unlocked())go();},250);
+  it.addEventListener('click',function(){started?finish():go();});
+  q('.it-skip').addEventListener('click',function(e){e.stopPropagation();finish();});
+  addEventListener('keydown',function(e){if(e.key==='Escape')finish();else if(!started&&(e.key==='Enter'||e.key===' ')){e.preventDefault();go();}});
 })();
 </script>
 <script>

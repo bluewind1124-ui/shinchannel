@@ -45,7 +45,9 @@
     init();
     if(ctx.state!=='running'){var p=ctx.resume();if(p&&p.then)p.then(after);} else after();
   }
-  function after(){ if(running()){ if(bgmWanted&&!bgmOn&&!off)bgmGo(600); paint(); } }
+  var warmed=false;
+  function after(){ if(running()){ if(!warmed){warmed=true;noise(6,'brown');noise(1,'white');} /* 천둥 재료를 미리 만들어 번개와 동시에 울리게 */
+    if(bgmWanted&&!bgmOn&&!off)bgmGo(600); paint(); } }
 
   /* ── 천둥 ── */
   function src(buf,t,gainEnv,filt){

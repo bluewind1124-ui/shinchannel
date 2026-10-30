@@ -247,9 +247,12 @@ body.mopen .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45deg)
 .pt-track{display:flex;gap:14px;width:max-content;animation:flow 60s linear infinite}
 .pt-row.rev .pt-track{animation-direction:reverse;animation-duration:45s}
 .pt-view:hover .pt-track{animation-play-state:paused}
-.pt-track figure{flex:none;width:176px;height:64px;border:1px solid var(--line);border-radius:4px;background:#fff;display:grid;place-items:center;overflow:hidden;transition:border-color .3s,transform .3s}
-.pt-track figure:hover{border-color:var(--gold);transform:translateY(-3px)}
+.pt-track figure{flex:none;width:176px;display:flex;flex-direction:column;align-items:center;gap:8px;transition:transform .3s}
+.pt-track .lg{width:100%;height:64px;border:1px solid var(--line);border-radius:4px;background:#fff;display:grid;place-items:center;overflow:hidden;transition:border-color .3s}
+.pt-track figure:hover{transform:translateY(-3px)}
+.pt-track figure:hover .lg{border-color:var(--gold)}
 .pt-track img{width:170px;height:auto}
+.pt-track figcaption{font:500 13px 'IBM Plex Sans KR';color:var(--ink2);white-space:nowrap}
 /* CI 의미 */
 .ci-mean{list-style:none;padding:0;margin:28px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
 .ci-mean li{display:flex;gap:14px;align-items:flex-start;background:var(--bg);border-radius:8px;padding:18px}
@@ -849,7 +852,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 }
 @media (max-width:640px){
   .perks{grid-template-columns:1fr 1fr;align-content:start;min-height:470px}.pk{padding:14px 12px 12px}.pk-v{font-size:19px}.gd-name{display:flex;align-items:baseline;justify-content:space-between}.gd-name p{margin:0}
-  .ci-mean{grid-template-columns:1fr}.pt-lab{min-width:0;width:auto;padding:0 12px 0 16px;font-size:13px}.pt-track figure{width:132px;height:50px}.pt-track img{width:128px}.ceo-chap{flex-direction:column;gap:2px}
+  .ci-mean{grid-template-columns:1fr}.pt-lab{min-width:0;width:auto;padding:0 12px 0 16px;font-size:13px}.pt-track figure{width:132px}.pt-track .lg{height:50px}.pt-track img{width:128px}.pt-track figcaption{font-size:12px}.ceo-chap{flex-direction:column;gap:2px}
   .wrap{padding:0 16px}
   .hero h1{font-size:38px}
   .hero p.lede{font-size:16px}
@@ -2000,7 +2003,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.8 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.9 (2026.10.30)</p>
       </div>
     </div>
   </div>
@@ -2132,7 +2135,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
   /* 제휴 보험사 로고: 두 줄이 서로 반대로 흐름 (끊김 없게 두 번 채움) */
   var lifeN=[['흥국생명','img/partners/l01.jpg'],['현대라이프','img/partners/l02.jpg'],['한화생명','img/partners/l03.jpg'],['처브라이프','img/partners/l04.jpg'],['ABL생명','img/partners/l05.jpg'],['신한생명','img/partners/l06.jpg'],['삼성생명','img/partners/l07.jpg'],['메트라이프','img/partners/l08.jpg'],['라이나생명','img/partners/l09.jpg'],['동양생명','img/partners/l10.jpg'],['DB생명','img/partners/l11.jpg'],['NH농협생명','img/partners/l12.jpg'],['교보생명','img/partners/l13.jpg'],['AIA생명','img/partners/l14.jpg'],['KDB생명','img/partners/l15.jpg'],['KB생명','img/partners/l16.jpg'],['IBK연금보험','img/partners/l17.jpg'],['푸르덴셜생명','img/partners/l18.jpg'],['미래에셋생명','img/partners/l19.jpg'],['ING생명','img/partners/l20.jpg'],['iM라이프','img/partners/l21.jpg']];
   var nonN=[['흥국화재','img/partners/n01.jpg'],['현대해상','img/partners/n02.jpg'],['한화손해보험','img/partners/n03.jpg'],['삼성화재','img/partners/n04.jpg'],['메리츠화재','img/partners/n05.jpg'],['롯데손해보험','img/partners/n06.jpg'],['DB손해보험','img/partners/n07.jpg'],['NH농협손해보험','img/partners/n08.jpg'],['MG손해보험','img/partners/n09.jpg'],['KB손해보험','img/partners/n10.jpg'],['더케이손해보험','img/partners/n11.jpg'],['AIG손해보험','img/partners/n12.jpg']];
-  function fillLogos(el,list){var h='';list.forEach(function(x){h+='<figure><img src="'+x[1]+'" alt="'+x[0]+'"></figure>'});el.innerHTML=h+h.replace(/alt="[^"]*"/g,'alt="" aria-hidden="true"');}
+  function fillLogos(el,list){var h='';list.forEach(function(x){h+='<figure><span class="lg"><img src="'+x[1]+'" alt=""></span><figcaption>'+x[0]+'</figcaption></figure>'});el.innerHTML=h+h.replace(/<figure>/g,'<figure aria-hidden="true">');}
   fillLogos($('#ptLife'),lifeN);fillLogos($('#ptNon'),nonN);
 
   /* 교육 탭 */

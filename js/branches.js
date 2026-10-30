@@ -45,7 +45,36 @@ window.BRANCHES = [
   ,{ no: 6, id: 'chuncheon', name: '춘천지사', addr: '강원특별자치도 춘천시 안마산로 107-1, 제4층 제404호·405호(퇴계동, 에스엠프라자)', ceo: '이미순', tel: '010-5371-2854', lat: 37.84902, lng: 127.74763 }
   ,{ no: 7, id: 'uijeongbu', name: '의정부지사', addr: '경기도 의정부시 신흥로 220, 6층 (의정부동, 솔벗빌딩)', ceo: '정영진', tel: '010-7352-1863', lat: 37.73548, lng: 127.04345 }
   ,{ no: 8, id: 'jamsil', name: '잠실지사', addr: '서울 송파구 오금로 111, 11층 (방이동, 세기빌딩)', ceo: '김영국', tel: '010-9660-3370', lat: 37.5126, lng: 127.10825 }
-  ,{ no: 9, id: 'daejeon', name: '대전지사', addr: '대전광역시 서구 대덕대로 239, 11층', ceo: '성지훈', tel: '010-2040-2349', lat: 36.34163, lng: 127.37375 }
+  ,{
+    no: 9, id: 'daejeon',
+    name: '대전지사',
+    en: 'DAEJEON BRANCH',
+    addr: '대전광역시 서구 대덕대로 239, 11층',
+    ceo: '성지훈',
+    tel: '010-2040-2349',
+    lat: 36.34163, lng: 127.37375,
+    tagline: '대전의 중심, 둔산동에서',
+    intro: '2026년 6월 새로 문을 연 한국보험금융 신채널 대전지사입니다. 100평 이상의 사무실에 52석 개인형 책상, 지점마다 프린터를 갖췄고, 원수사 설계·교육 매니저가 매일 오전 9시부터 오후 5시까지 지사에 상주합니다. 지하철역 5분 이내, 세종에서 25분 거리입니다.',
+    philosophy: '실적을 강조하는 사무실이 아닌, 기본 UP에 충실한 사람 중심의 지사',
+    video: 'img/daejeon/tour.mp4',
+    poster: 'img/daejeon/poster.jpg',
+    hero: 'img/daejeon/hero.jpg',   // 첫 화면 배경
+    spaces: [
+      { tag: 'WELCOME', t: '대전의 중심, 둔산동에서', d: '한국보험금융 신채널 대전지사에 오신 것을 환영합니다', img: 'img/daejeon/g01.jpg' },
+      { tag: 'GRAND OPEN', t: '2026년 6월, 새롭게 문을 열었습니다', d: '대교빌딩 11층, 새로 꾸민 사무실', img: 'img/daejeon/g02.jpg' },
+      { tag: 'ACCESS', t: '출퇴근도, 업무 동선도 가깝게', d: '지하철역 5분 이내 · 우체국 · 은행 1분 거리', img: 'img/daejeon/g03.jpg' },
+      { tag: 'SUPPORT', t: '원수사 매니저가 매일 함께합니다', d: '설계 · 교육 매니저 지사 상주, 오전 9시 ~ 오후 5시', img: 'img/daejeon/g04.jpg' },
+      { tag: 'WORKSPACE', t: '100평 이상, 탁 트인 사무실', d: '여유 있는 동선, 넓은 근무 환경', img: 'img/daejeon/g05.jpg' },
+      { tag: 'WORKSPACE', t: '나만의 개인 업무 공간', d: '52석 개인형 책상 · 파티션 데스크', img: 'img/daejeon/g06.jpg' },
+      { tag: 'CONVENIENCE', t: '지점마다 전용 프린터', d: '기다리지 않고, 내 자리 가까이에서 바로 출력', img: 'img/daejeon/g07.jpg' },
+      { tag: 'CLEAN OFFICE', t: '매일 1~2회 청소', d: '언제나 깨끗한 사무실 환경', img: 'img/daejeon/g08.jpg' },
+      { tag: 'CULTURE', t: '실적보다, 기본에 충실한 지사', d: '매일 9시 정시 교육 조회 · 2달마다 수요일 2부 조회', img: 'img/daejeon/g09.jpg' },
+      { tag: 'MANAGEMENT', t: '혼자 두지 않는 3단계 관리', d: '지사장 1차 · 지점장 2차 · CM(코칭매니저) 3차', img: 'img/daejeon/g10.jpg' },
+      { tag: 'TEAM', t: '밥 잘 사주는 선배가 많은 곳', d: '언니 · 오빠 · 누나 · 동생이 함께하는 지사', img: 'img/daejeon/g11.jpg' },
+      { tag: 'NETWORK', t: '대전에서, 충청 전역으로', d: '당진 지점 개설 · 청주 예정 · 충청 전 지역 리크루팅', img: 'img/daejeon/g12.jpg' }
+    ],
+    closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 대전에서', img: 'img/daejeon/g13.jpg' }
+  }
   ,{ no: 10, id: 'seosan', name: '서산지사', addr: '충청남도 서산시 호수공원3로 52 행운빌딩 7층', ceo: '김인태', tel: '010-4537-7910', lat: 36.77572, lng: 126.44724 }
   ,{ no: 11, id: 'therich', name: '더리치지사', addr: '서울 중구 퇴계로 324, 성우빌딩 7층', ceo: '김효정', tel: '010-2035-1613', lat: 37.56119, lng: 126.98823 }
   ,{ no: 12, id: 'acemullae', name: '에이스문래지사', addr: '서울시 영등포구 당산로41길 11, SKV1센터 W동 1312호', ceo: '심규훈', tel: '010-6286-1189', lat: 37.53091, lng: 126.89787 }

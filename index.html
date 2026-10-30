@@ -2189,7 +2189,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:#E6CF97">신채널 홈페이지 1탄 · v2.0 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:#E6CF97">신채널 홈페이지 1탄 · v2.1 (2026.10.30)</p>
       </div>
     </div>
   </div>
@@ -2361,7 +2361,7 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
 })();
 </script>
 <script>
-/* 첫 화면 앞 연출: 화면을 누르면 시작 (약 7초, 다시 누르면 건너뜀)
+/* 첫 화면 앞 연출: 화면을 누르면 시작 (약 9초, 다시 누르면 건너뜀)
    0~5초 짙은 운무가 흐르고 문구가 한 글자씩 피어오름 → 5초 큰 번개, 글자가 부서짐
    → 번개 맞은 자리부터 운무에 구멍이 뚫리고 구름 속을 뚫고 나가듯 첫 화면이 다가옴
    '움직임 줄이기' 설정에서도 보이도록 Web Animations로 움직임 */
@@ -2391,9 +2391,9 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
     if(started)return;started=true;t00=performance.now();idle.forEach(function(a){a.cancel()});
     gate.animate([{opacity:1},{opacity:0,transform:'translate(-50%,-50%) scale(.92)'}],{duration:500,fill:'forwards'});
     /* 운무가 계속 흐름 */
-    A(fog,[{transform:'scale(1.06)'},{transform:'scale(1.16) translateX(-1.5%)'}],{duration:5200,easing:'linear'});
-    A(m1,[{transform:'translateX(-8%) scale(1.25)'},{transform:'translateX(6%) scale(1.32)'}],{duration:6000,easing:'linear'});
-    A(m2,[{transform:'translateX(7%) scale(1.35)',opacity:.3},{transform:'translateX(-7%) scale(1.42)',opacity:.6}],{duration:6000,easing:'linear'});
+    A(fog,[{transform:'scale(1.06)'},{transform:'scale(1.2) translateX(-2%)'}],{duration:7400,easing:'linear'});
+    A(m1,[{transform:'translateX(-8%) scale(1.25)'},{transform:'translateX(8%) scale(1.34)'}],{duration:8000,easing:'linear'});
+    A(m2,[{transform:'translateX(7%) scale(1.35)',opacity:.3},{transform:'translateX(-9%) scale(1.44)',opacity:.6}],{duration:8000,easing:'linear'});
     /* 1.1초~: 문구가 운무 속에서 한 글자씩 피어오름 */
     t1.forEach(function(c,k){A(c,[{opacity:0,filter:'blur(14px)',transform:'translateY(14px) scale(1.15)'},{opacity:1,filter:'blur(0)',transform:'none'}],{duration:1100,delay:1100+k*95,easing:'cubic-bezier(.2,.7,.2,1)'})});
     A(t2,[{opacity:0,filter:'blur(8px)',letterSpacing:'.6em'},{opacity:1,filter:'blur(0)',letterSpacing:'.32em'}],{duration:1400,delay:3300,easing:'ease-out'});
@@ -2415,16 +2415,16 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
         c.animate([{opacity:1,filter:'blur(0) brightness(1)',transform:'none',color:'#fff'},{opacity:1,filter:'blur(0) brightness(3)',transform:'none',offset:.18},{opacity:0,filter:'blur(10px) brightness(1)',transform:'translate('+dx+'px,'+dy+'px) rotate('+rt+'deg) scale(1.6)'}],{duration:900,delay:120+Math.random()*120,easing:'cubic-bezier(.3,0,.2,1)',fill:'forwards'});});
     });
     /* 5.25초: 번개 맞은 자리부터 운무에 구멍 → 구름을 뚫고 나가듯 첫 화면 */
-    at(T+250,function(){
+    at(T+2250,function(){
       it.style.background='transparent';it.classList.add('open');
       if(window.heroShow)window.heroShow(0);
       var t0=performance.now(),D=1500;
       (function step(now){var k=Math.min(1,(now-t0)/D),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
         sky.style.setProperty('--r',(e*150)+'%');if(k<1)raf=requestAnimationFrame(step);})(t0);
-      [fog,m1,m2].forEach(function(el,n){el.animate([{transform:'scale(1.16)'},{transform:'scale('+(2.6+n*.4)+')'}],{duration:1500,easing:'cubic-bezier(.55,0,.35,1)',fill:'forwards'})});
+      [fog,m1,m2].forEach(function(el,n){el.animate([{transform:'scale(1.2)'},{transform:'scale('+(2.6+n*.4)+')'}],{duration:1500,easing:'cubic-bezier(.55,0,.35,1)',fill:'forwards'})});
       if(hero)hero.animate([{transform:'scale(1.14)',filter:'brightness(1.8) blur(3px)'},{transform:'none',filter:'none'}],{duration:1700,easing:'cubic-bezier(.2,.7,.2,1)'});
     });
-    at(T+1850,finish);
+    at(T+3850,finish);
   }
   setTimeout(function(){if(!started&&window.SND&&SND.unlocked())go();},250);
   it.addEventListener('click',function(){started?finish():go();});

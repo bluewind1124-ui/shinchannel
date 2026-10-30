@@ -600,8 +600,7 @@ body.mopen .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45deg)
 .sc-cols{display:flex;align-items:flex-end;gap:18px;height:300px;border-bottom:1px solid rgba(255,255,255,.2);padding:0 8px}
 .sc{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end}
 .stack{width:100%;max-width:84px;display:flex;flex-direction:column-reverse;height:100%}
-.stack i{display:block;height:0;transition:height 1.2s var(--ease)}
-.stack-fig.in .stack i{height:var(--h)}
+.stack i{display:block;height:var(--h)}
 .stack .s1{background:var(--navy3)}.stack .s2{background:var(--gold)}.stack .s3{background:var(--gold-l)}
 .sc span{font-size:13px;color:rgba(255,255,255,.65);margin-top:8px;position:absolute;transform:translateY(24px)}
 .sc{position:relative}
@@ -1021,6 +1020,33 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 @media (max-width:1100px){.cm-steps{grid-template-columns:1fr 1fr}}
 @media (max-width:960px){.fcp-wrap{grid-template-columns:1fr;gap:24px}.fcp-nav{position:sticky;top:var(--hd);z-index:5;background:#fff;margin:0 -20px;padding:0 20px}.fcp-nav ul{display:flex;overflow-x:auto;border-top:0;border-bottom:1px solid var(--line);scrollbar-width:none}.fcp-nav ul::-webkit-scrollbar{display:none}.fcp-nav button{white-space:nowrap;border-bottom:0;padding:14px 14px;font-size:14.5px}.fcp-nav button::after{display:none}.fcp-nav button.on{background:none;color:var(--navy);box-shadow:inset 0 -3px 0 var(--gold)}}
 @media (max-width:640px){.fcp-h{flex-direction:column;align-items:flex-start;gap:4px}.rg-tools{flex-direction:column;align-items:flex-start}.cm-steps{grid-template-columns:1fr}.ag-f input,.ag-f label:nth-child(2) input{width:100%}.ag-f label{width:100%}.ft td:first-child{width:38%}.rg-a{padding:14px 16px 2px}}
+
+/* 세 겹 구조: 예전/이제 비교 + 쌓여 가는 블록 */
+.unst{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin:20px 0 4px}
+.unst>div{border-radius:8px;padding:14px 16px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.unst svg{width:100%;max-width:150px;height:40px;margin:6px 0 4px}
+.un-k{font:800 12.5px 'Gothic A1';color:var(--mute)}
+.un-a .un-k{color:var(--gold-t)}
+.unst b{font-size:15px;color:var(--navy)}
+.unst small{font-size:13px;color:var(--ink2)}
+.un-b small{color:#A3182E}
+.un-a{border-color:var(--gold)!important;background:var(--gold-bg)!important}
+.un-ar{align-self:center;font-style:normal;font:800 22px 'Gothic A1';color:var(--gold)}
+.un-b polyline{stroke-dasharray:260;animation:unDraw 4s ease-in-out infinite}
+@keyframes unDraw{0%{stroke-dashoffset:260}45%,100%{stroke-dashoffset:0}}
+.unst .m1{fill:#2E4A72}.unst .m2{fill:#CD9B34}.unst .m3{fill:#1E6B4F}.unst.dk .m1{fill:#7C91B0}.unst.dk .m3{fill:#E6CF97}
+.unst.dk>div{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
+.unst.dk .un-a{background:rgba(205,155,52,.14)!important}
+.unst.dk b{color:#fff}.unst.dk small{color:rgba(255,255,255,.75)}.unst.dk .un-b small{color:#F2A9B3}
+.unst.dk .un-k{color:rgba(255,255,255,.6)}.unst.dk .un-a .un-k{color:var(--gold-l)}
+[data-stackfall] .stack i{opacity:0;transform:translateY(-170px)}
+[data-stackfall] .stack i.on{opacity:1;transform:none;transition:transform .6s cubic-bezier(.3,1.35,.5,1),opacity .25s}
+[data-stackfall] .stack i.on.off{opacity:0;transition:opacity .6s}
+.sc-tot{position:absolute;top:-26px;left:50%;transform:translate(-50%,6px);font:800 12px 'Gothic A1';white-space:nowrap;opacity:0;transition:opacity .4s,transform .4s}
+.sc.full .sc-tot{opacity:1;transform:translate(-50%,0)}
+@media (max-width:640px){.unst{grid-template-columns:1fr}.un-ar{transform:rotate(90deg);justify-self:center}}
+
+.bl{display:inline-block;filter:blur(5px);user-select:none;-webkit-user-select:none;pointer-events:none}
 </style>
 </head>
 <body>
@@ -1533,8 +1559,8 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
             <figure class="ph" data-rv="wipe" data-d="2"><img src="../img/seminar-24.jpg" alt="세미나 발표 화면과 참석자들" loading="lazy"></figure>
           </div>
           <div class="two" style="margin-top:24px;align-items:start">
-            <div><b style="font-size:17px">한국보험금융 × AIA생명 제휴 VIP 세미나</b>
-              <dl class="sem-dl"><dt>일시</dt><dd>2026. 10. 21(수) 14:00~15:30</dd><dt>장소</dt><dd>AIA 글로벌 웰스센터 라운지</dd><dt>주제</dt><dd>2026 세제개편안, 상속세와 증여세, 달러 자산</dd></dl></div>
+            <div><b style="font-size:17px">한국보험금융 × <span class="bl" aria-hidden="true">XYZ</span>생명 제휴 VIP 세미나</b>
+              <dl class="sem-dl"><dt>일시</dt><dd>2026. 10. <span class="bl" aria-hidden="true">00(0)</span> 14:00~15:30</dd><dt>장소</dt><dd><span class="bl" aria-hidden="true">XYZ</span> 글로벌 웰스센터 라운지</dd><dt>주제</dt><dd>2026 세제개편안, 상속세와 증여세, 달러 자산</dd></dl></div>
             <div class="facts"><div><b data-to="52">52</b><small>명</small><span>총 참석</span></div><div><b data-to="27">27</b><small>명</small><span>초청 고객</span></div><div><b data-to="25">25</b><small>명</small><span>참석 FC</span></div></div>
           </div>
         </div>
@@ -1648,11 +1674,16 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
       <div class="th" data-rv="up" data-d="2"><i>03</i><b>사업가의 길</b><p>혼자 영업하는 FC에서, 사람을 키우고 지사를 운영하는 사업가로 나아갑니다.</p></div>
     </div>
 
-    <div class="stack-fig" id="income">
+    <div class="stack-fig" id="income" data-stackfall>
       <div>
         <p class="kick">세 겹의 안정 구조</p>
-        <h3 class="h3">영업 · 오버라이딩 · 성장지원금,<br><em>세 겹으로 받칩니다</em></h3>
-        <p class="lead" style="font-size:16px">한 달 실적이 아쉬워도 수입 전체가 흔들리지 않도록 세 가지 제도가 서로를 받쳐 줍니다. 장기근속 성장지원금은 13회차 유지를 거쳐 2년차(15차월)부터 매월, 정산월초P 기준으로 지급합니다.</p>
+        <h3 class="h3">달마다 오르내리던 FC 수입,<br><em>이제는 세 겹으로 쌓아 갑니다</em></h3>
+        <p class="lead" style="font-size:16px">FC에게 가장 큰 고민은 달마다 들쭉날쭉한 수입입니다. 신채널에서는 영업 수입 위에 리크루팅 오버라이딩과 장기근속 성장지원금이 해마다 더해집니다. 장기근속 성장지원금은 13회차 유지를 거쳐 2년차(15차월)부터 매월, 정산월초P 기준으로 지급합니다.</p>
+        <div class="unst dk">
+          <div class="un-b"><span class="un-k">예전</span><svg viewBox="0 0 120 40" aria-hidden="true"><polyline points="2,28 14,10 26,30 38,14 50,34 62,8 74,26 86,12 98,32 110,16 118,24" fill="none" stroke="#A3182E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><b>영업 수입 하나뿐</b><small>달마다 오르내려 불안합니다</small></div>
+          <i class="un-ar" aria-hidden="true">→</i>
+          <div class="un-a"><span class="un-k">이제</span><svg viewBox="0 0 120 40" aria-hidden="true"><g class="m1"><rect x="4" y="24" width="24" height="16"/><rect x="34" y="24" width="24" height="16"/><rect x="64" y="24" width="24" height="16"/><rect x="94" y="24" width="24" height="16"/></g><g class="m2"><rect x="4" y="21" width="24" height="3"/><rect x="34" y="17" width="24" height="7"/><rect x="64" y="13" width="24" height="11"/><rect x="94" y="9" width="24" height="15"/></g><g class="m3"><rect x="34" y="13" width="24" height="4"/><rect x="64" y="7" width="24" height="6"/><rect x="94" y="1" width="24" height="8"/></g></svg><b>영업 + 오버라이딩 + 성장지원금</b><small>세 겹이 차곡차곡 쌓입니다</small></div>
+        </div>
         <div class="legend"><span><i style="background:var(--navy3)"></i>개인 영업 수입</span><span><i style="background:var(--gold)"></i>오버라이딩</span><span><i style="background:var(--gold-l)"></i>장기근속 성장지원금</span></div>
         <p class="src">개념도이며 실제 금액 비율이 아닙니다. 지급 기준은 회사 규정에 따르며 소득을 보장하지 않습니다. <span class="chk">공개 범위 확인</span></p>
       </div>
@@ -1743,7 +1774,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
       </figure>
     </article>
     <div class="news-grid">
-      <article class="nw" data-rv="up"><figure class="ph"><img src="../img/seminar-8.jpg" alt="VIP 세미나 시작 인사" loading="lazy"></figure><div class="bd"><span class="cat">세미나 · 2026.10.21</span><h4>AIA생명 제휴 VIP 세미나, 고객 27명 초청</h4><p>상속세와 증여세, 2026 세제개편안을 주제로 열렸습니다.</p></div></article>
+      <article class="nw" data-rv="up"><figure class="ph"><img src="../img/seminar-8.jpg" alt="VIP 세미나 시작 인사" loading="lazy"></figure><div class="bd"><span class="cat">세미나 · 2026.10.<span class="bl" aria-hidden="true">00</span></span><h4><span class="bl" aria-hidden="true">XYZ</span>생명 제휴 VIP 세미나, 고객 27명 초청</h4><p>상속세와 증여세, 2026 세제개편안을 주제로 열렸습니다.</p></div></article>
       <article class="nw" data-rv="up" data-d="1"><figure class="ph"><img src="../img/g-sales-real.jpg" alt="한보금ON 화면" loading="lazy" style="object-position:top"></figure><div class="bd"><span class="cat">한보금ON · 2026</span><h4>신채널 영업 플랫폼 한보금ON 출시</h4><p>영업지원과 활동지원, 두 프로그램으로 운영합니다.</p></div></article>
       <article class="nw" data-rv="up" data-d="2"><div class="ph empty"><svg viewBox="0 0 160 100" width="150" aria-hidden="true"><rect x="30" y="14" width="100" height="72" rx="6" fill="#fff" stroke="#E1E6ED" stroke-width="2"/><rect x="40" y="24" width="38" height="28" rx="3" fill="#E6CF97"/><circle cx="52" cy="34" r="4" fill="#CD9B34"/><path d="M40 52 l14 -10 10 7 14 -11 v14z" fill="#CD9B34"/><rect x="84" y="25" width="36" height="5" rx="2.5" fill="#0F2340"/><rect x="84" y="35" width="30" height="4" rx="2" fill="#A9B8CE"/><rect x="84" y="44" width="34" height="4" rx="2" fill="#A9B8CE"/><rect x="40" y="60" width="80" height="4" rx="2" fill="#A9B8CE"/><rect x="40" y="69" width="64" height="4" rx="2" fill="#A9B8CE"/><g class="pen"><path d="M118 74 l18 -26 6 4 -18 26 -8 4z" fill="#0F2340"/><path d="M116 82 l2 -8 6 4z" fill="#CD9B34"/></g></svg><span>기사 준비 중</span></div><div class="bd"><span class="cat">공지</span><h4>소식을 준비하고 있습니다</h4><p>지사 개설, 시상, 교육 일정 소식이 이곳에 올라옵니다.</p></div></article>
     </div>
@@ -1962,7 +1993,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.1 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.3 (2026.10.30)</p>
       </div>
     </div>
   </div>
@@ -2172,6 +2203,21 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
     a.addEventListener('mouseenter',function(){hl(b.id,true)});a.addEventListener('mouseleave',function(){hl(b.id,false)});list.appendChild(a);});
   KMAP.draw(document.getElementById('nAll'),'all',B,{onHover:hl,link:link});
   KMAP.draw(document.getElementById('nMetro'),'metro',B,{onHover:hl,link:link});
+})();
+</script>
+<script>
+/* 세 겹 구조 그래프: 해마다 블록이 떨어져 쌓이고, 다 쌓이면 잠시 보여 준 뒤 처음부터 반복 */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  [].forEach.call(document.querySelectorAll('[data-stackfall]'),function(fig){
+    var cols=[].slice.call(fig.querySelectorAll('.sc')),bs=[].slice.call(fig.querySelectorAll('.stack i')),vis=false,run=false;
+    if(reduce||!('IntersectionObserver' in window)){bs.forEach(function(b){b.classList.add('on')});cols.forEach(function(c){c.classList.add('full')});return}
+    function play(){run=true;bs.forEach(function(b){b.classList.remove('on','off')});cols.forEach(function(c){c.classList.remove('full')});var k=0;
+      (function step(){if(!vis){run=false;return}
+        if(k<bs.length){var b=bs[k++];b.classList.add('on');var c=b.closest('.sc');if(b===c.querySelector('.stack i:last-child'))setTimeout(function(){c.classList.add('full')},450);setTimeout(step,420)}
+        else setTimeout(function(){bs.forEach(function(b){b.classList.add('off')});cols.forEach(function(c){c.classList.remove('full')});setTimeout(play,750)},3800)})();}
+    new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis&&!run)play()},{threshold:.3}).observe(fig);
+  });
 })();
 </script>
 </body>

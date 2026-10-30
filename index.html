@@ -733,6 +733,54 @@ header.small .hd{height:60px}
 .ap3 b{font:800 22px 'Gothic A1';color:var(--gold)}
 .ap3 p{font-size:14px;color:rgba(255,255,255,.78);margin-top:6px}
 .ap-note{margin-top:20px;font-size:13px;color:rgba(255,255,255,.6)}
+/* AI보장분석 기본형·고급형 · 샘플 제안서 · 금융계산기 */
+.aikit{margin-top:56px}
+.ak-head h3{font:800 clamp(22px,2.8vw,32px)/1.4 'Gothic A1';color:var(--navy)}
+.ak-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.ak-t{background:#fff;border:1px solid var(--line,#E3E7EE);border-radius:8px;padding:28px;position:relative}
+.ak-t.pro{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ak-b{display:inline-block;font-size:12.5px;font-weight:700;padding:3px 12px;border-radius:999px;background:var(--gold-bg);color:var(--gold-t)}
+.ak-t.pro .ak-b{background:var(--gold);color:var(--navy)}
+.ak-t h4{font:800 21px 'Gothic A1';margin:12px 0 6px;color:var(--navy)}
+.ak-t.pro h4{color:#fff}
+.ak-l{font-size:14.5px;color:var(--ink2,#4A5568)}
+.ak-t.pro .ak-l{color:rgba(255,255,255,.75)}
+.ak-t ul{list-style:none;margin-top:16px;border-top:1px solid rgba(15,35,64,.1)}
+.ak-t.pro ul{border-color:rgba(255,255,255,.14)}
+.ak-t li{display:flex;gap:14px;padding:10px 0;font-size:14px;border-bottom:1px dashed rgba(15,35,64,.12)}
+.ak-t.pro li{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.88)}
+.ak-t li b{flex:0 0 58px;color:var(--gold-t);font-weight:800}
+.ak-t.pro li b{color:var(--gold-l)}
+.ak-sub{margin:48px 0 16px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.ak-sub h4{font:800 20px 'Gothic A1';color:var(--navy)}
+.ak-sub h4 em{font-style:normal;color:var(--gold)}
+.ak-sub p{font-size:14px;color:var(--ink2,#4A5568)}
+.ak-smp{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ak-s{margin:0;background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--line,#E3E7EE);transition:transform .35s var(--ease),box-shadow .35s}
+.ak-s:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(15,35,64,.16)}
+.ak-th{aspect-ratio:4/3;overflow:hidden;background:#EEF1F5;border-bottom:1px solid var(--line,#E3E7EE)}
+.ak-th img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform 4s ease}
+.ak-s:hover .ak-th img{transform:scale(1.06)}
+.ak-s figcaption{padding:14px 16px}
+.ak-s figcaption span{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--gold-t);background:var(--gold-bg);padding:1px 7px;border-radius:3px}
+.ak-s figcaption b{display:block;font-size:15px;color:var(--navy);margin-top:6px}
+.ak-s figcaption small{display:block;font-size:12.5px;color:var(--ink2,#4A5568);margin-top:2px}
+.akc{background:#fff;border:1px solid var(--line,#E3E7EE);border-radius:8px;overflow:hidden}
+.akc-tabs{display:flex;background:var(--navy);overflow-x:auto}
+.akc-tabs button{flex:1;min-width:max-content;border:0;background:none;color:rgba(255,255,255,.7);font:700 14.5px 'IBM Plex Sans KR';padding:16px 18px;cursor:pointer;border-bottom:3px solid transparent;transition:.3s}
+.akc-tabs button small{font-size:11.5px;margin-left:4px;color:var(--gold-l)}
+.akc-tabs button.on{color:#fff;border-bottom-color:var(--gold);background:rgba(255,255,255,.06)}
+.akc-p{display:none;padding:22px 24px 26px}
+.akc-p.on{display:block;animation:akIn .5s var(--ease)}
+@keyframes akIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.akc-w{font-size:13px;color:var(--gold-t);font-weight:700;margin-bottom:12px}
+.akc-p ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.akc-p li{font-size:14px;color:var(--navy);font-weight:600;background:var(--bg,#F4F6F9);border-radius:6px;padding:11px 14px;display:flex;justify-content:space-between;gap:8px;opacity:0;animation:akIn .45s var(--ease) forwards}
+.akc-p li em{font-style:normal;font-weight:400;font-size:12px;color:#8A94A6;white-space:nowrap}
+.akc-p li:nth-child(1){animation-delay:0.05s}.akc-p li:nth-child(2){animation-delay:0.10s}.akc-p li:nth-child(3){animation-delay:0.15s}.akc-p li:nth-child(4){animation-delay:0.20s}.akc-p li:nth-child(5){animation-delay:0.25s}.akc-p li:nth-child(6){animation-delay:0.30s}.akc-p li:nth-child(7){animation-delay:0.35s}.akc-p li:nth-child(8){animation-delay:0.40s}.akc-p li:nth-child(9){animation-delay:0.45s}
+.ak-note{margin-top:14px;font-size:12.5px;color:#8A94A6}
+@media (max-width:960px){.ak-2{grid-template-columns:1fr}.ak-smp{grid-template-columns:1fr 1fr}.akc-p ul{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.akc-p ul{grid-template-columns:1fr}.ak-t{padding:22px}}
 .routine{margin-top:64px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;counter-reset:r}
 .routine::before{content:"";position:absolute;left:10%;right:10%;top:27px;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 14px);background-size:28px 2px;animation:dash 1.2s linear infinite}
 @keyframes dash{to{background-position:28px 0}}
@@ -1719,6 +1767,48 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
       <p class="ap-note rv">고급형은 연금설계(은퇴 부족자금 · 3층 연금)와 자산설계(자산배분 · 절세계좌)까지 이어집니다. 고객 자료는 회사 서버가 아니라 FC의 기기에만 저장됩니다.</p>
     </div>
 
+    <!-- AI보장분석 기본형·고급형 · 샘플 제안서 · 금융계산기 -->
+    <div class="aikit" id="aikit">
+      <div class="ak-head rv">
+        <p class="eyebrow">AI보장분석 · 제안서 · 금융계산기</p>
+        <h3>상담에 필요한 도구, 기본형부터 고급형까지</h3>
+      </div>
+      <div class="ak-2">
+        <article class="ak-t rv">
+          <span class="ak-b">기본형</span>
+          <h4>AI보장분석 기본형</h4>
+          <p class="ak-l">증권을 넣으면 보장 점수와 부족 담보가 바로 나옵니다. 처음 상담하는 FC도 바로 씁니다.</p>
+          <ul>
+            <li><b>입력</b>내보험찾아줌 붙여넣기 · 증권 사진 판독</li>
+            <li><b>분석</b>암 치료비 · 순환계 · 수술비 · 간병 등 분석 옵션 10가지</li>
+            <li><b>결과</b>보장 점수, 부족 · 겹치는 담보, 보장 지도</li>
+            <li><b>제안서</b>기존 · 신규 · 합산 보험료, PDF · HTML · 엑셀 저장 후 카톡 전송</li>
+          </ul>
+        </article>
+        <article class="ak-t pro rv d1">
+          <span class="ak-b">고급형</span>
+          <h4>AI보장분석 고급형</h4>
+          <p class="ak-l">보장에 연금 · 자산까지 더한 종합 상담 리포트입니다. 고액 · 법인 · 은퇴 상담에 씁니다.</p>
+          <ul>
+            <li><b>보장설계</b>보장분석표 담보 36종, 필요보장 입력, 보장설계 제안서</li>
+            <li><b>연금설계</b>은퇴 부족자금 · 3층 연금 · 주택연금, 연금상품 4종 비교</li>
+            <li><b>자산설계</b>자산배분 · 절세계좌 · 은퇴 후 인출 순서, 연도별 세법 기준표</li>
+            <li><b>발표</b>고객 자가진단 16문항, 슬라이더 시뮬레이션, 발표 모드 · A4 인쇄</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="ak-sub rv"><h4>샘플 제안서</h4><p>한보금ON으로 만든 실제 제안서의 첫 장입니다. 고객 이름 · 연락처는 가렸습니다.</p></div>
+      <div class="ak-smp"><figure class="ak-s rv"><div class="ak-th"><img src="img/samples/s-ppt.jpg" alt="보험 비교분석 발표자료 첫 장 (예시)" loading="lazy"></div><figcaption><span>PPT</span><b>보험 비교분석 발표자료</b><small>기존 · 신규 · 합산 보험료를 한 장에</small></figcaption></figure><figure class="ak-s rv d1"><div class="ak-th"><img src="img/samples/s-report.jpg" alt="상품 비교분석 보고서 첫 장 (예시)" loading="lazy"></div><figcaption><span>PDF</span><b>상품 비교분석 보고서</b><small>목돈마련 상품 2종 비교</small></figcaption></figure><figure class="ak-s rv d2"><div class="ak-th"><img src="img/samples/s-compare.jpg" alt="간편건강보험 담보 비교 첫 장 (예시)" loading="lazy"></div><figcaption><span>PDF</span><b>간편건강보험 담보 비교</b><small>보험사별 담보와 보험료 비교</small></figcaption></figure><figure class="ak-s rv d3"><div class="ak-th"><img src="img/samples/s-plan2.jpg" alt="실손 · 종합 설계 2안 비교 첫 장 (예시)" loading="lazy"></div><figcaption><span>PDF</span><b>실손 · 종합 설계 2안 비교</b><small>두 가지 설계안을 나란히</small></figcaption></figure></div>
+
+      <div class="ak-sub rv"><h4>금융계산기 <em>37종</em></h4><p>상담 자리에서 고객과 함께 숫자를 바로 확인합니다. 5개 분야로 나눠 두었습니다.</p></div>
+      <div class="akc rv">
+        <div class="akc-tabs" role="tablist"><button type="button" data-k="akc-cover" class="on">보장 진단 <small>9</small></button><button type="button" data-k="akc-retire">노후 · 연금 <small>9</small></button><button type="button" data-k="akc-money">저축 · 대출 <small>9</small></button><button type="button" data-k="akc-tax">세금 <small>5</small></button><button type="button" data-k="akc-corp">법인 컨설팅 <small>5</small></button></div>
+        <div class="akc-ps"><div class="akc-p on" id="akc-cover"><p class="akc-w">보장 상담에 바로 쓰는 계산기</p><ul><li>사망보장 필요액<em>계산기</em></li><li>중대질병(암·뇌·심장) 필요자금<em>계산기</em></li><li>간병·장기요양 필요액<em>계산기</em></li><li>자녀보험 필요액<em>계산기</em></li><li>적정 보험료 진단<em>계산기</em></li><li>정기 vs 종신 비교<em>계산기</em></li><li>의료비 부담 (실손 있을 때·없을 때)<em>계산기</em></li><li>환급률·연환산 수익률<em>계산기</em></li><li>갱신형 보험료 증가<em>계산기</em></li></ul></div><div class="akc-p" id="akc-retire"><p class="akc-w">은퇴 설계에 바로 쓰는 계산기</p><ul><li>은퇴자금<em>계산기</em></li><li>연금 수령액<em>계산기</em></li><li>노후자금 인출 기간<em>계산기</em></li><li>연금저축·IRP 세액공제<em>계산기</em></li><li>국민연금 수령 시기 비교<em>계산기</em></li><li>은퇴 크레바스<em>계산기</em></li><li>3층 연금 점검<em>계산기</em></li><li>퇴직금<em>계산기</em></li><li>퇴직소득세 · 일시금 vs 연금<em>계산기</em></li></ul></div><div class="akc-p" id="akc-money"><p class="akc-w">목돈 상담에 바로 쓰는 계산기</p><ul><li>미래가치 (목돈+적립)<em>계산기</em></li><li>현재가치<em>계산기</em></li><li>복리 vs 단리<em>계산기</em></li><li>목표자금 월 저축액<em>계산기</em></li><li>대출 상환<em>계산기</em></li><li>연평균 수익률<em>계산기</em></li><li>물가 반영 실질가치<em>계산기</em></li><li>비상자금 진단<em>계산기</em></li><li>기회비용<em>계산기</em></li></ul></div><div class="akc-p" id="akc-tax"><p class="akc-w">절세 상담에 바로 쓰는 계산기</p><ul><li>상속세<em>계산기</em></li><li>증여세<em>계산기</em></li><li>종합소득세 세율<em>계산기</em></li><li>금융소득 종합과세<em>계산기</em></li><li>4대보험<em>계산기</em></li></ul></div><div class="akc-p" id="akc-corp"><p class="akc-w">CEO 상담에 바로 쓰는 계산기</p><ul><li>법인세<em>계산기</em></li><li>가지급금 인정이자<em>계산기</em></li><li>임원 퇴직금 한도<em>계산기</em></li><li>키맨 리스크<em>계산기</em></li><li>비상장주식 가치 (간이)<em>계산기</em></li></ul></div></div>
+      </div>
+      <p class="ak-note rv">계산 결과는 공개된 법령 · 세법 기준을 적용한 상담용 참고값입니다. 샘플 제안서는 예시이며 상품 · 보험료는 고객마다 다릅니다.</p>
+    </div>
+
     <div class="routine">
       <div class="rt rv"><i>1</i><div><b>상담 전</b><span>수수료·시책 조회, AI 보장분석</span></div></div>
       <div class="rt rv d1"><i>2</i><div><b>계약 후</b><span>계약 입력 → 실적 바로 반영</span></div></div>
@@ -1922,7 +2012,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:#E6CF97">신채널 홈페이지 1탄 · v1.0 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:#E6CF97">신채널 홈페이지 1탄 · v1.1 (2026.10.30)</p>
       </div>
     </div>
   </div>
@@ -1996,6 +2086,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   }
   autoTabs('.seg button','.rk','r');
   autoTabs('.tg-tabs button','.tg','t');
+  autoTabs('.akc-tabs button','.akc-p','k');
   /* DB 영업 지원: 속성 버튼으로 해당 DB 강조 (3초마다 자동, 누르면 멈춤) */
   (function(){var bs=[].slice.call(document.querySelectorAll('.db-chips button')),cs=[].slice.call(document.querySelectorAll('.db-card')),tm=null;
     function pick(b){bs.forEach(function(x){x.classList.toggle('on',x===b)});var f=b.dataset.f;cs.forEach(function(c){var hit=f==='all'||(' '+c.dataset.tags+' ').indexOf(' '+f+' ')>-1;c.classList.toggle('off',!hit);c.classList.toggle('hit',hit&&f!=='all');});}

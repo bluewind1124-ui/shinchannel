@@ -198,6 +198,15 @@ body.mopen .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45deg)
 .hc h4{font-size:19px;margin:10px 0 6px}
 .hc p{font-size:15px;color:var(--ink2)}
 .hc .hp{margin-top:16px;height:170px}
+/* 연혁 카드 아래 해당 보험사 로고 */
+.hc .lgs{margin-top:16px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.hc .lgs span{height:46px;border:1px solid var(--line);border-radius:4px;background:#fff;display:grid;place-items:center;overflow:hidden}
+.hc .lgs img{width:96%;height:auto}
+.hc.wide{width:600px}
+.hc .lgs.w4{grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.hc .lgs.w4 span{height:38px}
+.hc .lgs-k{margin-top:14px;font-size:13px!important;font-weight:700;color:var(--mute)!important}
+@media (max-width:640px){.hc.wide{width:300px}.hc .lgs.w4{grid-template-columns:repeat(3,1fr)}.hc .lgs.w4 span{height:32px}}
 .hist-bar{margin:40px auto 0;width:min(var(--max),calc(100% - 48px));height:2px;background:var(--line);position:relative}
 .hist-bar i{position:absolute;left:0;top:0;height:100%;width:0;background:var(--gold)}
 /* CI */
@@ -535,6 +544,10 @@ body.mopen .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45deg)
 .edu-tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
 .edu-p{display:none;margin-top:24px}
 .edu-p.on{display:block;animation:fpIn .6s var(--ease)}
+/* 두 탭을 같은 자리에 겹쳐 두어, 탭이 바뀌어도 높이가 그대로 (아래 내용이 밀리지 않음) */
+.edu-stack{display:grid;margin-top:24px}
+.edu-stack>.edu-p{display:block;grid-area:1/1;margin-top:0;visibility:hidden;opacity:0}
+.edu-stack>.edu-p.on{visibility:visible;opacity:1}
 .days{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;position:relative}
 .day{background:var(--bg);border-radius:8px;padding:18px 16px 20px;position:relative;overflow:hidden;opacity:0;transform:translateY(20px);transition:.6s var(--ease)}
 .days.in .day{opacity:1;transform:none}
@@ -1180,10 +1193,10 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
         <div class="wrap hist-head"><div><p class="kick">연혁</p><h3 class="h3">2002년부터 한 걸음씩</h3></div><p class="small">저절로 넘어갑니다 · 마우스를 올리면 멈추고, 끌어서 넘겨 볼 수 있습니다</p></div>
         <span class="hist-year" id="histYear">2002</span>
         <div class="hist-view" id="histView"><div class="hist-track" id="histTrack">
-          <div class="hc" data-y="2002"><b>2002</b><h4>코인스(주) 설립</h4><p>교보생명 · 삼성화재 제휴로 출발</p></div>
-          <div class="hc" data-y="2004"><b>2003~04</b><h4>제휴 확대</h4><p>신한생명 · 메리츠화재 · 금호생명 · 대한생명</p></div>
-          <div class="hc" data-y="2008"><b>2008</b><h4>손해보험 강화</h4><p>미래에셋생명 · 현대 · 동부 · LIG · 흥국쌍용화재</p></div>
-          <div class="hc" data-y="2010"><b>2010</b><h4>생·손보 13개사</h4><p>알리안츠생명 제휴, 생보 7 · 손보 6</p></div>
+          <div class="hc" data-y="2002"><b>2002</b><h4>코인스(주) 설립</h4><p>교보생명 · 삼성화재 제휴로 출발</p><div class="lgs"><span title="교보생명"><img src="img/partners/l13.jpg" alt="교보생명" loading="lazy"></span><span title="삼성화재"><img src="img/partners/n04.jpg" alt="삼성화재" loading="lazy"></span></div></div>
+          <div class="hc" data-y="2004"><b>2003~04</b><h4>제휴 확대</h4><p>신한생명 · 메리츠화재 · 금호생명(현 KDB생명) · 대한생명(현 한화생명)</p><div class="lgs"><span title="신한생명"><img src="img/partners/l06.jpg" alt="신한생명" loading="lazy"></span><span title="메리츠화재"><img src="img/partners/n05.jpg" alt="메리츠화재" loading="lazy"></span><span title="KDB생명"><img src="img/partners/l15.jpg" alt="KDB생명" loading="lazy"></span><span title="한화생명"><img src="img/partners/l03.jpg" alt="한화생명" loading="lazy"></span></div></div>
+          <div class="hc" data-y="2008"><b>2008</b><h4>손해보험 강화</h4><p>미래에셋생명 · 현대 · 동부(현 DB) · LIG(현 KB손해) · 흥국쌍용화재(현 흥국화재)</p><div class="lgs"><span title="미래에셋생명"><img src="img/partners/l19.jpg" alt="미래에셋생명" loading="lazy"></span><span title="현대해상"><img src="img/partners/n02.jpg" alt="현대해상" loading="lazy"></span><span title="DB손해보험"><img src="img/partners/n07.jpg" alt="DB손해보험" loading="lazy"></span><span title="KB손해보험"><img src="img/partners/n10.jpg" alt="KB손해보험" loading="lazy"></span><span title="흥국화재"><img src="img/partners/n01.jpg" alt="흥국화재" loading="lazy"></span></div></div>
+          <div class="hc wide" data-y="2010"><b>2010</b><h4>생·손보 13개사</h4><p>알리안츠생명(현 ABL생명) 제휴, 생보 7 · 손보 6</p><div class="lgs w4"><span title="ABL생명"><img src="img/partners/l05.jpg" alt="ABL생명" loading="lazy"></span></div><p class="lgs-k">그 밖에 지금 함께하는 보험사</p><div class="lgs w4"><span title="흥국생명"><img src="img/partners/l01.jpg" alt="흥국생명" loading="lazy"></span><span title="현대라이프"><img src="img/partners/l02.jpg" alt="현대라이프" loading="lazy"></span><span title="처브라이프"><img src="img/partners/l04.jpg" alt="처브라이프" loading="lazy"></span><span title="삼성생명"><img src="img/partners/l07.jpg" alt="삼성생명" loading="lazy"></span><span title="메트라이프"><img src="img/partners/l08.jpg" alt="메트라이프" loading="lazy"></span><span title="라이나생명"><img src="img/partners/l09.jpg" alt="라이나생명" loading="lazy"></span><span title="동양생명"><img src="img/partners/l10.jpg" alt="동양생명" loading="lazy"></span><span title="DB생명"><img src="img/partners/l11.jpg" alt="DB생명" loading="lazy"></span><span title="NH농협생명"><img src="img/partners/l12.jpg" alt="NH농협생명" loading="lazy"></span><span title="AIA생명"><img src="img/partners/l14.jpg" alt="AIA생명" loading="lazy"></span><span title="KB생명"><img src="img/partners/l16.jpg" alt="KB생명" loading="lazy"></span><span title="IBK연금보험"><img src="img/partners/l17.jpg" alt="IBK연금보험" loading="lazy"></span><span title="푸르덴셜생명"><img src="img/partners/l18.jpg" alt="푸르덴셜생명" loading="lazy"></span><span title="ING생명"><img src="img/partners/l20.jpg" alt="ING생명" loading="lazy"></span><span title="iM라이프"><img src="img/partners/l21.jpg" alt="iM라이프" loading="lazy"></span><span title="한화손해보험"><img src="img/partners/n03.jpg" alt="한화손해보험" loading="lazy"></span><span title="롯데손해보험"><img src="img/partners/n06.jpg" alt="롯데손해보험" loading="lazy"></span><span title="NH농협손해보험"><img src="img/partners/n08.jpg" alt="NH농협손해보험" loading="lazy"></span><span title="MG손해보험"><img src="img/partners/n09.jpg" alt="MG손해보험" loading="lazy"></span><span title="더케이손해보험"><img src="img/partners/n11.jpg" alt="더케이손해보험" loading="lazy"></span><span title="AIG손해보험"><img src="img/partners/n12.jpg" alt="AIG손해보험" loading="lazy"></span></div></div>
           <div class="hc" data-y="2012"><b>2012</b><h4>리더스와 합병</h4><p>‘리더스코인스’로 규모 확대</p></div>
           <div class="hc big" data-y="2016"><b>2016</b><h4>한국보험금융 새출발</h4><p>CS라이프 합병, 사명 변경 · 인스모아 · MIC 합병</p><div class="ph hp"><img src="../img/heritage/hero.jpg" alt="한국보험금융 지사 사무실" loading="lazy"></div></div>
           <div class="hc" data-y="2021"><b>2021</b><h4>채종호 대표이사 취임</h4><p>생명보험 22개사 · 손해보험 12개사와 업무 제휴</p></div>
@@ -1614,6 +1627,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p class="lead" data-rv="up">지점장은 사람을 데려오고, 교육은 본사가 맡습니다. 경력에 따라 과정을 나눴습니다.</p>
           <figure class="ph" data-rv="wipe" style="aspect-ratio:16/7;margin-top:28px"><img src="img/edu.jpg" alt="교육장에서 강의를 듣는 30~40대 신입 FC들" loading="lazy" style="object-position:center 40%"></figure>
           <div class="edu-tabs" id="eduTabs"><button class="on" data-e="e1">무경력 입문 과정</button><button data-e="e2">경력 과정</button></div>
+          <div class="edu-stack">
           <div class="edu-p on" id="e1">
             <p style="font-size:15.5px;color:var(--ink2);margin-bottom:16px">5일이면 고객 앞에 설 준비가 됩니다. 1~3일차는 신인만, 4~5일차는 경력 FC와 함께 듣습니다. <span class="small">예) 2026.11.16(월)~20(금) 09:30~16:50</span></p>
             <div class="days" id="days">
@@ -1634,6 +1648,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
               <div class="pro"><b>보험사 연계 분기 교육 · 온라인 교육센터</b><span>주력상품 · 판매사례 · 새 노하우</span></div>
             </div>
             <figure class="ph" style="aspect-ratio:16/9;margin-top:14px"><img src="img/meeting.jpg" alt="경력 FC들의 사례 공유 회의" loading="lazy"></figure>
+          </div>
           </div>
         <div class="rmt" id="remote">
       <div class="rmt-hd" data-rv="up">
@@ -2052,7 +2067,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v2.1 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v2.3 (2026.10.30)</p>
       </div>
     </div>
   </div>

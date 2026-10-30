@@ -2287,6 +2287,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 /* 간편 지원: 아직 접수처가 연결되지 않아 안내만 띄움 */
 function applyForm(e){e.preventDefault();var t=document.getElementById('toast');t.textContent='초안 화면입니다. 접수처(구글 폼 등)를 연결하면 실제로 신청됩니다.';t.classList.add('show');setTimeout(function(){t.classList.remove('show')},3500);return false;}
 </script>
+<script src="js/sound.js"></script>
 <script src="js/branches.js"></script>
 <script src="js/korea-map.js"></script>
 <script src="js/kmap.js"></script>
@@ -2361,13 +2362,14 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
   var q=function(c){return it.querySelector(c)},sky=q('.it-sky'),fog=q('.it-fog'),m1=q('.m1'),m2=q('.m2'),m3=q('.m3'),
       t1=[].slice.call(it.querySelectorAll('.t1 i')),t2=q('.t2'),bolt=q('.it-bolt'),fl=q('.it-flash'),hero=document.querySelector('.hero');
   var root=document.documentElement,ov=root.style.overflow;root.style.overflow='hidden';
-  var done=false,tms=[],raf=0,T=0;
+  var done=false,tms=[],raf=0,T=0,t00=performance.now();
   function A(el,k,o){return el.animate(k,Object.assign({fill:'forwards',easing:'ease-in-out'},o));}
   function at(ms,f){tms.push(setTimeout(f,ms));}
   function finish(){if(done)return;done=true;tms.forEach(clearTimeout);cancelAnimationFrame(raf);
     var a=it.animate([{opacity:getComputedStyle(it).opacity},{opacity:0}],{duration:400,fill:'forwards'});
     a.onfinish=function(){it.remove();root.style.overflow=ov;};
-    if(!it.classList.contains('open')&&window.heroShow)window.heroShow(0);}
+    if(!it.classList.contains('open')&&window.heroShow)window.heroShow(0);
+    if(window.SND)SND.startBgm(T&&performance.now()-t00>T?1600:400);}
   /* 운무가 계속 흐름 */
   A(fog,[{transform:'scale(1.06)'},{transform:'scale(1.16) translateX(-1.5%)'}],{duration:5200,easing:'linear'});
   A(m1,[{transform:'translateX(-8%) scale(1.25)'},{transform:'translateX(6%) scale(1.32)'}],{duration:6000,easing:'linear'});
@@ -2378,10 +2380,11 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
   /* 문구 위로 옅은 안개가 한 번 지나감 */
   A(m3,[{opacity:0,transform:'translateX(30%) scale(1.5)'},{opacity:.35,transform:'translateX(0) scale(1.5)'},{opacity:0,transform:'translateX(-30%) scale(1.5)'}],{duration:3200,delay:1600,easing:'linear',fill:'none'});
   /* 2.2초 · 3.9초: 멀리서 번쩍 */
-  [2200,3900].forEach(function(ms,k){at(ms,function(){fl.animate([{opacity:0},{opacity:k?.28:.18},{opacity:0},{opacity:k?.16:.1},{opacity:0}],{duration:440});})});
+  [2200,3900].forEach(function(ms,k){at(ms,function(){fl.animate([{opacity:0},{opacity:k?.28:.18},{opacity:0},{opacity:k?.16:.1},{opacity:0}],{duration:440});if(window.SND)SND.rumble(k?.7:.4);})});
   /* 5.0초: 큰 번개 */
   T=5000;
   at(T,function(){
+    if(window.SND)SND.thunder();
     bolt.animate([{opacity:0,clipPath:'inset(0 0 100% 0)'},{opacity:1,clipPath:'inset(0 0 0% 0)'}],{duration:110,easing:'ease-out',fill:'forwards'});
     bolt.animate([{opacity:1},{opacity:.3},{opacity:1},{opacity:.7},{opacity:0}],{duration:1100,delay:120,fill:'forwards'});
     fl.animate([{opacity:0},{opacity:1},{opacity:.35},{opacity:.9},{opacity:0}],{duration:700,delay:50,easing:'ease-out',fill:'forwards'});

@@ -36,7 +36,7 @@
   --navy:#0F2340; --navy2:#1D3557; --navy3:#2E4A72; --navy-d:#0A1830;
   --gold:#CD9B34; --gold-l:#E6CF97; --gold-bg:#FBF4E3; --gold-t:#7C5916;
   --ink:#18202E; --ink2:#3D4757; --mute:#667185; --line:#E1E6ED; --bg:#F3F5F8;
-  --max:1200px; --ease:cubic-bezier(.2,.7,.2,1);
+  --max:1560px; --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:76px}
@@ -44,7 +44,7 @@ body{font-family:'IBM Plex Sans KR',sans-serif;color:var(--ink);background:#fff;
 h1,h2,h3,.gt{font-family:'Gothic A1',sans-serif;font-weight:800;letter-spacing:-0.02em;line-height:1.25;text-wrap:balance}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(24px,3.2vw,56px)}
 section{padding:120px 0;position:relative}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--gold-t);margin-bottom:16px}
 .eyebrow::before{content:"";width:28px;height:2px;background:var(--gold)}
@@ -1006,7 +1006,8 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 /* 세 겹 구조: 예전/이제 비교 + 쌓여 가는 블록 */
 .unst{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin:20px 0 4px}
 .unst>div{border-radius:8px;padding:14px 16px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
-.unst svg{width:100%;max-width:150px;height:40px;margin:6px 0 4px}
+.unst svg{width:100%;height:clamp(64px,7vw,96px);margin:10px 0 10px;overflow:visible}
+.unst polyline{vector-effect:non-scaling-stroke;stroke-width:4}
 .un-k{font:800 12.5px 'Gothic A1';color:var(--mute)}
 .un-a .un-k{color:var(--gold-t)}
 .unst b{font-size:15px;color:var(--navy)}
@@ -1363,9 +1364,9 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
         <h3>달마다 오르내리던 FC 수입,<br><em>이제는 영업 · 오버라이딩 · 장기근속 성장지원금으로 쌓아 갑니다</em></h3>
         <p class="st-lead">FC에게 가장 큰 고민은 달마다 들쭉날쭉한 수입입니다. 영업 수입 하나만으로는 한 달 실적에 따라 수입이 크게 흔들립니다. 신채널에서는 영업 수입 위에 리크루팅 오버라이딩과 장기근속 성장지원금이 해마다 더해져, 한 달이 아쉬워도 수입 전체가 무너지지 않습니다.</p>
         <div class="unst">
-          <div class="un-b"><span class="un-k">예전</span><svg viewBox="0 0 120 40" aria-hidden="true"><polyline points="2,28 14,10 26,30 38,14 50,34 62,8 74,26 86,12 98,32 110,16 118,24" fill="none" stroke="#A3182E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><b>영업 수입 하나뿐</b><small>달마다 오르내려 불안합니다</small></div>
+          <div class="un-b"><span class="un-k">예전</span><svg viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><polyline points="2,28 14,10 26,30 38,14 50,34 62,8 74,26 86,12 98,32 110,16 118,24" fill="none" stroke="#A3182E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><b>영업 수입 하나뿐</b><small>달마다 오르내려 불안합니다</small></div>
           <i class="un-ar" aria-hidden="true">→</i>
-          <div class="un-a"><span class="un-k">이제</span><svg viewBox="0 0 120 40" aria-hidden="true"><g class="m1"><rect x="4" y="24" width="24" height="16"/><rect x="34" y="24" width="24" height="16"/><rect x="64" y="24" width="24" height="16"/><rect x="94" y="24" width="24" height="16"/></g><g class="m2"><rect x="4" y="21" width="24" height="3"/><rect x="34" y="17" width="24" height="7"/><rect x="64" y="13" width="24" height="11"/><rect x="94" y="9" width="24" height="15"/></g><g class="m3"><rect x="34" y="13" width="24" height="4"/><rect x="64" y="7" width="24" height="6"/><rect x="94" y="1" width="24" height="8"/></g></svg><b>영업 + 오버라이딩 + 성장지원금</b><small>세 겹이 차곡차곡 쌓입니다</small></div>
+          <div class="un-a"><span class="un-k">이제</span><svg viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><g class="m1"><rect x="4" y="24" width="24" height="16"/><rect x="34" y="24" width="24" height="16"/><rect x="64" y="24" width="24" height="16"/><rect x="94" y="24" width="24" height="16"/></g><g class="m2"><rect x="4" y="21" width="24" height="3"/><rect x="34" y="17" width="24" height="7"/><rect x="64" y="13" width="24" height="11"/><rect x="94" y="9" width="24" height="15"/></g><g class="m3"><rect x="34" y="13" width="24" height="4"/><rect x="64" y="7" width="24" height="6"/><rect x="94" y="1" width="24" height="8"/></g></svg><b>영업 + 오버라이딩 + 성장지원금</b><small>세 겹이 차곡차곡 쌓입니다</small></div>
         </div>
       </div>
       <div class="st-grid">

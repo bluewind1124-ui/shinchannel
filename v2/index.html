@@ -1024,7 +1024,8 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 /* 세 겹 구조: 예전/이제 비교 + 쌓여 가는 블록 */
 .unst{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin:20px 0 4px}
 .unst>div{border-radius:8px;padding:14px 16px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
-.unst svg{width:100%;max-width:150px;height:40px;margin:6px 0 4px}
+.unst svg{width:100%;height:clamp(64px,7vw,96px);margin:10px 0 10px;overflow:visible}
+.unst polyline{vector-effect:non-scaling-stroke;stroke-width:4}
 .un-k{font:800 12.5px 'Gothic A1';color:var(--mute)}
 .un-a .un-k{color:var(--gold-t)}
 .unst b{font-size:15px;color:var(--navy)}
@@ -1047,6 +1048,10 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 @media (max-width:640px){.unst{grid-template-columns:1fr}.un-ar{transform:rotate(90deg);justify-self:center}}
 
 .bl{display:inline-block;filter:blur(5px);user-select:none;-webkit-user-select:none;pointer-events:none}
+
+.ph.rot3{position:relative}
+.ph.rot3 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease,transform 1.8s var(--ease)}
+.ph.rot3 img.on{opacity:1}
 </style>
 </head>
 <body>
@@ -1640,7 +1645,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p class="lead" data-rv="up">VIP 세미나와 연계해 직영 WM본부를 운영합니다. 고액 자산가, 법인 대표 상담이 필요할 때 각 보험사의 전문 센터와 바로 연결합니다.</p>
           <div class="two">
             <div class="wm-orbit" data-rv="zoom"><div class="ring"></div><div class="core"><div>직영채널<br>WM본부<small>컨트롤 타워</small></div></div><div id="sats"></div></div>
-            <figure class="ph" data-rv="wipe" style="aspect-ratio:4/3"><img src="../img/vip-2.jpg" alt="VIP 세미나에서 발표를 듣는 고객들" loading="lazy"></figure>
+            <figure class="ph rot3" id="wmRot" data-rv="wipe" style="aspect-ratio:4/3"><img class="on" src="../img/vip-2.jpg" alt="VIP 세미나에서 발표를 듣는 고객들" loading="lazy"><img src="../img/vip-1.jpg" alt="세미나에서 강의를 듣는 고객과 FC들" loading="lazy"><img src="../img/vip-3.jpg" alt="질의응답 중인 세미나 현장" loading="lazy"></figure>
           </div>
         </div>
       </div>
@@ -1680,9 +1685,9 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
         <h3 class="h3">달마다 오르내리던 FC 수입,<br><em>이제는 세 겹으로 쌓아 갑니다</em></h3>
         <p class="lead" style="font-size:16px">FC에게 가장 큰 고민은 달마다 들쭉날쭉한 수입입니다. 신채널에서는 영업 수입 위에 리크루팅 오버라이딩과 장기근속 성장지원금이 해마다 더해집니다. 장기근속 성장지원금은 13회차 유지를 거쳐 2년차(15차월)부터 매월, 정산월초P 기준으로 지급합니다.</p>
         <div class="unst dk">
-          <div class="un-b"><span class="un-k">예전</span><svg viewBox="0 0 120 40" aria-hidden="true"><polyline points="2,28 14,10 26,30 38,14 50,34 62,8 74,26 86,12 98,32 110,16 118,24" fill="none" stroke="#A3182E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><b>영업 수입 하나뿐</b><small>달마다 오르내려 불안합니다</small></div>
+          <div class="un-b"><span class="un-k">예전</span><svg viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><polyline points="2,28 14,10 26,30 38,14 50,34 62,8 74,26 86,12 98,32 110,16 118,24" fill="none" stroke="#A3182E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg><b>영업 수입 하나뿐</b><small>달마다 오르내려 불안합니다</small></div>
           <i class="un-ar" aria-hidden="true">→</i>
-          <div class="un-a"><span class="un-k">이제</span><svg viewBox="0 0 120 40" aria-hidden="true"><g class="m1"><rect x="4" y="24" width="24" height="16"/><rect x="34" y="24" width="24" height="16"/><rect x="64" y="24" width="24" height="16"/><rect x="94" y="24" width="24" height="16"/></g><g class="m2"><rect x="4" y="21" width="24" height="3"/><rect x="34" y="17" width="24" height="7"/><rect x="64" y="13" width="24" height="11"/><rect x="94" y="9" width="24" height="15"/></g><g class="m3"><rect x="34" y="13" width="24" height="4"/><rect x="64" y="7" width="24" height="6"/><rect x="94" y="1" width="24" height="8"/></g></svg><b>영업 + 오버라이딩 + 성장지원금</b><small>세 겹이 차곡차곡 쌓입니다</small></div>
+          <div class="un-a"><span class="un-k">이제</span><svg viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true"><g class="m1"><rect x="4" y="24" width="24" height="16"/><rect x="34" y="24" width="24" height="16"/><rect x="64" y="24" width="24" height="16"/><rect x="94" y="24" width="24" height="16"/></g><g class="m2"><rect x="4" y="21" width="24" height="3"/><rect x="34" y="17" width="24" height="7"/><rect x="64" y="13" width="24" height="11"/><rect x="94" y="9" width="24" height="15"/></g><g class="m3"><rect x="34" y="13" width="24" height="4"/><rect x="64" y="7" width="24" height="6"/><rect x="94" y="1" width="24" height="8"/></g></svg><b>영업 + 오버라이딩 + 성장지원금</b><small>세 겹이 차곡차곡 쌓입니다</small></div>
         </div>
         <div class="legend"><span><i style="background:var(--navy3)"></i>개인 영업 수입</span><span><i style="background:var(--gold)"></i>오버라이딩</span><span><i style="background:var(--gold-l)"></i>장기근속 성장지원금</span></div>
         <p class="src">개념도이며 실제 금액 비율이 아닙니다. 지급 기준은 회사 규정에 따르며 소득을 보장하지 않습니다. <span class="chk">공개 범위 확인</span></p>
@@ -1993,7 +1998,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.3 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.4 (2026.10.30)</p>
       </div>
     </div>
   </div>
@@ -2130,7 +2135,15 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 
   /* 교육 탭 */
   function eduShow(k){$$('#eduTabs button').forEach(function(b){b.classList.toggle('on',b.dataset.e===k)});$$('.edu-p').forEach(function(p){p.classList.toggle('on',p.id===k)});if(k==='e1')reveal($('#days'));}
-  $$('#eduTabs button').forEach(function(b){b.onclick=function(){eduShow(b.dataset.e)}});
+  /* WM본부 옆 세미나 사진 3장: 화면에 보이는 동안 3초마다 부드럽게 바뀜 */
+  (function(){var f=$('#wmRot'),im=$$('img',f),i=0,v=false;if(reduce)return;
+    new IntersectionObserver(function(es){v=es[0].isIntersecting},{threshold:.2}).observe(f);
+    setInterval(function(){if(!v||document.hidden)return;im[i].classList.remove('on');i=(i+1)%im.length;im[i].classList.add('on')},3000);})();
+  var eVis=false,eUser=0;
+  $$('#eduTabs button').forEach(function(b){b.onclick=function(){eduShow(b.dataset.e);eUser=Date.now()+9000}});
+  /* 교육 과정: 화면에 보이는 동안 3초마다 무경력 ↔ 경력. 탭을 직접 누르면 9초 쉬었다가 다시 */
+  if(!reduce){new IntersectionObserver(function(es){eVis=es[0].isIntersecting},{threshold:.3}).observe($('#s-edu'));
+    setInterval(function(){if(!eVis||document.hidden||Date.now()<eUser)return;eduShow($('#eduTabs button.on').dataset.e==='e1'?'e2':'e1')},3000);}
 
   /* 모집 탭: 5초마다 넘어가고(밑줄이 차오름), 누르면 멈춤 */
   var rbs=$$('#rcTabs button'),rt=null,rIdx=0;

@@ -1103,6 +1103,45 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
   .rmt-dst{grid-template-columns:1fr 1fr;gap:12px}
   .rmt figcaption{font-size:12.5px}.rmt figcaption b{font-size:14px}
 }
+
+/* 신뢰의 연결 고리 (1탄과 같은 그림) */
+.trust{margin-top:96px;padding-top:64px;border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(28px,4vw,72px);align-items:center}
+.tr-title{font-size:clamp(26px,3.4vw,40px);margin-bottom:22px}
+.tr-title em{font-style:normal;color:var(--gold)}
+.tr-lead{font-size:17px;color:rgba(255,255,255,.82)}
+.tr-lead b{color:#fff}
+.tr-bad{list-style:none;margin:18px 0 22px;display:grid;gap:8px}
+.tr-bad li{position:relative;padding:10px 16px 10px 40px;border-radius:6px;background:rgba(224,100,90,.08);border:1px solid rgba(224,100,90,.22);color:rgba(255,255,255,.88);font-size:15px}
+.tr-bad li::before{content:"";position:absolute;left:16px;top:50%;width:12px;height:2px;background:#E8857C;transform:rotate(45deg)}
+.tr-bad li::after{content:"";position:absolute;left:16px;top:50%;width:12px;height:2px;background:#E8857C;transform:rotate(-45deg)}
+.tr-mid{font-size:17px;color:rgba(255,255,255,.82)}
+.tr-mid b{color:var(--gold-l)}
+.tr-promise{margin-top:18px;font:800 clamp(21px,2.4vw,28px)/1.4 'Gothic A1';color:#fff}
+.tr-promise em{font-style:normal;color:var(--gold)}
+.tr-fig{margin:0;border-radius:12px;background:radial-gradient(circle at 50% 45%,rgba(46,74,114,.55),rgba(10,24,48,0) 70%),rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:clamp(10px,2vw,24px)}
+.tr-fig svg{display:block;width:100%;height:auto;overflow:visible}
+.tr-fig .ln{fill:none;stroke:#9FB2CE;stroke-width:13;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.tr-fig .rg{transform-box:fill-box;transform-origin:center}
+.tr-fig .r2 path{transform-box:fill-box;transform-origin:center}
+.tr-fig .rg text{font:800 20px 'Gothic A1',sans-serif;fill:#fff;text-anchor:middle}
+.tr-fig .r2 .ga2{font-size:15px;fill:var(--gold-l);opacity:0}
+.tr-fig .pl{fill:#fff;opacity:0}
+.tr-fig .pl-glow{fill:var(--gold-l);opacity:0}
+.tr-fig .trk rect{fill:rgba(224,100,90,.16);stroke:#E8857C;stroke-width:1.5}
+.tr-fig .trk text{font:700 14px 'IBM Plex Sans KR',sans-serif;fill:#FFD9D4;text-anchor:middle}
+.tr-fig .tgi{opacity:0;transform-box:fill-box;transform-origin:center}
+.tr-fig .cap{font:700 16px 'IBM Plex Sans KR',sans-serif;fill:rgba(255,255,255,.75);text-anchor:middle;opacity:0}
+.tr-fig .c1{opacity:1}
+.tr-fig .c2{fill:#F2A79F}
+.tr-fig .c3{fill:var(--gold-l)}
+.tr-fig .c4{font:800 18px 'Gothic A1',sans-serif;fill:#fff}
+.tr-fig .rf{opacity:0;transform-box:view-box;transform-origin:260px 200px}
+.tr-fig .rf path{fill:none;stroke:url(#trGold);stroke-width:24;stroke-linecap:butt;filter:drop-shadow(0 3px 6px rgba(0,0,0,.45))}
+.tr-fig .rf text{font:800 14px 'Gothic A1',sans-serif;fill:#0A1830;text-anchor:middle;letter-spacing:.04em}
+.tr-fig .sh{fill:none;stroke:var(--gold);stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;opacity:.9}
+@media (max-width:960px){.trust{grid-template-columns:1fr}}
+@media (max-width:560px){.trust{margin-top:64px;padding-top:44px}.tr-fig{padding:4px;margin:0 -8px}.tr-fig .rg text{font-size:25px}.tr-fig .r2 .ga2{font-size:17px}.tr-fig .rf text{font-size:17px}.tr-fig .trk text{font-size:15px}.tr-fig .cap{font-size:20px}.tr-fig .c4{font-size:21px}.tr-bad li{font-size:14.5px}}
+.trust .tr-bad{max-width:none}
 </style>
 </head>
 <body>
@@ -1304,6 +1343,45 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
       <div class="rs"><b>2026.7</b><h4>1,200% 룰 적용</h4><p>정착지원금 · 시책까지 한도에 포함</p></div>
       <div class="rs"><b>2027.1</b><h4>4년 분급</h4><p>유지관리수수료 월 1.5% 이내, 최대 48개월</p></div>
       <div class="rs"><b>2029.1</b><h4>7년 분급</h4><p>월 0.8% 이내, 최대 84개월</p></div>
+    </div>
+    <!-- 신뢰의 연결 고리: 흔들리는 GA 제도 → FC의 이익을 지키는 회사 (1탄과 같은 그림) -->
+    <div class="trust" id="trust">
+      <div class="tr-txt">
+        <p class="kick" data-rv="up">신뢰의 연결 고리</p>
+        <h3 class="h3" data-rv="up">보험은 <em>고객 · GA · 보험사</em>의<br>신뢰로 이어진 고리입니다</h3>
+        <p class="lead" data-rv="up">그런데 일부 GA는 그 신뢰의 약속을 저버리곤 합니다. 규정과 시스템이 아니라 <b>오너의 의지에 따라 제도가 수시로 바뀝니다.</b></p>
+        <ul class="tr-bad" data-rv="up">
+          <li>지급률 부풀리기</li>
+          <li>환수금액 120% 산정</li>
+          <li>수시로 바뀌는 시상과 제도</li>
+          <li>GA 본사의 상황, 지사의 형편, 지사장의 능력에 따라 달라지는 조건</li>
+        </ul>
+        <p class="tr-mid" data-rv="up">수익이 분급으로 바뀌는 지금, 이 문제는 <b>얼마를 더 받느냐</b>보다 더 중요해집니다.</p>
+        <p class="tr-promise" data-rv="up">FC의 수고와 정당한 이익을 <em>지켜드립니다.</em></p>
+      </div>
+      <figure class="tr-fig" id="trFig" data-rv="zoom">
+        <svg viewBox="0 0 520 400" role="img" aria-label="고객, GA, 보험사가 고리로 이어진 그림. 가운데 GA 고리가 흔들려 끊어졌다가 금색으로 다시 단단히 이어집니다.">
+          <defs><linearGradient id="trGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1DCA4"/><stop offset=".5" stop-color="#CD9B34"/><stop offset="1" stop-color="#9C7220"/></linearGradient><filter id="trGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+          <g class="tr-shield"><path class="sh" pathLength="1" d="M58,286 Q260,368 462,286"/></g>
+          <g class="rg r1"><rect class="ln" pathLength="1" x="45" y="145" width="170" height="110" rx="55"/><text x="110" y="207">고객</text></g>
+          <g class="rg r3"><rect class="ln" pathLength="1" x="305" y="145" width="170" height="110" rx="55"/><text x="410" y="207">보험사</text></g>
+          <g class="rg r2">
+            <path class="ln hl" pathLength="1" d="M260,145 H230 A55,55 0 0 0 230,255 H260"/>
+            <path class="ln hr" pathLength="1" d="M260,145 H290 A55,55 0 0 1 290,255 H260"/>
+            <g class="rf rt"><path d="M175,200 A55,55 0 0 1 230,145 H290 A55,55 0 0 1 345,200"/><text x="260" y="150">제도</text></g>
+            <g class="rf rb"><path d="M345,200 A55,55 0 0 1 290,255 H230 A55,55 0 0 1 175,200"/><text x="260" y="260">시스템</text></g>
+            <text class="ga1" x="260" y="207">GA</text>
+            <text class="ga2" x="260" y="196"><tspan x="260">한국</tspan><tspan x="260" dy="20">보험금융</tspan></text>
+          </g>
+          <circle class="pl-glow" cx="45" cy="200" r="14" filter="url(#trGlow)"/>
+          <circle class="pl" cx="45" cy="200" r="6"/>
+          <g class="trk k1" transform="translate(30 44)"><g class="tgi"><rect width="138" height="34" rx="17"/><text x="69" y="22">지급률 부풀리기</text></g></g><g class="trk k2" transform="translate(300 44)"><g class="tgi"><rect width="192" height="34" rx="17"/><text x="96" y="22">환수금액 120% 산정</text></g></g><g class="trk k3" transform="translate(20 292)"><g class="tgi"><rect width="205" height="34" rx="17"/><text x="102" y="22">수시로 바뀌는 시상·제도</text></g></g><g class="trk k4" transform="translate(282 292)"><g class="tgi"><rect width="192" height="34" rx="17"/><text x="96" y="22">지사장 따라 다른 조건</text></g></g>
+          <text class="cap c1" x="260" y="104">신뢰로 이어진 연결 고리</text>
+          <text class="cap c2" x="260" y="104">오너의 뜻에 따라 흔들리는 고리</text>
+          <text class="cap c3" x="260" y="104">규정과 시스템으로 지키는 고리</text>
+          <text class="cap c4" x="260" y="388">FC의 수고와 정당한 이익을 지켜드립니다</text>
+        </svg>
+      </figure>
     </div>
     <div class="crit">
       <div>
@@ -2068,7 +2146,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v2.4 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v2.5 (2026.10.30)</p>
       </div>
     </div>
   </div>
@@ -2304,6 +2382,73 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
         else setTimeout(function(){bs.forEach(function(b){b.classList.add('off')});cols.forEach(function(c){c.classList.remove('full')});setTimeout(play,750)},3800)})();}
     new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis&&!run)play()},{threshold:.3}).observe(fig);
   });
+})();
+</script>
+<script>
+/* 신뢰의 연결 고리 그림: 이어짐 → GA 고리가 흔들려 끊어짐(문제 4가지) → 금색으로 다시 단단히 이어짐, 화면에 보일 때 반복
+   '움직임 줄이기' 설정에서도 보이도록 Web Animations로 움직임 */
+(function(){
+  var f=document.getElementById('trFig');if(!f||!f.animate||!('IntersectionObserver' in window))return;
+  var Q=function(c){return f.querySelector(c)},QA=function(c){return [].slice.call(f.querySelectorAll(c))};
+  var rings=QA('.ln'),r1=Q('.r1'),r2=Q('.r2'),r3=Q('.r3'),hl=Q('.hl'),hr=Q('.hr'),g1=Q('.ga1'),g2=Q('.ga2'),
+      pl=Q('.pl'),pg=Q('.pl-glow'),tags=QA('.tgi'),c1=Q('.c1'),c2=Q('.c2'),c3=Q('.c3'),c4=Q('.c4'),sh=Q('.sh');
+  var GRAY='#9FB2CE',RED='#E0645A',GOLD='#CD9B34',run=[],tms=[],vis=false,loop=null;
+  function A(el,k,o){var a=el.animate(k,Object.assign({fill:'forwards',easing:'cubic-bezier(.2,.7,.2,1)'},o));run.push(a);return a;}
+  function at(ms,fn){tms.push(setTimeout(fn,ms));}
+  function fade(el,a,b,ms,d){A(el,[{opacity:a},{opacity:b}],{duration:ms||400,delay:d||0});}
+  function pulse(color,d){
+    [pl,pg].forEach(function(el,k){A(el,[{transform:'translateX(0)',opacity:0},{opacity:k?.9:1,offset:.1},{opacity:k?.9:1,offset:.9},{transform:'translateX(430px)',opacity:0}],{duration:1500,delay:d,easing:'ease-in-out'});});
+    if(color)pg.style.fill=color;
+  }
+  function fl2(){A(r2,[{filter:'brightness(1)'},{filter:'brightness(1.7) drop-shadow(0 0 10px #E6CF97)'},{filter:'brightness(1)'}],{duration:600,fill:'none'});}
+  function cycle(){
+    run.forEach(function(a){a.cancel()});run=[];tms.forEach(clearTimeout);tms=[];pg.style.fill='';
+    /* 0초: 세 고리가 그려지며 이어짐 */
+    rings.forEach(function(r,k){A(r,[{strokeDashoffset:1,stroke:GRAY},{strokeDashoffset:0,stroke:GRAY}],{duration:900,delay:k*180});});
+    fade(c1,0,1,500);
+    pulse(null,1100);
+    /* 2.7초: 가운데 GA 고리가 흔들림 */
+    at(2700,function(){
+      A(r2,[{transform:'none'},{transform:'translateX(-6px) rotate(-3deg)'},{transform:'translateX(6px) rotate(3deg)'},{transform:'translateX(-4px) rotate(-2deg)'},{transform:'translateX(3px)'},{transform:'none'}],{duration:600,easing:'linear'});
+      [hl,hr].forEach(function(h){A(h,[{stroke:GRAY},{stroke:RED}],{duration:500});});
+      fade(c1,1,0,300);fade(c2,0,1,400,200);
+    });
+    /* 3.3초: 고리가 끊어지고 문제가 하나씩 떠오름 */
+    at(3300,function(){
+      A(hl,[{transform:'none',stroke:RED},{transform:'translate(-16px,12px) rotate(-12deg)',stroke:RED}],{duration:700});
+      A(hr,[{transform:'none',stroke:RED},{transform:'translate(16px,-12px) rotate(12deg)',stroke:RED}],{duration:700});
+      A(r1,[{transform:'none'},{transform:'translateX(-14px) rotate(-4deg)'}],{duration:800});
+      A(r3,[{transform:'none'},{transform:'translateX(14px) rotate(4deg)'}],{duration:800});
+      A(g1,[{fill:'#fff'},{fill:'#F2A79F'}],{duration:400});
+      tags.forEach(function(t,k){A(t,[{opacity:0,transform:'scale(.6) translateY(10px)'},{opacity:1,transform:'scale(1.08)',offset:.7},{opacity:1,transform:'none'}],{duration:500,delay:200+k*380});});
+    });
+    /* 6.0초: 문제가 걷히고 금색으로 다시 이어짐 */
+    at(6000,function(){
+      tags.forEach(function(t){A(t,[{opacity:1,transform:'none'},{opacity:0,transform:'scale(.9) translateY(-6px)'}],{duration:400});});
+      fade(c2,1,0,300);
+      A(hl,[{transform:'translate(-16px,12px) rotate(-12deg)',stroke:RED},{transform:'none',stroke:GOLD}],{duration:900,delay:250,easing:'cubic-bezier(.3,1.4,.5,1)'});
+      A(hr,[{transform:'translate(16px,-12px) rotate(12deg)',stroke:RED},{transform:'none',stroke:GOLD}],{duration:900,delay:250,easing:'cubic-bezier(.3,1.4,.5,1)'});
+      A(r1,[{transform:'translateX(-14px) rotate(-4deg)'},{transform:'none'}],{duration:900,delay:250,easing:'cubic-bezier(.3,1.4,.5,1)'});
+      A(r3,[{transform:'translateX(14px) rotate(4deg)'},{transform:'none'}],{duration:900,delay:250,easing:'cubic-bezier(.3,1.4,.5,1)'});
+      [Q('.r1 .ln'),Q('.r3 .ln')].forEach(function(r){A(r,[{stroke:GRAY},{stroke:GOLD}],{duration:700,delay:600});});
+      fade(g1,1,0,300,400);fade(g2,0,1,500,700);
+      /* 끊어졌던 GA 고리에 더 두꺼운 보강 고리: 위는 제도, 아래는 시스템 */
+      A(Q('.rt'),[{opacity:0,transform:'translateY(-46px) scale(1.12)'},{opacity:1,transform:'translateY(3px)',offset:.75},{opacity:1,transform:'none'}],{duration:700,delay:1000,easing:'cubic-bezier(.3,0,.3,1)'});
+      A(Q('.rb'),[{opacity:0,transform:'translateY(46px) scale(1.12)'},{opacity:1,transform:'translateY(-3px)',offset:.75},{opacity:1,transform:'none'}],{duration:700,delay:1250,easing:'cubic-bezier(.3,0,.3,1)'});
+      at(1950,function(){fl2();});
+      fade(c3,0,1,500,700);
+    });
+    /* 7.2초: 받침선(약속)이 그려지고 금빛이 흐름 */
+    at(7200,function(){
+      A(sh,[{strokeDashoffset:1},{strokeDashoffset:0}],{duration:900});
+      fade(c4,0,1,600,500);
+      A(r2,[{transform:'none'},{transform:'scale(1.06)'},{transform:'none'}],{duration:700});
+      pulse('#E6CF97',200);
+    });
+  }
+  function start(){if(loop)return;cycle();loop=setInterval(cycle,11000);}
+  function stop(){clearInterval(loop);loop=null;}
+  new IntersectionObserver(function(es){vis=es[0].isIntersecting;vis?start():stop();},{threshold:.35}).observe(f);
 })();
 </script>
 </body>

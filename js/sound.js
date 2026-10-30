@@ -15,7 +15,7 @@
   /* ── 기본 준비 ── */
   function init(){
     if(ctx)return ctx;
-    try{ if(navigator.audioSession)navigator.audioSession.type='playback'; }catch(e){} /* 아이폰 무음 스위치 대응 */
+    try{ if(navigator.audioSession)navigator.audioSession.type='ambient'; }catch(e){} /* 아이폰: 화면을 나가면 함께 멈추는 방식 */
     ctx=new AC();
     master=ctx.createGain();master.gain.value=off?0:1;
     var lim=ctx.createWaveShaper(),cv=new Float32Array(2048);for(var i=0;i<2048;i++){var x=i/1023.5-1;cv[i]=Math.tanh(x*1.6)/Math.tanh(1.6);}
@@ -156,7 +156,10 @@
     off=v;wr(v);init();
     master.gain.cancelScheduledValues(ctx.currentTime);
     master.gain.setTargetAtTime(v?0:1,ctx.currentTime,.25);
-    if(!v){unlock();bgmWanted=true;if(running()&&!bgmOn)bgmGo(300);}
+    if(v){ /* 끄기: 음악을 완전히 멈춤 */
+      bgmOn=false;clearInterval(timer);
+      setTimeout(function(){if(off&&ctx.state==='running')ctx.suspend();},900);
+    } else {unlock();bgmWanted=true;if(running()&&!bgmOn)bgmGo(300);}
     paint();
   }
 
@@ -165,7 +168,7 @@
     var s=document.createElement('style');
     s.textContent='.snd-btn{position:fixed;left:20px;bottom:20px;z-index:65;display:flex;align-items:center;gap:8px;height:44px;min-width:44px;padding:0 12px;border-radius:999px;border:1px solid rgba(205,155,52,.75);background:rgba(15,35,64,.86);color:#fff;font:700 13px/1 "IBM Plex Sans KR","Noto Sans KR",sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(15,35,64,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s}'+
       '.snd-btn:hover{background:rgba(205,155,52,.9);color:#0F2340}'+
-      '.snd-btn svg{width:18px;height:18px;flex:none}'+
+      '.snd-btn svg{width:18px;height:18px;flex:none}.snd-btn *{pointer-events:none}'+
       '.snd-btn .eq{display:flex;align-items:flex-end;gap:2px;height:14px}.snd-btn .eq i{width:3px;background:#E6C77F;border-radius:1px;height:4px}'+
       '.snd-btn.play .eq i{animation:sndEq 1s ease-in-out infinite}.snd-btn.play .eq i:nth-child(2){animation-delay:.25s}.snd-btn.play .eq i:nth-child(3){animation-delay:.5s}'+
       '@keyframes sndEq{0%,100%{height:4px}50%{height:14px}}'+
@@ -182,7 +185,8 @@
     if(!btn)return;
     var playing=!off&&running()&&bgmOn, ask=!off&&!running();
     btn.className='snd-btn'+(playing?' play':'')+(ask?' ask':'');
-    btn.innerHTML=off?IC_OFF+'<span>소리 꺼짐</span>':ask?IC_ON+'<span>소리 켜기</span>':IC_ON+'<span class="eq"><i></i><i></i><i></i></span>';
+    var html=off?IC_OFF+'<span>소리 꺼짐</span>':ask?IC_ON+'<span>소리 켜기</span>':IC_ON+'<span class="eq"><i></i><i></i><i></i></span><span>BGM 끄기</span>';
+    if(btn.__h!==html){btn.innerHTML=html;btn.__h=html;} /* 같은 모양이면 다시 그리지 않음(누르는 도중 바뀌면 클릭이 사라짐) */
     btn.setAttribute('aria-label',off?'소리 켜기':'소리 끄기');
     btn.title=off?'눌러서 배경음악 켜기':ask?'눌러서 소리 듣기':'눌러서 소리 끄기';
     var ib=document.querySelector('.snd-intro');if(ib&&(off||running()))ib.remove();
@@ -210,9 +214,14 @@
   ['pointerdown','keydown','touchend'].forEach(function(ev){
     document.addEventListener(ev,function h(){if(!off)unlock();},{capture:true,passive:true});
   });
-  /* 다른 탭으로 가면 잠시 멈춤 */
+  /* 다른 탭·다른 앱으로 가거나 화면을 끄면 바로 소리를 멈춤 */
+  function hush(){if(!ctx||ctx.state==='closed')return;try{master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(0,ctx.currentTime);}catch(e){}ctx.suspend();}
+  function wake(){if(!ctx||ctx.state==='closed'||off||document.hidden)return;master.gain.setTargetAtTime(1,ctx.currentTime,.3);var p=ctx.resume();if(p&&p.then)p.then(paint);}
+  addEventListener('pagehide',function(){hush();}); /* 페이지를 떠나면 끔 */
+  addEventListener('pageshow',function(e){if(e.persisted)wake();});
+  addEventListener('blur',function(){if(document.hidden)hush();});
   document.addEventListener('visibilitychange',function(){
-    if(!ctx)return;if(document.hidden)ctx.suspend();else if(!off)ctx.resume().then&&ctx.resume().then(paint);
+    if(!ctx)return;if(document.hidden)hush();else wake();
   });
 
   /* 소리 잠금 상태를 미리 확인 (재방문 등으로 바로 켜지는 브라우저도 있음) */

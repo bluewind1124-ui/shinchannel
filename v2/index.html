@@ -35,7 +35,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:var(--hd)}
-body{font-family:'IBM Plex Sans KR',sans-serif;color:var(--ink);background:#fff;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'IBM Plex Sans KR',sans-serif;color:var(--ink);background:#fff;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
 h1,h2,h3,h4,.gt{font-family:'Gothic A1',sans-serif;font-weight:800;letter-spacing:-0.02em;line-height:1.25;text-wrap:balance}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -414,7 +414,8 @@ body.mopen .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45deg)
 
 /* ── 3. 영업 시스템 ── */
 .sys-wrap{display:grid;grid-template-columns:240px 1fr;gap:56px;align-items:start}
-.sys-nav{position:sticky;top:calc(var(--hd) + 24px);list-style:none;border-left:2px solid var(--line)}
+.sys-wrap>nav{position:sticky;top:calc(var(--hd) + 24px);align-self:start}
+.sys-nav{list-style:none;border-left:2px solid var(--line)}
 .sys-nav a{display:block;padding:7px 0 7px 18px;margin-left:-2px;border-left:2px solid transparent;font-size:15px;color:var(--mute);transition:color .25s,border-color .25s,padding .25s}
 .sys-nav a.dep{padding-left:32px;font-size:14px}
 .sys-nav a:hover{color:var(--navy)}
@@ -938,7 +939,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 /* ── 9. 금융소비자보호 ── */
 .fcp-wrap{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:start}
 .fcp-wrap>*{min-width:0}
-.fcp-nav{position:sticky;top:calc(var(--hd) + 24px)}
+.fcp-nav{position:sticky;top:calc(var(--hd) + 24px);align-self:start}
 .fcp-nav ul{list-style:none;margin:0;padding:0;border-top:2px solid var(--navy)}
 .fcp-nav button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;padding:15px 16px;font:500 15.5px 'IBM Plex Sans KR';color:var(--ink2);cursor:pointer;position:relative;transition:background .25s,color .25s}
 .fcp-nav button::after{content:"›";position:absolute;right:14px;color:var(--mute)}
@@ -1998,7 +1999,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.5 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.6 (2026.10.30)</p>
       </div>
     </div>
   </div>

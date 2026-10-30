@@ -179,7 +179,7 @@ footer b{color:#fff}
 @keyframes dash{to{stroke-dashoffset:-18}}
 .kpin{position:absolute;width:0;height:0;z-index:2;animation:pinIn .55s cubic-bezier(.3,1.5,.5,1) both}
 .kpin i{position:absolute;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);box-shadow:0 3px 8px rgba(15,35,64,.35);transition:transform .25s}
-.kpin i::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--gold);opacity:0}
+.kpin i::after{pointer-events:none;content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--gold);opacity:0}
 .kpin span{position:absolute;white-space:nowrap;font:700 12.5px/1 'IBM Plex Sans KR';color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;box-shadow:0 3px 10px rgba(15,35,64,.12);opacity:0;pointer-events:none;transition:.2s}
 .kpin.lab span{opacity:1}
 .kpin.d-r span{left:12px;top:-11px}.kpin.d-l span{right:12px;top:-11px}

@@ -703,7 +703,7 @@ body.mopen .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45deg)
 .kpin{position:absolute;width:0;height:0;z-index:2;opacity:0}
 .near-maps.in .kpin{animation:pinIn .55s cubic-bezier(.3,1.5,.5,1) both}
 .kpin i{position:absolute;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;background:var(--navy);border:3px solid var(--gold);box-shadow:0 3px 8px rgba(15,35,64,.35);transition:transform .25s}
-.kpin i::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--gold);opacity:0}
+.kpin i::after{pointer-events:none;content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid var(--gold);opacity:0}
 .kpin span{position:absolute;white-space:nowrap;font:700 12.5px/1 'IBM Plex Sans KR';color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;box-shadow:0 3px 10px rgba(15,35,64,.12);opacity:0;pointer-events:none;transition:.2s}
 .kpin.lab span{opacity:1}
 .kpin.d-r span{left:12px;top:-11px}.kpin.d-l span{right:12px;top:-11px}
@@ -1034,8 +1034,9 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 .un-b small{color:#A3182E}
 .un-a{border-color:var(--gold)!important;background:var(--gold-bg)!important}
 .un-ar{align-self:center;font-style:normal;font:800 22px 'Gothic A1';color:var(--gold)}
-.un-b polyline{stroke-dasharray:260;animation:unDraw 4s ease-in-out infinite}
-@keyframes unDraw{0%{stroke-dashoffset:260}45%,100%{stroke-dashoffset:0}}
+.un-b polyline{stroke:#A3182E}
+.unst.dk .un-b polyline{stroke:#FFFFFF}
+.unst.dk .un-b svg{filter:drop-shadow(0 0 6px rgba(255,255,255,.25))}
 .unst .m1{fill:#2E4A72}.unst .m2{fill:#CD9B34}.unst .m3{fill:#1E6B4F}.unst.dk .m1{fill:#7C91B0}.unst.dk .m3{fill:#E6CF97}
 .unst.dk>div{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
 .unst.dk .un-a{background:rgba(205,155,52,.14)!important}
@@ -1999,7 +2000,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.6 (2026.10.30)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v1.8 (2026.10.30)</p>
       </div>
     </div>
   </div>

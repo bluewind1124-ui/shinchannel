@@ -16,7 +16,7 @@ window.KMAP = (function(){
       +'.kpin.hqp i::before{content:"";position:absolute;left:4px;top:4px;width:8px;height:8px;background:#0F2340;border-radius:1px}'
       +'.kpin.hqp:hover i,.kpin.hqp.hl i{transform:rotate(45deg) scale(1.2);background:#CD9B34;border-color:#0F2340}'
       +'.kpin.hqp.lab span{opacity:1;background:#0F2340;color:#fff;border-color:#0F2340;font-weight:800}'
-      +'.kpin.hqp.d-r span{left:16px}'
+      +'.kpin.hqp.d-b span{top:16px}.kpin i::after{pointer-events:none}'
       +'.kpin.hqp:not(.lab) i{left:-7px;top:-7px;width:14px;height:14px;border-width:2px}.kpin.hqp:not(.lab) i::before{left:2px;top:2px;width:6px;height:6px}';
     document.head.appendChild(st);
   }
@@ -58,7 +58,7 @@ window.KMAP = (function(){
     if(opt.noHq) return;
     hqCss();
     var hq = XY(HQ.lat,HQ.lng), h = document.createElement('a');
-    h.className = 'kpin hqp'+(mode==='metro'?' lab':'')+' d-r';
+    h.className = 'kpin hqp'+(mode==='metro'?' lab':'')+' d-b';
     h.href = HQ.map; h.target = '_blank'; h.rel = 'noopener';
     h.title = '한국보험금융 본사 · '+HQ.addr;
     h.style.left = ((hq[0]-vb[0])/vb[2]*100)+'%'; h.style.top = ((hq[1]-vb[1])/vb[3]*100)+'%'; h.style.animationDelay = '0.3s';

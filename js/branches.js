@@ -38,7 +38,36 @@ window.BRANCHES = [
     ],
     closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 헤리티지에서', img: 'img/heritage/g13.jpg' }
   }
-  ,{ no: 1, id: 'bucheon', name: '부천지사', addr: '경기도 부천시 소사구 경인로 386, 1층 (소사본동, 엠제이타워)', ceo: '정원', tel: '010-3536-3097', lat: 37.48203, lng: 126.80371 }
+  ,{
+    no: 1, id: 'bucheon',
+    name: '부천지사',
+    en: 'BUCHEON BRANCH',
+    addr: '경기도 부천시 소사구 경인로 386, 1층 (소사본동, 엠제이타워)',
+    ceo: '정원',
+    tel: '010-3536-3097',          // 기존 명단 번호 (PPT 대표번호: 031-207-8800)
+    lat: 37.48203, lng: 126.80371,
+    tagline: '당신은 당당한 전문가입니다',
+    intro: '영업 스킬보다 사람과 문화를 먼저 생각하는 한국보험금융 신채널 부천지사입니다. 1호선·서해선 소사역 바로 옆에 있어 인천·부천·금천·구로 어디서든 오가기 좋고, 업무 공간과 교육장, 고객접견실, 미팅룸, 그린 라운지를 갖췄습니다. 신입은 기초 교육부터, 경력은 여러 보험사 상품과 좋은 문화 속에서 함께 성장합니다.',
+    philosophy: '영업 스킬보다 사람과 문화를 먼저 생각하는 지사',
+    video: 'img/bucheon/tour.mp4',
+    poster: 'img/bucheon/poster.jpg',
+    hero: 'img/bucheon/hero.jpg',   // 첫 화면 배경
+    spaces: [
+      { tag: 'WELCOME', t: '소사역 앞, 신채널 부천지사', d: '한국보험금융 신채널 부천지사에 오신 것을 환영합니다', img: 'img/bucheon/g01.jpg' },
+      { tag: 'OUR VALUE', t: '사랑과 행복이 넘치는 지사', d: '영업 스킬보다 사람과 문화를 먼저 생각합니다', img: 'img/bucheon/g02.jpg' },
+      { tag: 'CULTURE', t: '고마운 사람, 부천지사', d: '동료를 고마운 사람으로 대하는 문화', img: 'img/bucheon/g03.jpg' },
+      { tag: 'WORKSPACE', t: '밝고 넓은 업무 공간', d: '개인 업무석과 게시판, 함께 일하는 사무실', img: 'img/bucheon/g04.jpg' },
+      { tag: 'VISION', t: '당신이 꿈꾸는 행복한 미래', d: '고객, 설계사, 가족까지 모두의 내일을 함께 만듭니다', img: 'img/bucheon/g05.jpg' },
+      { tag: 'GREEN LOUNGE', t: '잠시 쉬어 가는 창가', d: '초록이 가득한 그린 라운지', img: 'img/bucheon/g06.jpg' },
+      { tag: 'CONSULTING', t: '고객과 마주 앉는 상담 공간', d: '고객접견실, 고객을 자신 있게 지사로 초대하세요', img: 'img/bucheon/g07.jpg' },
+      { tag: 'LOUNGE', t: '1:1 맞춤 무료상담', d: '보험금 청구 상담 · 다이렉트 자동차보험 비교견적', img: 'img/bucheon/g08.jpg' },
+      { tag: 'MEETING ROOM', t: '팀 미팅과 동료 상담', d: '머리를 맞대고 함께 고민하는 미팅룸', img: 'img/bucheon/g09.jpg' },
+      { tag: 'TOGETHER', t: '이름을 불러 주는 동료들', d: '차 한 잔 나누며 서로를 응원하는 자리', img: 'img/bucheon/g10.jpg' },
+      { tag: 'EDUCATION', t: '상품 · 실무 교육 전용 공간', d: '처음 시작하는 분도 기초부터 배웁니다', img: 'img/bucheon/g11.jpg' },
+      { tag: 'TRAINING', t: '정기 교육과 화상 조회', d: '상품 판매 포인트와 실무를 꾸준히 공유합니다', img: 'img/bucheon/g12.jpg' }
+    ],
+    closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 부천에서', img: 'img/bucheon/g13.jpg' }
+  }
   ,{ no: 2, id: 'ilsan', name: '일산지사', addr: '경기도 고양시 일산동구 호수로 358-39, 605호·606호(백석동, 동문굿모닝타워1차)', ceo: '김소윤', tel: '010-6522-8088', lat: 37.64037, lng: 126.78676 }
   ,{ no: 3, id: 'thedream', name: '더드림지사', addr: '서울특별시 동대문구 왕산로 15, 4층(신설동, 남서울빌딩)', ceo: '박용하', tel: '010-6345-2654', lat: 37.57653, lng: 127.0253 }
   ,{ no: 5, id: 'songpa', name: '송파지사', addr: '서울 송파구 중대로 109 대동빌딩 7층 701호', ceo: '고현전', tel: '010-6311-5118', lat: 37.50389, lng: 127.12996 }

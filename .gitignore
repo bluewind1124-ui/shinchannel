@@ -1,0 +1,16 @@
+# 공개하지 않는 파일 (PC에만 보관)
+index_v1.html
+img/emblem.png
+img/g-ai.jpg
+img/g-app.jpg
+img/g-db.jpg
+img/g-intro.jpg
+img/g-team.jpg
+img/hero.jpg
+img/on-activity.webp
+img/on-sales.webp
+Thumbs.db
+desktop.ini
+
+# 2탄 작업 도구 (공개 안 함)
+v2/make_single_file.py

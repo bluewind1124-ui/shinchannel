@@ -104,7 +104,33 @@ window.BRANCHES = [
     ],
     closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 대전에서', img: 'img/daejeon/g13.jpg' }
   }
-  ,{ no: 10, id: 'seosan', name: '서산지사', addr: '충청남도 서산시 호수공원3로 52 행운빌딩 7층', ceo: '김인태', tel: '010-4537-7910', lat: 36.77572, lng: 126.44724 }
+  ,{
+    no: 10, id: 'seosan',
+    name: '서산지사',
+    en: 'SEOSAN BRANCH',
+    addr: '충청남도 서산시 호수공원3로 52 행운빌딩 7층',
+    ceo: '김인태',
+    tel: '010-4537-7910',          // 기존 명단 번호 (지사 대표번호: 041-429-9234)
+    lat: 36.77572, lng: 126.44724,
+    tagline: '매달 성장하는 가족 같은 지사',
+    intro: '2026년 5월 문을 연 한국보험금융 신채널 서산지사입니다. 서산 호수공원 중심, 행운빌딩 7층에 자리해 호수공원을 바라보며 일합니다. 2027년 상반기에는 호수공원 초록광장(2층)과 430대 규모 주차장(1층~지하 1층)이 완공될 예정입니다. 대표번호 041-429-9234.',
+    philosophy: '매달 성장하는 가족 같은 지사',
+    video: 'img/seosan/tour.mp4',
+    poster: 'img/seosan/poster.jpg',
+    hero: 'img/seosan/hero.jpg',   // 첫 화면 배경
+    spaces: [
+      { tag: 'WELCOME', t: '매달 성장하는 가족 같은 지사', d: '2026년 5월 문을 연 한국보험금융 신채널 서산지사', img: 'img/seosan/g01.jpg' },
+      { tag: 'LOCATION', t: '호수공원 중심, 행운빌딩 7층', d: '2027년 상반기 초록광장(2층) · 430대 주차장 완공 예정 (조감도)', img: 'img/seosan/infra.jpg' },
+      { tag: 'WORKSPACE', t: '햇살 드는 넓은 사무실', d: '창가를 따라 이어지는 개인 업무석', img: 'img/seosan/g02.jpg' },
+      { tag: 'OPEN OFFICE', t: '함께 일하는 오픈 오피스', d: '파티션 데스크 · 개인 수납장 · 화이트보드', img: 'img/seosan/g03.jpg' },
+      { tag: 'TEAM', t: '매달 함께 성장하는 동료들', d: '가족 같은 분위기 속에서 일합니다', img: 'img/seosan/g04.jpg' },
+      { tag: 'EDUCATION', t: '함께 보고, 함께 배우는 공간', d: '프로젝터 · 스크린을 갖춘 사무실', img: 'img/seosan/g05.jpg' },
+      { tag: 'LEADERSHIP', t: '지사장과 마주 앉는 자리', d: '지사장실 상담 테이블', img: 'img/seosan/g06.jpg' },
+      { tag: 'MEETING', t: '대형 화면을 갖춘 상담 테이블', d: '자료를 함께 보며 이야기 나누는 자리', img: 'img/seosan/g07.jpg' },
+      { tag: 'REFRESH', t: '잠깐의 여유, 탕비실', d: '커피 · 전자레인지 · 냉장고 · 정수기', img: 'img/seosan/g08.jpg' }
+    ],
+    closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 서산에서', img: 'img/seosan/g09.jpg' }
+  }
   ,{ no: 11, id: 'therich', name: '더리치지사', addr: '서울 중구 퇴계로 324, 성우빌딩 7층', ceo: '김효정', tel: '010-2035-1613', lat: 37.56119, lng: 126.98823 }
   ,{ no: 12, id: 'acemullae', name: '에이스문래지사', addr: '서울시 영등포구 당산로41길 11, SKV1센터 W동 1312호', ceo: '심규훈', tel: '010-6286-1189', lat: 37.53091, lng: 126.89787 }
   ,{ no: 13, id: 'epercul', name: '에퍼컬지사', addr: '서울시 영등포구 문래동3가 55-20 에이스하이테크시티 1동 315호', ceo: '김미화', tel: '010-4712-0766', lat: 37.51702, lng: 126.89591 }

@@ -73,7 +73,37 @@ window.BRANCHES = [
   ,{ no: 5, id: 'songpa', name: '송파지사', addr: '서울 송파구 중대로 109 대동빌딩 7층 701호', ceo: '고현전', tel: '010-6311-5118', lat: 37.50389, lng: 127.12996 }
   ,{ no: 6, id: 'chuncheon', name: '춘천지사', addr: '강원특별자치도 춘천시 안마산로 107-1, 제4층 제404호·405호(퇴계동, 에스엠프라자)', ceo: '이미순', tel: '010-5371-2854', lat: 37.84902, lng: 127.74763 }
   ,{ no: 7, id: 'uijeongbu', name: '의정부지사', addr: '경기도 의정부시 신흥로 220, 6층 (의정부동, 솔벗빌딩)', ceo: '정영진', tel: '010-7352-1863', lat: 37.73548, lng: 127.04345 }
-  ,{ no: 8, id: 'jamsil', name: '잠실지사', addr: '서울 송파구 오금로 111, 11층 (방이동, 세기빌딩)', ceo: '김영국', tel: '010-9660-3370', lat: 37.5126, lng: 127.10825 }
+  ,{
+    no: 8, id: 'jamsil',
+    name: '잠실지사',
+    en: 'JAMSIL BRANCH',
+    addr: '서울 송파구 오금로 111, 11층 (방이동, 세기빌딩)',
+    ceo: '김영국',
+    tel: '010-9660-3370',          // 기존 명단 번호 (PPT 지사 번호: 02-6956-6763)
+    lat: 37.5126, lng: 127.10825,
+    tagline: '송파의 중심, 잠실 석촌호수 입지',
+    intro: '석촌호수 바로 앞, 2호선·8호선·9호선이 지나는 송파의 중심에 자리한 한국보험금융 신채널 잠실지사입니다. 116평 규모의 단독 사용 사무실에 업무 책상 41석, 독립된 대규모 교육장과 TA ROOM, 회의실, 임원실, 석촌호수뷰 직원 휴게실을 갖췄습니다. 정례화된 조회 교육과 상품 특화 학습회, 1:1 고객 PT, 지사장·교육매니저 동반 영업, 법인·VVIP 고객 세미나로 설계사의 영업을 지원합니다.',
+    philosophy: '설계사를 위한 최상의 환경, 최상의 영업 지원',
+    video: 'img/jamsil/tour.mp4',
+    poster: 'img/jamsil/poster.jpg',
+    hero: 'img/jamsil/hero.jpg',   // 첫 화면 배경
+    spaces: [
+      { tag: 'WELCOME', t: '송파의 중심, 잠실지사', d: '한국보험금융 신채널 잠실지사에 오신 것을 환영합니다', img: 'img/jamsil/g01.jpg' },
+      { tag: 'WORKSPACE', t: '116평 단독 사용 사무실', d: '업무 책상 총 41석, 넓은 책상 간격', img: 'img/jamsil/g02.jpg' },
+      { tag: 'WORKSPACE', t: '넓고 쾌적한 업무 공간', d: '여유 있는 동선, 창가를 따라 이어지는 업무석', img: 'img/jamsil/g03.jpg' },
+      { tag: 'EDUCATION', t: '독립된 대규모 교육장', d: '정례화된 조회 교육과 상품 특화 학습회', img: 'img/jamsil/g04.jpg' },
+      { tag: 'MEETING ROOM', t: '독립 공간 회의실', d: '1:1 고객 PT도 편안하게', img: 'img/jamsil/g05.jpg' },
+      { tag: 'FOCUS', t: '분리된 TA ROOM', d: '독립된 공간에서 통화에만 집중', img: 'img/jamsil/g06.jpg' },
+      { tag: 'EXECUTIVE', t: '고능률 설계사를 위한 분리된 임원실', d: '마케팅 임원들을 위한 독립 공간', img: 'img/jamsil/g07.jpg' },
+      { tag: 'EXECUTIVE', t: '창밖으로 석촌호수가 보이는 방', d: '임원실에서 바라보는 호수와 도심', img: 'img/jamsil/g08.jpg' },
+      { tag: 'REFRESH', t: '석촌호수뷰 직원 휴게실', d: '일만큼 휴식도 중요하니까', img: 'img/jamsil/g09.jpg' },
+      { tag: 'LOUNGE', t: '잠깐 쉬어 가는 테이블', d: '차 한 잔, 간식 한 입의 여유', img: 'img/jamsil/g10.jpg' },
+      { tag: 'VIEW', t: '업무 공간이 힐링이 되는 곳', d: '창밖으로 펼쳐지는 석촌호수', img: 'img/jamsil/g11.jpg' },
+      { tag: 'PARTY', t: 'VIP 고객 · 후보자 초대 와인 파티', d: '결국 설계사들을 위한 자리', img: 'img/jamsil/g12.jpg' },
+      { tag: 'REWARD', t: '열심히 일하고, 보상도 확실히', d: '잠실지사 분기별 행사', img: 'img/jamsil/g13.jpg' }
+    ],
+    closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 잠실에서', img: 'img/jamsil/g14.jpg' }
+  }
   ,{
     no: 9, id: 'daejeon',
     name: '대전지사',

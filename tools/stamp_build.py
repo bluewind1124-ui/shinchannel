@@ -8,13 +8,13 @@
 import datetime, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGES = ['index.html', 'v2/index.html', 'branch.html', 'branches.html']
+PAGES = ['index.html', 'v2/index.html', 'r2/index.html', 'branch.html', 'branches.html']
 BUILD = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 
 def checker(build):
     return ('<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */'
             '(function(){var B="' + build + '",p=location.protocol;if(p!=="http:"&&p!=="https:")return;'
-            'var R=(location.pathname.indexOf("/v2/")>=0?"../":"")+"build.txt";'
+            r'var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";'
             'function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"})'
             '.then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();'
             'if(!/^\\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;'

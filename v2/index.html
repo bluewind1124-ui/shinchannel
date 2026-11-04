@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261104085652",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261104093839",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>한국보험금융 신채널</title>
 <meta name="description" content="2002년부터 이어 온 한국보험금융, 그 위에서 2025년 출발한 신채널. 회사 소개, 신채널의 이념과 특징, 영업 시스템, Career Path, 지사 소개, 모집 안내.">
@@ -1144,6 +1144,64 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 @media (max-width:960px){.trust{grid-template-columns:1fr}}
 @media (max-width:560px){.trust{margin-top:64px;padding-top:44px}.tr-fig{padding:4px;margin:0 -8px}.tr-fig .rg text{font-size:25px}.tr-fig .r2 .ga2{font-size:17px}.tr-fig .rf text{font-size:17px}.tr-fig .trk text{font-size:15px}.tr-fig .cap{font-size:20px}.tr-fig .c4{font-size:21px}.tr-bad li{font-size:14.5px}}
 .trust .tr-bad{max-width:none}
+/* 교육: 체계 · 비체계 (리쿠르팅용 2와 같은 내용) */
+.ed-kind{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.ek{background:var(--bg);border-radius:8px;padding:30px 32px}
+.ek span{font:700 16px 'IBM Plex Sans KR';color:var(--gold-t)}
+.ek b{display:block;margin:8px 0 8px;font:800 clamp(22px,2.2vw,28px) 'Gothic A1';color:var(--navy)}
+.ek p{font-size:17px;color:var(--ink2)}
+.ek.alt{background:var(--navy)}
+.ek.alt span{color:var(--gold-l)}
+.ek.alt b{color:#fff}
+.ek.alt p{color:rgba(255,255,255,.75)}
+.soon{display:inline-block;margin-left:10px;font:700 13px 'IBM Plex Sans KR';color:#7C5916;background:var(--gold-bg);padding:3px 10px;border-radius:4px;vertical-align:middle}
+.plan{margin-top:72px;overflow-x:auto}
+.plan h3{font-size:clamp(22px,2.4vw,28px)}
+.pl-t{width:100%;min-width:640px;border-collapse:collapse;margin-top:20px;font-size:16px}
+.pl-t th{background:var(--navy);color:#fff;text-align:left;padding:14px 18px;font-weight:700}
+.pl-t td{padding:16px 18px;border-bottom:1px solid var(--line);vertical-align:middle}
+.pl-t td b{color:var(--navy)}
+.nonsys{margin-top:80px}
+.ns-hd h3{font-size:clamp(24px,2.8vw,34px)}
+.ns-list{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.ns-list li{background:var(--bg);border-radius:8px;padding:24px 26px}
+.ns-list b{display:block;font:800 clamp(19px,1.7vw,22px) 'Gothic A1';color:var(--navy)}
+.ns-list span{display:block;margin-top:6px;font-size:15.5px;color:var(--ink2)}
+.ai-edu{margin-top:72px;background:var(--navy);color:#fff;border-radius:8px;padding:34px 40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.ai-edu b{font:800 clamp(20px,2vw,24px) 'Gothic A1';color:var(--gold-l)}
+.ai-edu p{flex:1;min-width:240px;font-size:clamp(17px,1.5vw,20px)}
+.ai-edu em{font-style:normal;color:var(--gold)}
+.ai-edu .soon{margin-left:0}
+@media (max-width:960px){.ed-kind{grid-template-columns:1fr}.ns-list{grid-template-columns:1fr 1fr}.bmc{grid-template-columns:1fr}}
+@media (max-width:560px){.ns-list{grid-template-columns:1fr}}
+.ed-k2{margin-top:48px;font:700 15px 'IBM Plex Sans KR';color:var(--gold-t)}
+.bmc.on-dark{margin-top:48px}
+/* 총괄 승격 · 점포 지원 (그림 · 사진 카드) */
+.bmc{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.nt{background:#fff;border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.nt-vis{margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--navy)}
+.nt-vis img{width:100%;height:100%;object-fit:cover}
+.nt-vis.bm-split{display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#1D3557,#0F2340 70%)}
+.nt-vis svg{width:100%;height:100%;display:block}
+.nt-body{padding:28px 30px 32px}
+.nt-k{font:700 15px 'IBM Plex Sans KR';color:var(--gold-t)}
+.nt h3{font-size:clamp(21px,2vw,26px);line-height:1.35;color:var(--navy);margin:8px 0 12px}
+.nt p{font-size:16.5px;color:var(--ink2)}
+.nt p b{color:var(--navy)}
+.nt .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.nt .chips span{font-size:13.5px;padding:4px 12px;border-radius:999px;background:var(--gold-bg);color:var(--gold-t);font-weight:700}
+.bm-split .bm-ln{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:1}
+.bm-split .bm-sn .bm-nb{fill:#2E4A72;stroke:var(--gold-l);stroke-width:2}
+.bm-split .bm-sn .bm-bd{fill:none;stroke:#fff;stroke-width:2.4;stroke-linejoin:round}
+.bm-split .bm-sn .bm-pp circle{fill:var(--gold-l)}
+.bm-split .bm-sn text{font:700 16px 'IBM Plex Sans KR',sans-serif;fill:#fff;text-anchor:middle}
+.bm-split .bm-top{opacity:0}
+.bm-split .bm-top .bm-tg{fill:var(--gold)}
+.bm-split .bm-top .bm-t1{font:800 20px 'Gothic A1',sans-serif;fill:#0F2340;text-anchor:middle}
+.bm-split .bm-top .bm-t2{font:700 9px 'IBM Plex Sans KR',sans-serif;letter-spacing:.14em;fill:#0F2340;text-anchor:middle}
+.bm-split .bm-cap{font:700 17px 'IBM Plex Sans KR',sans-serif;fill:var(--gold-l);text-anchor:middle;opacity:0}
+@media (max-width:960px){.bmc{grid-template-columns:1fr}}
+@media (max-width:560px){.bm-split .bm-sn text{font-size:21px}.bm-split .bm-cap{font-size:21px}.nt-body{padding:24px 22px 26px}}
 </style>
 </head>
 <body>
@@ -1707,6 +1765,11 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <h3 data-rv="up">기본기는 <em>본사가 함께</em> 만듭니다</h3>
           <p class="lead" data-rv="up">지점장은 사람을 데려오고, 교육은 본사가 맡습니다. 경력에 따라 과정을 나눴습니다.</p>
           <figure class="ph" data-rv="wipe" style="aspect-ratio:16/7;margin-top:28px"><img src="img/edu.jpg" alt="교육장에서 강의를 듣는 30~40대 신입 FC들" loading="lazy" style="object-position:center 40%"></figure>
+          <div class="ed-kind" style="margin-top:32px">
+      <div class="ek" data-rv="up"><span>체계 교육</span><b>필수 · 정형화된 과정</b><p>정해진 순서와 수료 기준이 있는 과정입니다.</p></div>
+      <div class="ek alt" data-rv="up" data-d="1"><span>비체계 교육</span><b>선택 · 필요한 만큼</b><p>영업 분야와 관심에 따라 골라 듣는 특강 · 과정입니다.</p></div>
+    </div>
+          <p class="ed-k2" data-rv="up">체계 교육 · 지금 운영 중</p>
           <div class="edu-tabs" id="eduTabs"><button class="on" data-e="e1">무경력 입문 과정</button><button data-e="e2">경력 과정</button></div>
           <div class="edu-stack">
           <div class="edu-p on" id="e1">
@@ -1731,6 +1794,33 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
             <figure class="ph" style="aspect-ratio:16/9;margin-top:14px"><img src="img/fc-workshop.jpg" alt="원탁에 둘러앉아 사례를 나누는 경력 FC 워크숍" loading="lazy"></figure>
           </div>
           </div>
+    <div class="plan" data-rv="up">
+      <h3>체계 교육, 이렇게 넓혀 갑니다 <span class="soon">향후 진행 예정</span></h3>
+      <table class="pl-t">
+        <thead><tr><th>교육 과정</th><th>대상</th><th>수료 기준</th><th>일정</th><th>시기</th></tr></thead>
+        <tbody>
+          <tr><td><b>입과 전 교육</b></td><td>등록 예정자</td><td>합격</td><td>매월</td><td>등록 전</td></tr>
+          <tr><td><b>종신보험 전문가 과정</b></td><td>등록 2~5차월</td><td>80% 참석</td><td rowspan="3">주 5회 오전 2시간<br>본사 주관 화상 교육<br>전문 강사진 편성</td><td>등록 2차월</td></tr>
+          <tr><td><b>연금보험 전문가 과정</b></td><td>등록 2~5차월</td><td>80% 참석</td><td>등록 3차월</td></tr>
+          <tr><td><b>손해보험 전문가 과정</b></td><td>등록 2~5차월</td><td>80% 참석</td><td>등록 4차월</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="nonsys">
+      <div class="ns-hd" data-rv="up"><p class="eyebrow">비체계 교육 · 선택</p><h3>현장에서 바로 쓰는 특강과 과정</h3></div>
+      <ul class="ns-list">
+        <li data-rv="up"><b>BNP파리바 변액 교육</b><span>변액보험 운용 구조를 운용사 관점에서 배웁니다</span></li>
+        <li data-rv="up" data-d="1"><b>병 · 의원 경영 컨설팅 특강</b><span>개원의 · 병원장 고객을 위한 경영 · 세무 상담 실전</span></li>
+        <li data-rv="up" data-d="2"><b>조 부장 특강</b><span>현장 영업 노하우를 바로 쓰는 실전 특강</span></li>
+        <li data-rv="up"><b>보험사 연계 과정</b><span>원수사 지점장이 직접 진행하는 상품 · 이슈 교육</span></li>
+        <li data-rv="up" data-d="1"><b>재무설계 과정</b><span>안정적인 고소득에 도전하는 재무설계</span></li>
+        <li data-rv="up" data-d="2"><b>보장설계 전문가 과정</b><span>간편추천 플러스까지 보장설계 심화</span></li>
+        <li data-rv="up"><b>DB 활용 과정</b><span>DB 상담을 기초부터 전문가 수준까지</span></li>
+        <li data-rv="up" data-d="1"><b>조직관리 과정</b><span>리더십 · 관리자에 도전하는 분께</span></li>
+        <li data-rv="up" data-d="2"><b>법인영업 과정</b><span>법인 컨설팅과 CEO 상담</span></li>
+      </ul>
+    </div>
         <div class="rmt" id="remote">
       <div class="rmt-hd" data-rv="up">
         <p class="rmt-k">원수사 원격 교육 <span>월 10회 · 예정</span></p>
@@ -1745,6 +1835,11 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <figure><div class="rmt-ph"><img src="../img/remote-branch.jpg" alt="지사 회의실에서 스크린에 띄운 원격 강의를 함께 보는 FC들" loading="lazy"></div><figcaption><b>지사에서 스크린으로</b>작은 지사도 함께 모여서</figcaption></figure>
         </div>
       </div>
+    </div>
+    <div class="ai-edu" data-rv="up">
+      <b>앞으로 더해질 교육</b>
+      <p>FC님의 성공을 위해 <em>AI 활용 교육</em>과 <em>AI보장 전문가 과정</em>도 준비하고 있습니다.</p>
+      <span class="soon">진행 예정</span>
     </div>
         </div>
         <!-- 09 신인 -->
@@ -1878,11 +1973,37 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
         <p class="kick" data-rv="up">지사장이라면</p>
         <h3 class="h3" data-rv="up">FC가 자라면 <em>지사도 자랍니다</em></h3>
         <p data-rv="up" style="color:rgba(255,255,255,.75)">FC는 리크루팅으로 지점장 · 수석 지점장이 되고, 오버라이딩으로 수입의 기둥을 하나 더 세웁니다. 지사장 한 사람이 모든 리크루팅을 떠안지 않아도 지사가 커집니다. 그 사이를 교육 · DB · 한보금ON으로 회사가 받칩니다.</p>
-        <div class="notes2" style="margin-top:28px">
-          <div class="n2" data-rv="up"><h4>총괄 승격과 호칭</h4><p>지사를 분할 · 육성해 총괄로 승격하면 실적에 따라 상무 · 전무 · 부사장 호칭을 받습니다.</p></div>
-          <div class="n2" data-rv="up" data-d="1"><h4>지사 설립 점포 지원</h4><p>소형(5~10명)부터 초대형(50명 이상)까지 규모별로 점포를 지원합니다. <span class="chk">위약금 · BEP 기준 안내</span></p></div>
-        </div>
+
       </div>
+    </div>
+    <div class="bmc on-dark">
+      <article class="nt" data-rv="up">
+        <figure class="nt-vis bm-split" id="bmSplit">
+          <svg viewBox="0 0 520 320" role="img" aria-label="지사 하나가 세 개의 지사로 나뉘고, 그 위에 총괄이 생겨 한국보험금융의 파트너가 되는 그림">
+            <g class="bm-lines"><path class="bm-ln" pathLength="1" d="M260 92 L110 214"/><path class="bm-ln" pathLength="1" d="M260 92 L260 214"/><path class="bm-ln" pathLength="1" d="M260 92 L410 214"/></g>
+            <g class="bm-sn bm-s1"><g class="bm-pp"><circle cx="-34" cy="-30" r="6"/><circle cx="36" cy="-26" r="6"/><circle cx="0" cy="44" r="6"/></g><circle class="bm-nb" r="30"/><path class="bm-bd" d="M-13 13V-6l13-9 13 9v19M-6 13V3h12v10"/><text y="64">지사</text></g><g class="bm-sn bm-s2"><g class="bm-pp"><circle cx="-34" cy="-30" r="6"/><circle cx="36" cy="-26" r="6"/><circle cx="0" cy="44" r="6"/></g><circle class="bm-nb" r="30"/><path class="bm-bd" d="M-13 13V-6l13-9 13 9v19M-6 13V3h12v10"/><text y="64">지사</text></g><g class="bm-sn bm-s3"><g class="bm-pp"><circle cx="-34" cy="-30" r="6"/><circle cx="36" cy="-26" r="6"/><circle cx="0" cy="44" r="6"/></g><circle class="bm-nb" r="30"/><path class="bm-bd" d="M-13 13V-6l13-9 13 9v19M-6 13V3h12v10"/><text y="64">지사</text></g>
+            <g class="bm-top"><circle class="bm-tg" r="40"/><text class="bm-t1" y="-2">총괄</text><text class="bm-t2" y="18">PARTNER</text></g>
+            <text class="bm-cap bm-c1" x="260" y="304">지사를 키우고</text>
+            <text class="bm-cap bm-c2" x="260" y="304">3개 지사로 분할하면</text>
+            <text class="bm-cap bm-c3" x="260" y="304">총괄 달성, 한국보험금융의 파트너로</text>
+          </svg>
+        </figure>
+        <div class="nt-body">
+          <span class="nt-k">총괄 승격</span>
+          <h3>3개 지사로 분할하면 총괄,<br>한국보험금융의 파트너로 출발합니다</h3>
+          <p>지사를 키워 3개 지사로 분할하면 총괄 지사를 달성합니다. 이때부터 한국보험금융의 파트너로 본격적인 출발을 하며, 실적에 따라 상무 · 전무 · 부사장 호칭을 받습니다.</p>
+          <div class="chips"><span>분할 3개 지사</span><span>총괄 실적 수수료</span><span class="chk">수치 공개 범위 확인</span></div>
+        </div>
+      </article>
+      <article class="nt" data-rv="up" data-d="1">
+        <figure class="nt-vis"><img src="../img/benefit/store.jpg" alt="새 지사 점포에서 회사 임원에게 열쇠를 건네받는 지사장" loading="lazy"></figure>
+        <div class="nt-body">
+          <span class="nt-k">지사 설립 점포 지원</span>
+          <h3>최소 5명부터, 독립 점포는<br>회사가 마련합니다</h3>
+          <p>지사장이 부담 없이 시작하도록 5명부터 독립 점포 인프라를 회사가 제공합니다. <b>보증금 · 임대료 · 관리비</b>도 회사가 부담합니다. 지사장을 믿고 하는 회사의 투자입니다.</p>
+          <div class="chips"><span>보증금 · 임대료 · 관리비 회사 부담</span><span>소형(5명~)부터 초대형까지</span><span class="chk">지원 범위 · 위약금 · BEP 기준 확인</span></div>
+        </div>
+      </article>
     </div>
 
     <!-- 마케팅 임원 -->
@@ -2148,7 +2269,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v3.0 (2026.11.01)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v3.1 (2026.11.04)</p>
       </div>
     </div>
   </div>
@@ -2352,10 +2473,10 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 
 function applyForm(e){e.preventDefault();var t=document.getElementById('toast');t.textContent='초안 화면입니다. 접수처(구글 폼 등)를 연결하면 실제로 신청됩니다.';t.classList.add('show');setTimeout(function(){t.classList.remove('show')},3500);return false;}
 </script>
-<script src="../js/sound.js?b=20261104085652"></script>
-<script src="../js/branches.js?b=20261104085652"></script>
-<script src="../js/korea-map.js?b=20261104085652"></script>
-<script src="../js/kmap.js?b=20261104085652"></script>
+<script src="../js/sound.js?b=20261104093839"></script>
+<script src="../js/branches.js?b=20261104093839"></script>
+<script src="../js/korea-map.js?b=20261104093839"></script>
+<script src="../js/kmap.js?b=20261104093839"></script>
 <script>
 /* 지사 소개: 지도 2개 + 지사 카드 */
 (function(){
@@ -2452,6 +2573,45 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
   function start(){if(loop)return;cycle();loop=setInterval(cycle,11000);}
   function stop(){clearInterval(loop);loop=null;}
   new IntersectionObserver(function(es){vis=es[0].isIntersecting;vis?start():stop();},{threshold:.35}).observe(f);
+})();
+</script>
+<script>
+/* 3개 지사 분할 → 총괄 → 파트너: 화면에 보일 때 반복 (Web Animations, '움직임 줄이기'에서도 움직임) */
+(function(){
+  var f=document.getElementById('bmSplit');if(!f||!f.animate||!('IntersectionObserver' in window))return;
+  var Q=function(c){return f.querySelector(c)},QA=function(c){return [].slice.call(f.querySelectorAll(c))};
+  var n=[Q('.bm-s1'),Q('.bm-s2'),Q('.bm-s3')],top=Q('.bm-top'),lines=QA('.bm-ln'),c1=Q('.bm-c1'),c2=Q('.bm-c2'),c3=Q('.bm-c3'),run=[],tms=[],loop=null;
+  var C='translate(260px,200px)',P=['translate(110px,214px)','translate(260px,214px)','translate(410px,214px)'];
+  function A(el,k,o){var a=el.animate(k,Object.assign({fill:'forwards',easing:'cubic-bezier(.3,.7,.2,1)'},o));run.push(a);return a;}
+  function at(ms,fn){tms.push(setTimeout(fn,ms));}
+  function fade(el,a,b,ms,d){A(el,[{opacity:a},{opacity:b}],{duration:ms||400,delay:d||0});}
+  function cycle(){
+    run.forEach(function(a){a.cancel()});run=[];tms.forEach(clearTimeout);tms=[];
+    /* 0초: 지사 하나 (세 지사가 한자리에 겹쳐 있음) */
+    n.forEach(function(e,k){A(e,[{transform:C+' scale(.6)',opacity:0},{transform:C+' scale(1.25)',opacity:1}],{duration:700,delay:k*60});});
+    fade(c1,0,1,500,200);
+    /* 1.6초: 세 지사로 나뉨 */
+    at(1600,function(){
+      fade(c1,1,0,250);fade(c2,0,1,400,400);
+      n.forEach(function(e,k){A(e,[{transform:C+' scale(1.25)'},{transform:P[k]+' scale(1.08)',offset:.8},{transform:P[k]+' scale(1)'}],{duration:1100,delay:k*90});});
+    });
+    /* 3.4초: 위에 총괄이 생기고 선으로 이어짐 */
+    at(3400,function(){
+      fade(c2,1,0,300);
+      lines.forEach(function(l,k){A(l,[{strokeDashoffset:1},{strokeDashoffset:0}],{duration:600,delay:k*120});});
+      A(top,[{opacity:0,transform:'translate(260px,92px) scale(.4)'},{opacity:1,transform:'translate(260px,92px) scale(1.12)',offset:.7},{opacity:1,transform:'translate(260px,92px) scale(1)'}],{duration:800,delay:250});
+      fade(c3,0,1,500,700);
+    });
+    /* 4.8초: 파트너 반짝 */
+    at(4800,function(){
+      A(top,[{transform:'translate(260px,92px) scale(1)',filter:'brightness(1)'},{transform:'translate(260px,92px) scale(1.08)',filter:'brightness(1.25) drop-shadow(0 0 10px #E6CF97)'},{transform:'translate(260px,92px) scale(1)',filter:'brightness(1)'}],{duration:900,fill:'forwards'});
+    });
+  }
+  /* 처음 상태: 지사 셋을 가운데에, 총괄은 위에 숨김 */
+  n.forEach(function(e){e.style.transform=C;e.style.opacity=0;});top.style.transform='translate(260px,92px)';
+  function start(){if(loop)return;cycle();loop=setInterval(cycle,9000);}
+  function stop(){clearInterval(loop);loop=null;}
+  new IntersectionObserver(function(es){es[0].isIntersecting?start():stop();},{threshold:.3}).observe(f);
 })();
 </script>
 </body>

@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261104094000",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261104094505",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>한국보험금융 신채널</title>
 <meta name="description" content="2002년부터 이어 온 한국보험금융, 그 위에서 2025년 출발한 신채널. 회사 소개, 신채널의 이념과 특징, 영업 시스템, Career Path, 지사 소개, 모집 안내.">
@@ -564,6 +564,11 @@ body.mopen .menu-btn span:nth-child(3){transform:translateY(-8px) rotate(-45deg)
 .day.mix .dn{color:var(--gold-l)}
 .day.mix .who{background:var(--gold);color:var(--navy)}
 .pro-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+/* 경력 과정: 사진을 옆에 두어 무경력 탭과 높이를 맞춤 (탭이 저절로 바뀌어도 아래 빈칸이 안 생기게) */
+.pro-grid.e2-in{grid-template-columns:repeat(3,1fr)}
+.e2-in .e2-ph{margin:0;aspect-ratio:auto;min-height:0;height:100%;border-radius:0 8px 8px 0}
+.e2-in .e2-ph img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.pro-grid.e2-in{grid-template-columns:1fr 1fr}.e2-in .e2-ph{min-height:120px}}
 .pro{border-left:3px solid var(--gold);background:var(--bg);padding:18px 20px;border-radius:0 8px 8px 0}
 .pro b{display:block;font-size:16px}
 .pro span{font-size:14px;color:var(--ink2)}
@@ -1784,14 +1789,14 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           </div>
           <div class="edu-p" id="e2">
             <p style="font-size:15.5px;color:var(--ink2);margin-bottom:16px">아는 내용은 반복하지 않습니다. 경력 FC는 입문 과정 4~5일차에 합류하고, 이후 특화 교육으로 이어집니다.</p>
-            <div class="pro-grid">
+            <div class="pro-grid e2-in">
               <div class="pro"><b>4~5일차 합류</b><span>DB 시장, AI 보장분석, 전산 세팅, 상품 라인업</span></div>
               <div class="pro"><b>병 · 의원 경영컨설팅</b><span>본사 주관 특화 교육</span></div>
               <div class="pro"><b>변액 · 미국투자 테마교육</b><span>자산가 상담을 위한 테마 과정</span></div>
               <div class="pro"><b>원수사 원격 교육 (월 10회 예정)</b><span>원수사 지점장 강의 · 상품과 최근 이슈</span></div>
               <div class="pro"><b>보험사 연계 분기 교육 · 온라인 교육센터</b><span>주력상품 · 판매사례 · 새 노하우</span></div>
+              <figure class="ph e2-ph"><img src="img/fc-workshop.jpg" alt="원탁에 둘러앉아 사례를 나누는 경력 FC 워크숍" loading="lazy"></figure>
             </div>
-            <figure class="ph" style="aspect-ratio:16/9;margin-top:14px"><img src="img/fc-workshop.jpg" alt="원탁에 둘러앉아 사례를 나누는 경력 FC 워크숍" loading="lazy"></figure>
           </div>
           </div>
     <div class="plan" data-rv="up">
@@ -2269,7 +2274,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다. 일부 인물 사진은 연출 이미지입니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v3.1 (2026.11.04)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:var(--gold-l)">신채널 홈페이지 2탄 · 초안 v3.2 (2026.11.04)</p>
       </div>
     </div>
   </div>
@@ -2473,10 +2478,10 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);padding:56px 0 40px;f
 
 function applyForm(e){e.preventDefault();var t=document.getElementById('toast');t.textContent='초안 화면입니다. 접수처(구글 폼 등)를 연결하면 실제로 신청됩니다.';t.classList.add('show');setTimeout(function(){t.classList.remove('show')},3500);return false;}
 </script>
-<script src="../js/sound.js?b=20261104094000"></script>
-<script src="../js/branches.js?b=20261104094000"></script>
-<script src="../js/korea-map.js?b=20261104094000"></script>
-<script src="../js/kmap.js?b=20261104094000"></script>
+<script src="../js/sound.js?b=20261104094505"></script>
+<script src="../js/branches.js?b=20261104094505"></script>
+<script src="../js/korea-map.js?b=20261104094505"></script>
+<script src="../js/kmap.js?b=20261104094505"></script>
 <script>
 /* 지사 소개: 지도 2개 + 지사 카드 */
 (function(){

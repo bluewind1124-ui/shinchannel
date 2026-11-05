@@ -68,7 +68,27 @@ window.BRANCHES = [
     ],
     closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 부천에서', img: 'img/bucheon/g13.jpg' }
   }
-  ,{ no: 2, id: 'ilsan', name: '일산지사', addr: '경기도 고양시 일산동구 호수로 358-39, 605호·606호(백석동, 동문굿모닝타워1차)', ceo: '김소윤', tel: '010-6522-8088', lat: 37.64037, lng: 126.78676 }
+  ,{
+    no: 2, id: 'ilsan',
+    name: '일산지사',
+    en: 'ILSAN BRANCH',
+    addr: '경기도 고양시 일산동구 호수로 358-39, 605호·606호(백석동, 동문굿모닝타워1차)',
+    ceo: '김소윤',
+    tel: '031-994-5038',            // 지사 입사 문의 (이전: 지사장 휴대폰)
+    lat: 37.64037, lng: 126.78676,
+    tagline: '1퍼센트의 가능성, 그것이 나의 길이다',
+    intro: '3호선 백석역 2번 출구 초역세권에 자리한 한국보험금융 신채널 일산지사입니다. 본사가 직접 운영해 지사장 개인 리스크를 차단하고, 자체 프로그램(프로·재무·보장분석)과 퍼미션·이관·세미나 DB로 영업을 지원합니다. 1~4주차 신입 교육과 매일 오전 Daily 교육, 선배가 동행하는 Joint Work로 함께 성장합니다.',
+    philosophy: '나의 전문성은 고객을 위한 최소한의 배려다',
+    video: 'img/ilsan/tour.mp4',
+    poster: 'img/ilsan/poster.jpg',
+    hero: 'img/ilsan/hero.jpg',   // 첫 화면 배경
+    spaces: [
+      { tag: 'WELCOME', t: '한국보험금융 신채널 일산지사', d: '백석역 2번 출구 앞, 세련된 입구', img: 'img/ilsan/g01.jpg' },
+      { tag: 'INFO DESK', t: '고마운 사람, 일산지사', d: '“당신은 당당한 전문가입니다”', img: 'img/ilsan/g02.jpg' },
+      { tag: 'OUR SLOGAN', t: '사랑과 행복이 넘치는 신채널 일산지사', d: '“나의 전문성은 고객을 위한 최소한의 배려다”', img: 'img/ilsan/g03.jpg' }
+    ],
+    closing: { t: '이제, 당신의 차례입니다', d: '더 큰 무대가 당신을 기다립니다', img: 'img/ilsan/g04.jpg' }
+  }
   ,{
     no: 3, id: 'thedream',
     name: '더드림지사',

@@ -84,10 +84,14 @@ window.BRANCHES = [
     hero: 'img/ilsan/hero.jpg',   // 첫 화면 배경
     spaces: [
       { tag: 'WELCOME', t: '한국보험금융 신채널 일산지사', d: '백석역 2번 출구 앞, 세련된 입구', img: 'img/ilsan/g01.jpg' },
-      { tag: 'INFO DESK', t: '고마운 사람, 일산지사', d: '“당신은 당당한 전문가입니다”', img: 'img/ilsan/g02.jpg' },
-      { tag: 'OUR SLOGAN', t: '사랑과 행복이 넘치는 신채널 일산지사', d: '“나의 전문성은 고객을 위한 최소한의 배려다”', img: 'img/ilsan/g03.jpg' }
+      { tag: 'OUR SLOGAN', t: '사랑과 행복이 넘치는 신채널 일산지사', d: '“나의 전문성은 고객을 위한 최소한의 배려다”', img: 'img/ilsan/g02.jpg' },
+      { tag: 'INFO DESK', t: '고마운 사람, 일산지사', d: '“당신은 당당한 전문가입니다”', img: 'img/ilsan/g03.jpg' },
+      { tag: 'WORKSPACE', t: '당신이 꿈꾸는 행복한 미래', d: '넓고 밝은 업무 공간, 개인 업무석과 공용 PC석', img: 'img/ilsan/g04.jpg' },
+      { tag: 'OPEN OFFICE', t: '함께 일하는 오픈 오피스', d: '개인 업무석 · 프로젝터 · 화이트보드', img: 'img/ilsan/g05.jpg' },
+      { tag: 'FOCUS', t: '영업에만 집중하는 업무 환경', d: '프린터와 사무용품을 갖춘 공용 데스크', img: 'img/ilsan/g06.jpg' },
+      { tag: 'MEETING ROOM', t: '마주 앉아 이야기 나누는 미팅룸', d: '상담 테이블과 탕비 공간', img: 'img/ilsan/g07.jpg' }
     ],
-    closing: { t: '이제, 당신의 차례입니다', d: '더 큰 무대가 당신을 기다립니다', img: 'img/ilsan/g04.jpg' }
+    closing: { t: '이제, 당신의 차례입니다', d: '더 큰 무대가 당신을 기다립니다', img: 'img/ilsan/g08.jpg' }
   }
   ,{
     no: 3, id: 'thedream',

@@ -14,7 +14,7 @@ window.BRANCHES = [
     en: 'HERITAGE FINANCE',
     addr: '서울특별시 광진구 천호대로 676, 2층(구의동)',
     ceo: '옥영훈',
-    tel: '010-9192-9992',
+    tel: '02-6956-5323',            // 지사 일반전화 (이전: 지사장 휴대폰)
     lat: 37.55077, lng: 127.08997,
     tagline: '당신의 커리어가 시작되는 곳',
     intro: '한국보험금융 직영채널 헤리티지 지사입니다. 햇살 가득한 오픈 오피스와 개인 업무 공간, 교육·세미나실, 독립 TA ROOM, 고객 상담실까지. FC가 영업에만 집중할 수 있는 공간을 갖췄습니다.',
@@ -96,7 +96,32 @@ window.BRANCHES = [
     closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 송파에서', img: 'img/songpa/g08.jpg' }
   }
   ,{ no: 6, id: 'chuncheon', name: '춘천지사', addr: '강원특별자치도 춘천시 안마산로 107-1, 제4층 제404호·405호(퇴계동, 에스엠프라자)', ceo: '이미순', tel: '010-5371-2854', lat: 37.84902, lng: 127.74763 }
-  ,{ no: 7, id: 'uijeongbu', name: '의정부지사', addr: '경기도 의정부시 신흥로 220, 6층 (의정부동, 솔벗빌딩)', ceo: '정영진', tel: '010-7352-1863', lat: 37.73548, lng: 127.04345 }
+  ,{
+    no: 7, id: 'uijeongbu',
+    name: '의정부지사',
+    en: 'UIJEONGBU BRANCH',
+    addr: '경기도 의정부시 신흥로 220, 6층 (의정부동, 솔벗빌딩)',
+    ceo: '정영진',
+    tel: '031-928-5645',            // 지사 사무실 전화
+    lat: 37.73548, lng: 127.04345,
+    tagline: '義로운 사람끼리 情을 나누며 富자되는 사무실',
+    intro: '경기북부의 핵심 지사, 한국보험금융 신채널 의정부지사입니다. 지하철 1호선 의정부역에서 200m 거리의 화이트톤 밝고 깨끗한 사무실에서, 늘 소통되는 지사장과 밝고 친절한 총무님, 열정과 노력으로 영업에 임하는 지점장·팀장님들이 함께합니다. 매월 말 지사 회식, 매월 생일자 축하, 분기 1회 영화·뮤지컬 관람 이벤트로 소통과 배려의 자세로 즐겁고 활기차게 일합니다.',
+    philosophy: '義로운 사람끼리 情을 나누며 富자되는 사무실',
+    video: 'img/uijeongbu/tour.mp4',
+    poster: 'img/uijeongbu/poster.jpg',
+    hero: 'img/uijeongbu/hero.jpg',   // 첫 화면 배경
+    spaces: [
+      { tag: 'WELCOME', t: '솔벗빌딩 6층, 한국보험금융', d: '한국보험금융 신채널 의정부지사에 오신 것을 환영합니다', img: 'img/uijeongbu/g01.jpg' },
+      { tag: 'ENTRANCE', t: '신채널 의정부지사', d: '경기북부의 핵심 지사', img: 'img/uijeongbu/g02.jpg' },
+      { tag: 'OUR SPIRIT', t: '義로운 사람끼리, 情을 나누며, 富자되는 사무실', d: '소통과 배려의 자세로 즐겁고 활기차게', img: 'img/uijeongbu/g03.jpg' },
+      { tag: 'WORKSPACE', t: '화이트톤의 밝고 깨끗한 사무실', d: '넓은 개인 업무석에서 영업에 집중합니다', img: 'img/uijeongbu/g04.jpg' },
+      { tag: 'SUPPORT', t: '밝고 친절한 총무님', d: '알림마당과 안내 데스크로 꼼꼼한 사무 지원', img: 'img/uijeongbu/g05.jpg' },
+      { tag: 'CONSULTING', t: '고객접견실과 지사장실', d: '고객을 맞이하고, 지사장과 언제든 마주 앉는 곳', img: 'img/uijeongbu/g06.jpg' },
+      { tag: 'LEADERSHIP', t: '늘 소통되는 지사장', d: '햇살 드는 지사장실, 문은 언제나 열려 있습니다', img: 'img/uijeongbu/g07.jpg' },
+      { tag: 'REFRESH', t: '햇살 가득한 상담실', d: '안마의자까지 갖춘 여유로운 공간', img: 'img/uijeongbu/g08.jpg' }
+    ],
+    closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 의정부에서', img: 'img/uijeongbu/g09.jpg' }
+  }
   ,{
     no: 8, id: 'jamsil',
     name: '잠실지사',
@@ -185,7 +210,33 @@ window.BRANCHES = [
     ],
     closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 서산에서', img: 'img/seosan/g09.jpg' }
   }
-  ,{ no: 11, id: 'therich', name: '더리치지사', addr: '서울 중구 퇴계로 324, 성우빌딩 7층', ceo: '김효정', tel: '010-2035-1613', lat: 37.56119, lng: 126.98823 }
+  ,{
+    no: 11, id: 'therich',
+    name: '더리치지사',
+    en: 'THE RICH PARTNERS',
+    addr: '서울 중구 퇴계로 324, 성우빌딩 7층',
+    ceo: '김효정',
+    tel: '010-2035-1613',
+    lat: 37.56119, lng: 126.98823,
+    tagline: '‘같이’ 성장하며, 더 큰 ‘가치’를 만들어 갑니다',
+    intro: '더리치파트너스는 서로의 경험을 나누고, 함께 배우며, 동료의 성공을 응원하는 지사입니다. 2·4·5호선이 지나는 서울 도심 한가운데에서 고객 방문품과 월 2회 택배 지원, 테마별 심화교육으로 현장을 돕고, 일할 때는 열정적으로, 함께할 때는 즐겁게 출근이 기다려지는 일터를 만들어 갑니다.',
+    philosophy: '같이 성장하고, 기꺼이 공유하며, 함께 성공하는 가치 있는 삶',
+    video: 'img/therich/tour.mp4',
+    poster: 'img/therich/poster.jpg',
+    hero: 'img/therich/hero.jpg',   // 첫 화면 배경
+    spaces: [
+      { tag: 'WELCOME', t: '한국보험금융 신채널 더리치파트너스', d: '같이 성장하며, 더 큰 가치를 만들어 갑니다', img: 'img/therich/g01.jpg' },
+      { tag: 'WORKSPACE', t: '넓고 밝은 업무 공간', d: '파티션 데스크와 개인 사물함', img: 'img/therich/g02.jpg' },
+      { tag: 'OPEN OFFICE', t: '함께 일하는 오픈 오피스', d: '서로의 경험을 나누고 함께 배우는 사무실', img: 'img/therich/g03.jpg' },
+      { tag: 'TA ROOM', t: 'CALL MAKES THE RICH', d: '“부자는 기다리지 않고 전화한다”', img: 'img/therich/g04.jpg' },
+      { tag: 'MEETING ROOM', t: '대형 화면을 갖춘 회의실', d: '팀 미팅과 상담 준비를 한 곳에서', img: 'img/therich/g05.jpg' },
+      { tag: 'CONSULTING', t: '고객을 맞이하는 상담 공간', d: '편안한 분위기에서 마주 앉는 테이블', img: 'img/therich/g06.jpg' },
+      { tag: 'LOUNGE', t: '잠시 쉬어 가는 라운지', d: '동료와 차 한 잔 나누는 아늑한 공간', img: 'img/therich/g07.jpg' },
+      { tag: 'EDUCATION', t: '전문성을 키우는 테마별 심화교육', d: '주제별로 깊이 있게 배우고, 현장에 바로 적용합니다', img: 'img/therich/g08.jpg' },
+      { tag: 'CELEBRATE', t: '작은 성취도 함께 축하합니다', d: '서로의 수고를 격려하는 자리', img: 'img/therich/g09.jpg' }
+    ],
+    closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 더리치에서', img: 'img/therich/g10.jpg' }
+  }
   ,{ no: 12, id: 'acemullae', name: '에이스문래지사', addr: '서울시 영등포구 당산로41길 11, SKV1센터 W동 1312호', ceo: '심규훈', tel: '010-6286-1189', lat: 37.53091, lng: 126.89787 }
   ,{ no: 13, id: 'epercul', name: '에퍼컬지사', addr: '서울시 영등포구 문래동3가 55-20 에이스하이테크시티 1동 315호', ceo: '김미화', tel: '010-4712-0766', lat: 37.51702, lng: 126.89591 }
 ];

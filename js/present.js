@@ -78,6 +78,7 @@
     '.rv-more{font-size:.8em;opacity:.65;letter-spacing:0;margin-left:6px}' +
     '#hd,#progress,.top-btn,.fab,.pm-btn{display:none!important}' +
     '.sys-wrap{grid-template-columns:1fr!important}.sys-wrap>nav{display:none!important}' +   /* 2탄 영업 시스템: 왼쪽 목차 빼고 내용만 장별로 */
+    '.fcp-p.on{max-height:800px;overflow-y:auto;padding-right:12px;overscroll-behavior:contain}' +   /* 2탄 금융소비자보호: 법규 원문은 장 안에서 휠로 내려 봄 */
     'main{display:none}' +
     'html.rv-measure main{display:block;width:1920px}' +
     'html:not(.rv-built) body>*:not(.intro):not(script){visibility:hidden}' +
@@ -93,6 +94,12 @@
     '.rv-exit{position:fixed;right:16px;top:14px;z-index:40;height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(205,155,52,.6);background:rgba(15,35,64,.72);color:#E6CF97;font:700 13px "IBM Plex Sans KR",sans-serif;cursor:pointer;opacity:.35;transition:opacity .3s}' +
     '.rv-exit:hover{opacity:1}';
   document.head.appendChild(st);
+  /* 바탕색이 따로 없는 구간은 홈페이지 바탕색(흰색 등)을 깔아 발표 화면의 남색이 비치지 않게 */
+  var bodyBg = getComputedStyle(document.body).backgroundColor;
+  if (!bodyBg || bodyBg === 'rgba(0, 0, 0, 0)' || bodyBg === 'transparent') bodyBg = '#fff';
+  var st2 = document.createElement('style'); st2.setAttribute('data-deck', '');
+  st2.textContent = ':where(.reveal .slides>section){background-color:' + bodyBg + '}';
+  document.head.insertBefore(st2, document.head.firstChild);
   var rv = document.createElement('div'); rv.className = 'reveal'; rv.innerHTML = '<div class="slides"></div>';
   document.body.appendChild(rv);
 
@@ -163,7 +170,14 @@
     });
   }
   function isHead(el){
-    return /^H[1-4]$/.test(el.tagName) || el.classList.contains('eyebrow') || el.classList.contains('sec-lead') || el.classList.contains('path-h') || el.classList.contains('sec-title') || el.classList.contains('chap') || el.classList.contains('blk-hd');
+    return /^H[1-4]$/.test(el.tagName) || el.classList.contains('eyebrow') || el.classList.contains('sec-lead') || el.classList.contains('path-h') || el.classList.contains('sec-title') || el.classList.contains('chap') || el.classList.contains('blk-hd') || shortHead(el);
+  }
+  function shortHead(el){                        // 그림·표 없이 글자 한두 줄뿐인 줄(소제목)도 제목처럼 다음 장과 함께
+    if (el.offsetHeight > 110 || el.querySelector('img,svg,table,video,canvas,input,button,li')) return false;
+    var tx = el.textContent.replace(/\s+/g, ' ').trim(); if (!tx.length || tx.length >= 90) return false;
+    var big = false, tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n;   // 굵고 큰 글씨가 있어야 소제목 (작은 안내 문구는 제외)
+    while ((n = tw.nextNode())) { if (!n.textContent.trim()) continue; var c = getComputedStyle(n.parentElement); if (parseFloat(c.fontSize) >= 18 && +c.fontWeight >= 600) { big = true; break; } }
+    return big;
   }
 
   /* 내용이 실제로 차지하는 폭 (글자·그림 기준) */
@@ -232,47 +246,76 @@
       if (d === 'none') return;
       if (d !== 'block') s.setAttribute('data-rv-disp', d);
       s.style.paddingTop = s.style.paddingBottom = '0px';
-      var wrap = s.querySelector(':scope>.wrap');
-      if (s.offsetHeight <= B || !wrap || d !== 'block') { out.push(s); return; }
+      if (s.offsetHeight <= B || d !== 'block') { out.push(s); return; }
 
-      /* 덩어리(카드·표·그림)는 되도록 통째로: 한 화면의 1.4배를 넘는 것만 줄 단위로 나눔 */
-      [].slice.call(wrap.children).forEach(function(k){ if (k.offsetHeight > B * 1.4) split(k, 0); });
-      var kids = [].slice.call(wrap.children), sp = spans(kids, wrap);
-      var eb = (kids[0] && kids[0].classList.contains('eyebrow')) ? kids[0] : null, ebH = eb ? sp[0] : 0;
+      /* 구간 안의 내용 상자(.wrap)가 여러 개여도 모두 이어서 나눔. 한 화면을 넘는 덩어리만 줄(카드 묶음) 사이에서 쪼갬 */
+      var flowTop = function(){ return [].filter.call(s.children, inFlow); };
+      flowTop().forEach(function(c){
+        if (c.classList.contains('wrap')) [].slice.call(c.children).forEach(function(k){ if (k.offsetHeight > B) split(k, 0); });
+        else if (c.offsetHeight > B) split(c, 0);
+      });
+      var items = [];
+      flowTop().forEach(function(c){
+        if (c.classList.contains('wrap') && c.children.length) [].forEach.call(c.children, function(k){ items.push({ el: k, par: c }); });
+        else items.push({ el: c, par: null });
+      });
+      if (!items.length) { out.push(s); return; }
+      var tops = items.map(function(x){ return inFlow(x.el) ? x.el.getBoundingClientRect().top : null; });
+      var end = s.getBoundingClientRect().bottom;
+      items.forEach(function(x, i){
+        x.sp = 0; if (tops[i] === null) return;
+        var nx = end; for (var j = i + 1; j < items.length; j++) if (tops[j] !== null) { nx = tops[j]; break; }
+        x.sp = Math.max(0, nx - tops[i]);
+      });
+      var eb = items[0].el.classList.contains('eyebrow') ? items[0].el : null, ebH = eb ? items[0].sp : 0;
       var chunks = [[]], cur = 0;
-      kids.forEach(function(k, i){
+      items.forEach(function(x){
         var lim = B - (chunks.length > 1 ? ebH : 0), c = chunks[chunks.length - 1];
-        if (c.length && cur + sp[i] > lim) {
+        if (c.length && cur + x.sp > lim) {
           var carry = [];
           while (c.length && isHead(c[c.length - 1].el)) carry.unshift(c.pop());   // 제목만 따로 남지 않게 다음 장으로
-          chunks.push(carry); cur = carry.reduce(function(a, x){ return a + x.sp; }, 0);
+          chunks.push(carry); cur = carry.reduce(function(a, y){ return a + y.sp; }, 0);
         }
-        chunks[chunks.length - 1].push({ el: k, sp: sp[i] }); cur += sp[i];
+        chunks[chunks.length - 1].push(x); cur += x.sp;
       });
       chunks = chunks.filter(function(c){ return c.length; });
-      /* 너무 적은 장은 앞/뒤 장과 합치기 (조금 넘치면 그 장만 살짝 축소) */
+      /* 너무 적은 장은 앞/뒤 장과 합치기 (한 화면에 다 들어갈 때만) */
       var sum = function(c){ return c.reduce(function(a, x){ return a + x.sp; }, 0); };
       for (var ci = chunks.length - 1; ci >= 0 && chunks.length > 1; ci--) {
         var me = sum(chunks[ci]);
         if (me >= B * 0.3) continue;
         var pv = ci > 0 ? sum(chunks[ci - 1]) : Infinity, nx = ci < chunks.length - 1 ? sum(chunks[ci + 1]) : Infinity;
-        if (pv <= nx && pv + me <= B * 1.15) { chunks[ci - 1] = chunks[ci - 1].concat(chunks[ci]); chunks.splice(ci, 1); }
-        else if (nx + me <= B * 1.15) { chunks[ci + 1] = chunks[ci].concat(chunks[ci + 1]); chunks.splice(ci, 1); }
+        if (pv <= nx && pv + me <= B) { chunks[ci - 1] = chunks[ci - 1].concat(chunks[ci]); chunks.splice(ci, 1); }
+        else if (nx + me <= B) { chunks[ci + 1] = chunks[ci].concat(chunks[ci + 1]); chunks.splice(ci, 1); }
       }
       if (chunks.length === 1) { out.push(s); return; }
 
-      var decor = [].filter.call(s.children, function(c){ return c !== wrap; });
+      var decor = [].filter.call(s.children, function(c){ return !inFlow(c); });
+      var tops0 = flowTop(); tops0.forEach(function(c){ c.remove(); });
+      var used = [];
       chunks.forEach(function(c, ci){
-        if (ci === 0) { out.push(s); return; }
-        var sec = s.cloneNode(false); sec.removeAttribute('id'); sec.classList.add('rv-cont');
-        decor.forEach(function(x){ sec.appendChild(stripIds(x.cloneNode(true))); });
-        var w = wrap.cloneNode(false); w.removeAttribute('id'); sec.appendChild(w);
-        if (eb && c[0].el !== eb) {
-          var e = stripIds(eb.cloneNode(true));
-          e.insertAdjacentHTML('beforeend', ' <span class="rv-more">(계속)</span>');
-          w.appendChild(e);
+        var sec = s;
+        if (ci > 0) {
+          sec = s.cloneNode(false); sec.removeAttribute('id'); sec.classList.add('rv-cont');
+          decor.forEach(function(x){ sec.appendChild(stripIds(x.cloneNode(true))); });
         }
-        c.forEach(function(x){ w.appendChild(x.el); });
+        var box = null, src = null;
+        c.forEach(function(x, xi){
+          if (xi === 0 && ci > 0 && eb && x.el !== eb) {           // 이어지는 장 맨 위에 구간 이름 (계속)
+            var e = stripIds(eb.cloneNode(true));
+            e.insertAdjacentHTML('beforeend', ' <span class="rv-more">(계속)</span>');
+            var p0 = x.par || eb.parentNode;
+            box = used.indexOf(p0) < 0 ? p0 : p0.cloneNode(false); if (box !== p0) box.removeAttribute('id'); else used.push(p0);
+            src = p0; sec.appendChild(box); box.appendChild(e);
+          }
+          if (!x.par) { box = null; src = null; sec.appendChild(x.el); return; }
+          if (src !== x.par) {
+            box = used.indexOf(x.par) < 0 ? x.par : x.par.cloneNode(false);
+            if (box !== x.par) box.removeAttribute('id'); else used.push(x.par);
+            src = x.par; sec.appendChild(box);
+          }
+          box.appendChild(x.el);
+        });
         out.push(sec);
       });
     });
@@ -301,7 +344,7 @@
       var refit = function(){ var c = Reveal.getCurrentSlide(); if (c) fit(c, false); };
       Reveal.on('slidechanged', function(){ refit(); window.dispatchEvent(new Event('resize')); });
       setInterval(refit, 500);
-      var ACT = 'a,button,input,select,textarea,label,summary,video,iframe,[role=button],[role=tab],[tabindex],[onclick],.hc';
+      var ACT = 'a,button,input,select,textarea,label,summary,video,iframe,[role=button],[role=tab],[tabindex],[onclick],.hc,.fcp-p';   // 금융소비자보호 본문은 읽는 곳이라 클릭해도 안 넘어감
       deck.addEventListener('click', function(e){                     // 한 번 클릭 = 다음 장
         if (e.defaultPrevented || e.button !== 0 || Reveal.isOverview()) return;
         if (e.target.closest && e.target.closest(ACT)) return;           // 버튼·탭·링크는 원래 기능

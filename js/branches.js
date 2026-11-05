@@ -118,7 +118,32 @@ window.BRANCHES = [
     ],
     closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 송파에서', img: 'img/songpa/g08.jpg' }
   }
-  ,{ no: 6, id: 'chuncheon', name: '춘천지사', addr: '강원특별자치도 춘천시 안마산로 107-1, 제4층 제404호·405호(퇴계동, 에스엠프라자)', ceo: '이미순', tel: '010-5371-2854', lat: 37.84902, lng: 127.74763 }
+  ,{
+    no: 6, id: 'chuncheon',
+    name: '춘천지사',
+    en: 'CHUNCHEON BRANCH',
+    addr: '강원특별자치도 춘천시 안마산로 107-1, 제4층 제404호·405호(퇴계동, 에스엠프라자)',
+    ceo: '이미순',
+    tel: '010-5371-2854',
+    lat: 37.84902, lng: 127.74763,
+    tagline: '우리는 KIF의 전사입니다',
+    intro: '한국보험금융 신채널 춘천지사는 보험의 본질과 기본으로 돌아가, 모든 영업의 중심에 고객의 이익과 신뢰를 둡니다. 철저한 보장분석으로 맞춤형 컨설팅을 실천하고, AI 분석시스템과 체계적인 교육으로 누구나 쉽게 배우고 실천하는 보험영업을 만듭니다. 생명보험·손해보험 보장 점검 지원 센터를 함께 운영합니다.',
+    philosophy: '보험의 본질과 확고한 기준이라는 강력한 무기로 거대한 시장을 돌파합니다',
+    video: 'img/chuncheon/tour.mp4',
+    poster: 'img/chuncheon/poster.jpg',
+    hero: 'img/chuncheon/hero.jpg',   // 첫 화면 배경
+    spaces: [
+      { tag: 'WELCOME', t: '한국보험금융 신채널 춘천지사', d: '춘천지사에 오신 것을 환영합니다', img: 'img/chuncheon/g01.jpg' },
+      { tag: 'CONSULTING', t: '생명보험 · 손해보험 보장 점검 지원 센터', d: '무료 보장 점검 · 맞춤형 보장 상담', img: 'img/chuncheon/g02.jpg' },
+      { tag: 'WORKSPACE', t: '넓고 밝은 업무 공간', d: '창가를 따라 이어지는 개인 업무석', img: 'img/chuncheon/g03.jpg' },
+      { tag: 'OPEN OFFICE', t: '함께 일하는 오픈 오피스', d: '파티션 데스크와 개인 PC가 갖춰진 사무실', img: 'img/chuncheon/g04.jpg' },
+      { tag: 'EDUCATION', t: '체계적인 교육으로 높이는 전문성', d: '프로젝터와 스크린을 갖춘 사무실', img: 'img/chuncheon/g05.jpg' },
+      { tag: 'MEETING ROOM', t: '독립된 회의 · 교육실', d: '팀 미팅과 상담 준비를 한 곳에서', img: 'img/chuncheon/g06.jpg' },
+      { tag: 'PRIVATE ROOM', t: '유리로 나뉜 독립 공간', d: '고객 상담과 집중 업무를 위한 룸', img: 'img/chuncheon/g07.jpg' },
+      { tag: 'LOUNGE', t: '잠시 쉬어 가는 라운지', d: '창가 바 테이블과 티 테이블', img: 'img/chuncheon/g08.jpg' }
+    ],
+    closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 춘천에서', img: 'img/chuncheon/g09.jpg' }
+  }
   ,{
     no: 7, id: 'uijeongbu',
     name: '의정부지사',

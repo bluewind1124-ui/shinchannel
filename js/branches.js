@@ -69,7 +69,30 @@ window.BRANCHES = [
     closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 부천에서', img: 'img/bucheon/g13.jpg' }
   }
   ,{ no: 2, id: 'ilsan', name: '일산지사', addr: '경기도 고양시 일산동구 호수로 358-39, 605호·606호(백석동, 동문굿모닝타워1차)', ceo: '김소윤', tel: '010-6522-8088', lat: 37.64037, lng: 126.78676 }
-  ,{ no: 3, id: 'thedream', name: '더드림지사', addr: '서울특별시 동대문구 왕산로 15, 4층(신설동, 남서울빌딩)', ceo: '박용하', tel: '010-6345-2654', lat: 37.57653, lng: 127.0253 }
+  ,{
+    no: 3, id: 'thedream',
+    name: '더드림지사',
+    en: 'THE DREAM BRANCH',
+    addr: '서울특별시 동대문구 왕산로 15, 4층(신설동, 남서울빌딩)',
+    ceo: '박용하',
+    tel: '010-6345-2654',
+    lat: 37.57653, lng: 127.0253,
+    tagline: '보험을 판매하는 사람에서, 보험을 경영하는 사람으로',
+    intro: '한국보험금융 신채널 더-드림지사는 보험설계사가 고객의 인생을 설계하고 자신만의 고객 기반과 영업조직을 구축하는 보험전문 사업가로 성장하도록 돕습니다. 영업전략, 고객 발굴·DB 마케팅, 생명·손해보험 상품 컨설팅, 세무·상속·증여 재무설계, 조직관리와 리더십까지 각 분야 전문가의 실전 노하우를 함께 배우고 나눕니다.',
+    philosophy: '혼자 성장하는 시대에서 함께 성공하는 시대로',
+    video: 'img/thedream/tour.mp4',
+    poster: 'img/thedream/poster.jpg',
+    hero: 'img/thedream/hero.jpg',   // 첫 화면 배경
+    spaces: [
+      { tag: 'WELCOME', t: '한국보험금융 신채널 더-드림지사', d: '보험설계사에서 보험 전문 사업가로', img: 'img/thedream/g01.jpg' },
+      { tag: 'OUR SPIRIT', t: '고마운 사람, 더-드림지사', d: '“당신은 당당한 전문가입니다”', img: 'img/thedream/g02.jpg' },
+      { tag: 'WORKSPACE', t: '넓고 밝은 업무 공간', d: '개인 서랍장을 갖춘 업무석', img: 'img/thedream/g03.jpg' },
+      { tag: 'PC ZONE', t: '당신이 꿈꾸는 행복한 미래', d: '설계와 고객관리를 위한 PC석', img: 'img/thedream/g04.jpg' },
+      { tag: 'CONSULTING', t: '고객과 마주 앉는 상담실', d: '따뜻한 조명의 프라이빗 상담 공간', img: 'img/thedream/g05.jpg' },
+      { tag: 'CIS ROOM', t: '독립된 CIS 룸', d: '집중이 필요한 업무를 위한 공간', img: 'img/thedream/g06.jpg' }
+    ],
+    closing: { t: '이제, 당신의 차례입니다', d: '당신의 내일을, 더-드림에서', img: 'img/thedream/g07.jpg' }
+  }
   ,{
     no: 5, id: 'songpa',
     name: '송파지사',

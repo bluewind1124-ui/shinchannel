@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261105181906",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261111180806",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>지사 소개 | 한국보험금융 신채널</title>
 <link rel="icon" href="img/favicon.ico" sizes="any">
@@ -17,13 +17,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/branch.css?b=20261105181906">
+<link rel="stylesheet" href="css/branch.css?b=20261111180806">
 </head>
 <body>
 <header>
   <div class="wrap hd">
     <a class="logo" href="index.html"><img src="img/logo-on-navy.png" alt="한국보험금융"><span>신채널</span></a>
-    <nav><a href="index.html">홈</a><a class="on" href="branches.html">지사 소개</a><a href="index.html#apply">간편 문의</a></nav>
+    <nav><a href="index.html">홈</a><a class="on" href="branches.html">지사 소개</a><a href="index.html#apply">지원 문의</a></nav>
   </div>
 </header>
 
@@ -33,8 +33,8 @@
   <div class="wrap"><b>한국보험금융(주)</b> · 서울 용산구 한강대로 257, 14층(갈월동, 청룡빌딩) · TEL 02-771-5050</div>
 </footer>
 
-<script src="js/korea-map.js?b=20261105181906"></script>
-<script src="js/branches.js?b=20261105181906"></script>
+<script src="js/korea-map.js?b=20261111180806"></script>
+<script src="js/branches.js?b=20261111180806"></script>
 <script>
 (function(){
   var esc = function(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
@@ -60,7 +60,7 @@
        '<p class="lead">'+esc(b.intro||(b.name+'는 한국보험금융 신채널 지사입니다. 가까운 지사에서 지사장과 직접 상담하고, 본사 교육과 한보금ON 영업 지원을 함께 받을 수 있습니다.'))+'</p>'+
        '<a class="back" href="branches.html">← 전체 지사 명단</a></div>'+
        '<div><dl><dt>지사명</dt><dd>'+esc(b.name)+'</dd><dt>주소</dt><dd>'+(b.addr?esc(b.addr):tbd)+'</dd>'+
-       '<dt>지사장</dt><dd>'+(b.ceo?esc(b.ceo):tbd)+'</dd><dt>전화번호</dt><dd>'+(b.tel?'<a href="tel:'+esc(b.tel.replace(/[^0-9]/g,''))+'">'+esc(b.tel)+'</a>':tbd)+'</dd></dl>'+
+       '<dt>지사장</dt><dd>'+(b.ceo?esc(b.ceo):tbd)+'</dd><dt>전화번호</dt><dd>'+(b.tel?'<a href="tel:'+esc(b.tel.replace(/[^0-9]/g,''))+'">'+esc(b.tel)+'</a>':tbd)+'</dd><dt>이메일</dt><dd>'+(b.email?'<a href="mailto:'+esc(b.email)+'">'+esc(b.email)+'</a>':'')+'</dd></dl>'+
        (b.lat!=null&&b.lng!=null?'<div class="mini-map"><div class="kmap" id="mini"></div></div>':'')+(b.addr?'<div class="map-links"><a href="https://map.naver.com/p/search/'+encodeURIComponent(b.addr)+'" target="_blank" rel="noopener">네이버 지도에서 보기</a><a href="https://map.kakao.com/?q='+encodeURIComponent(b.addr)+'" target="_blank" rel="noopener">카카오맵에서 보기</a></div>':'')+'</div></div></section>';
 
   /* 소개 영상 */
@@ -83,7 +83,7 @@
   /* 마무리 */
   var c = b.closing || {t:'이제, 당신의 차례입니다', d:'신채널 '+b.name+'에서 함께 시작하세요'};
   h += '<section class="b-close dark">'+(c.img?'<div class="bg" style="background-image:url('+esc(c.img)+')"></div>':'')+
-       '<div class="wrap"><h2>'+esc(c.t)+'</h2><p>'+esc(c.d)+'</p><a class="btn btn-gold" href="index.html#apply">간편 문의하기</a></div></section>';
+       '<div class="wrap"><h2>'+esc(c.t)+'</h2><p>'+esc(c.d)+'</p><a class="btn btn-gold" href="index.html#apply">지원 문의하기</a></div></section>';
   P.innerHTML = h;
 
   /* 「지사 둘러보기」를 누르면 영상으로 내려가서 반복 재생 */

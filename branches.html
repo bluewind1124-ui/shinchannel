@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261105181906",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261111180806",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>지사 소개 | 한국보험금융 신채널</title>
 <meta name="description" content="한국보험금융 신채널 전국 지사 위치와 명단. 지사를 누르면 지사별 소개 페이지로 이동합니다.">
@@ -20,13 +20,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/branch.css?b=20261105181906">
+<link rel="stylesheet" href="css/branch.css?b=20261111180806">
 </head>
 <body>
 <header>
   <div class="wrap hd">
     <a class="logo" href="index.html"><img src="img/logo-on-navy.png" alt="한국보험금융"><span>신채널</span></a>
-    <nav><a href="index.html">홈</a><a class="on" href="branches.html">지사 소개</a><a href="index.html#apply">간편 문의</a></nav>
+    <nav><a href="index.html">홈</a><a class="on" href="branches.html">지사 소개</a><a href="index.html#apply">지원 문의</a></nav>
   </div>
 </header>
 
@@ -54,7 +54,7 @@
       <p class="cnt">등록된 지사 <b id="cnt">0</b>곳</p>
     </div>
     <table class="blist">
-      <thead><tr><th style="width:24%">지사명</th><th>주소</th><th style="width:13%">지사장</th><th style="width:16%">연락처</th><th style="width:11%"></th></tr></thead>
+      <thead><tr><th style="width:19%">지사명</th><th>주소</th><th style="width:13%">지사장</th><th style="width:15%">연락처</th><th style="width:16%">이메일</th><th style="width:11%"></th></tr></thead>
       <tbody id="rows"></tbody>
     </table>
     <p class="list-foot">* 2026년 10월 기준. 지사를 누르면 지사 소개 페이지로 이동합니다.</p>
@@ -65,9 +65,9 @@
   <div class="wrap"><b>한국보험금융(주)</b> · 서울 용산구 한강대로 257, 14층(갈월동, 청룡빌딩) · TEL 02-771-5050</div>
 </footer>
 
-<script src="js/korea-map.js?b=20261105181906"></script>
-<script src="js/kmap.js?b=20261105181906"></script>
-<script src="js/branches.js?b=20261105181906"></script>
+<script src="js/korea-map.js?b=20261111180806"></script>
+<script src="js/kmap.js?b=20261111180806"></script>
+<script src="js/branches.js?b=20261111180806"></script>
 <script>
 (function(){
   var B = (window.BRANCHES || []).slice().sort(function(a,b){return (a.no||99)-(b.no||99)});
@@ -86,6 +86,7 @@
       '<td data-k="주소">'+(b.addr?esc(b.addr):tbd)+'</td>'+
       '<td data-k="지사장">'+(b.ceo?esc(b.ceo):tbd)+'</td>'+
       '<td data-k="전화">'+(b.tel?'<a href="tel:'+esc(b.tel.replace(/[^0-9]/g,''))+'" onclick="event.stopPropagation()">'+esc(b.tel)+'</a>':tbd)+'</td>'+
+      '<td data-k="이메일">'+(b.email?'<a href="mailto:'+esc(b.email)+'" onclick="event.stopPropagation()">'+esc(b.email)+'</a>':'')+'</td>'+
       '<td><a class="go" href="'+link(b)+'">소개 보기 →</a></td>';
     tr.onclick = function(){location.href = link(b)};
     rows.appendChild(tr);

@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261105181906",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
+<script>/* 최신 확인: 올린 뒤 브라우저가 옛 화면을 보여 주면 스스로 최신으로 다시 엽니다 */(function(){var B="20261111180806",p=location.protocol;if(p!=="http:"&&p!=="https:")return;var R=(/\/(v2|r2)\//.test(location.pathname)?"../":"")+"build.txt";function chk(){if(!window.fetch)return;fetch(R+"?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():""}).then(function(t){t=(t||"").trim();if(!/^\d{14}$/.test(t)||t<=B)return;var q=new URLSearchParams(location.search);if(q.get("b")===t)return;q.set("b",t);location.replace(location.pathname+"?"+q.toString()+location.hash);}).catch(function(){});}chk();document.addEventListener("visibilitychange",function(){if(!document.hidden)chk();});})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>한국보험금융 신채널</title>
 <meta name="description" content="사람(人)을 지원(支)하는 회사, 한국보험금융 신채널. 커리어패스, 신인 지원, 교육, 영업 플랫폼 한보금ON, 모집 안내.">
@@ -962,7 +962,7 @@ header.small .hd{height:60px}
 .qa details[open] summary::after{transform:rotate(-135deg)}
 .qa .a{padding:0 0 24px 40px;font-size:15px;color:var(--ink2);animation:pop .4s var(--ease)}
 
-/* ── 9. 간편 지원 ── */
+/* ── 9. 지원 · 문의 ── */
 .apply{background:var(--navy);color:#fff;overflow:hidden}
 .apply::before{content:"";position:absolute;left:-200px;top:-200px;width:600px;height:600px;border-radius:50%;border:1px solid rgba(205,155,52,.3);animation:spin 50s linear infinite}
 .apply .grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start;position:relative}
@@ -1284,6 +1284,26 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
 .gx .gx-sky rect{fill:#1D3557;opacity:.45}
 .gx .gx-gnd{stroke:rgba(230,207,151,.3);stroke-width:1}
 @media (max-width:560px){.gx .gx-lb{font-size:19px}.gx .gx-cap{font-size:21px}}
+
+/* 지원 · 문의: 입력칸 없이 본사 · 지사 연락처 안내 (개인정보 수집 안 함) */
+.ct-hq{margin-top:32px;padding:28px 30px;border-radius:8px;background:rgba(205,155,52,.12);border:1px solid rgba(205,155,52,.4)}
+.ct-k{display:block;font:700 15px 'IBM Plex Sans KR',sans-serif;color:var(--gold-l)}
+.ct-big{display:block;margin-top:8px;font:800 clamp(34px,4vw,48px)/1.1 'Gothic A1',sans-serif;color:#fff;text-decoration:none;font-variant-numeric:tabular-nums}
+.ct-mail{display:inline-block;margin-top:12px;font-size:18px;font-weight:700;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(205,155,52,.5);word-break:break-all}
+.ct-hq p{margin-top:12px;font-size:14px;color:rgba(255,255,255,.7)}
+.ct-br{position:relative;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:28px 30px}
+.ct-h{font:800 20px 'Gothic A1',sans-serif;color:#fff;margin:0 0 8px}
+.ct-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.ct-list li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:0 12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.ct-n{font-weight:700;font-size:16px;color:#fff;text-decoration:none}
+.ct-n:hover{color:var(--gold-l)}
+.ct-list span{grid-column:1;font-size:13px;color:rgba(255,255,255,.6)}
+.ct-t{grid-column:2;grid-row:1/3;font-weight:700;font-size:15.5px;color:var(--gold);text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ct-note{margin-top:14px;font-size:13px;color:rgba(255,255,255,.55)}
+@media (max-width:640px){.ct-list{grid-template-columns:1fr}.ct-hq,.ct-br{padding:22px}}
+.ct-list .ct-m{grid-column:1/3;font-size:13px;color:rgba(255,255,255,.6);min-height:1.5em}
+.ct-list .ct-m a{color:var(--gold-l);text-decoration:none;word-break:break-all}
+.nb-mail{display:block;width:100%}
 </style>
 <script>/* 발표 모드(?deck=1)면 장표가 만들어지기 전까지 홈페이지 화면을 가림 */(function(){var q=location.search;if(/[?&]deck=1(&|$)/.test(q)||(window.SC_DECK===1&&!/[?&]deck=0(&|$)/.test(q))){document.documentElement.classList.add("deck");var s=document.createElement("style");s.textContent="html.deck:not(.rv-built) body>*:not(.intro):not(script){visibility:hidden}";document.head.appendChild(s);}})();</script>
 </head>
@@ -1321,7 +1341,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
       <li><a href="#branches">지사 소개</a></li>
       <li><a href="#faq">자주 묻는 질문</a></li>
     </ul>
-    <a class="btn btn-gold" href="#apply">간편 지원</a>
+    <a class="btn btn-gold" href="#apply">지원 문의</a>
     <button class="menu-btn" aria-label="메뉴 열기" onclick="document.getElementById('gnb').classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -1355,7 +1375,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
         <p class="kicker"><b>人</b><b>支</b> 한국보험금융 신채널</p>
         <h1><span class="nb">보험은 <em>인지(人支)</em></span><br><span class="nb">산업입니다</span><span class="hz">사람을 지원하는 회사가 사람을 얻습니다</span></h1>
         <p>사람(人)에 대한 지원과 지원(支) 시스템. 신채널은 FC와 관리자가 오래 성장할 수 있는 구조를 먼저 만들었습니다.</p>
-        <div class="cta"><a class="btn btn-gold" href="#apply">간편 지원하기</a><a class="btn btn-line" href="#people">지원 제도 보기</a></div>
+        <div class="cta"><a class="btn btn-gold" href="#apply">지원 문의하기</a><a class="btn btn-line" href="#people">지원 제도 보기</a></div>
       </div></div>
       <div class="model m1"><img src="img/model1.webp" alt="손을 펼쳐 안내하는 정장 차림의 남성"></div>
     </div>
@@ -2316,7 +2336,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
     <div>
       <p class="eyebrow rv">자주 묻는 질문</p>
       <h2 class="sec-title rv">지원 전에<br>가장 많이 묻는 5가지</h2>
-      <p class="sec-lead rv" style="font-size:16px">더 궁금한 점은 간편 지원서에 남겨 주세요. 담당자가 직접 안내합니다.</p>
+      <p class="sec-lead rv" style="font-size:16px">더 궁금한 점은 본사나 가까운 지사에 전화 · 이메일로 문의해 주세요. 담당자가 직접 안내합니다.</p>
     </div>
     <div class="qa rv d1">
       <details open><summary><b>Q1</b>보험 경력이 없어도 지원할 수 있나요?</summary><p class="a">네. 무경력 신인은 5일 신인 입문 과정 전 과정을 듣습니다. 1~3일차는 신인 단독으로 회사·시장·세일즈 프로세스를, 4~5일차는 경력 FC와 함께 DB 시장·AI 보장분석·상품 라인업을 배웁니다.</p></details>
@@ -2328,27 +2348,16 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   </div>
 </section>
 
-<!-- ============ 8. 간편 지원 (결정하는 곳) ============ -->
+<!-- ============ 8. 지원 · 문의 (본사 · 지사 연락처 안내, 개인정보 받지 않음) ============ -->
 <section class="apply dark" id="apply">
   <div class="wrap grid">
     <div>
-      <p class="eyebrow rv">간편 문의</p>
-      <h2 class="sec-title rv">꿈에 다가가는 시간,<br>1분이면 충분합니다</h2>
-      <p class="sec-lead rv">이력서 없이 기본 정보만 남겨 주세요. 지역과 경력에 맞는 지사·담당자가 연락드립니다.</p>
-      <div class="promise rv"><b>2일</b><span>신청 후 영업일 기준 2일 안에<br>담당자가 연락드립니다. <span class="draft">응답 기한 확정 필요</span></span></div>
+      <p class="eyebrow rv">지원 · 문의</p>
+      <h2 class="sec-title rv">궁금한 점은<br>직접 연락 주세요</h2>
+      <p class="sec-lead rv">홈페이지에서는 이름 · 연락처 같은 개인정보를 받지 않습니다. 본사나 가까운 지사에 전화 또는 이메일로 편하게 문의해 주세요.</p>
+      <div class="ct-hq rv"><span class="ct-k">본사 · 신채널 지원 문의</span><a class="ct-big" href="tel:027715050">02-771-5050</a><a class="ct-mail" href="mailto:koinslaw@gmail.com?subject=%EC%8B%A0%EC%B1%84%EB%84%90%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98">koinslaw@gmail.com</a><p>서울 용산구 한강대로 257, 14층 (갈월동, 청룡빌딩)</p></div>
     </div>
-    <form id="form" class="rv d1" onsubmit="return applyForm(event)">
-      <label>이름<input name="name" required placeholder="홍길동"></label>
-      <label>연락처<input name="tel" required inputmode="tel" placeholder="010-0000-0000"></label>
-      <label>희망 지역<select name="area" required><option value="">선택</option><option>서울</option><option>경기</option><option>인천</option><option>강원</option><option>충청</option><option>전라</option><option>경상</option><option>제주</option></select></label>
-      <label>상담 가능 시간<select name="time"><option>언제든</option><option>오전</option><option>오후</option><option>저녁</option></select></label>
-      <div class="full"><span style="font-size:14px;font-weight:700;color:var(--navy)">보험 경력</span>
-        <div class="radios" style="margin-top:6px"><label><input type="radio" name="career" value="없음" checked>없음</label><label><input type="radio" name="career" value="3년 미만">3년 미만</label><label><input type="radio" name="career" value="3년 이상">3년 이상</label><label><input type="radio" name="career" value="관리자">관리자 경력</label></div></div>
-      <div class="full"><span style="font-size:14px;font-weight:700;color:var(--navy)">관심 분야</span>
-        <div class="radios" style="margin-top:6px"><label><input type="radio" name="want" value="FC" checked>FC</label><label><input type="radio" name="want" value="관리자">관리자</label><label><input type="radio" name="want" value="지사 개설">지사 개설</label></div></div>
-      <label class="agree full"><input type="checkbox" required> 상담을 위한 개인정보 수집·이용에 동의합니다. (이름·연락처·지역, 상담 후 1년 보관) <span class="draft">문구 확정 필요</span></label>
-      <button class="btn btn-gold" type="submit">지원 상담 신청</button>
-    </form>
+    <div class="ct-br rv d1"><p class="ct-h">가까운 지사에 바로 연락하기</p><ul class="ct-list" id="ctList"></ul><p class="ct-note">지사 이름을 누르면 지사 소개 페이지로 이동합니다.</p></div>
   </div>
 </section>
 
@@ -2378,7 +2387,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
           <p>지원 제도와 혜택은 회사 규정에 따르며 변경될 수 있습니다. 제시된 내용은 소득을 보장하지 않습니다.</p>
         </div>
         <p style="margin-top:20px;font-size:12px">COPYRIGHT © 2016~ Korea Insurance &amp; Finance. ALL RIGHTS RESERVED.</p>
-        <p class="ver" style="margin-top:6px;font-size:12px;color:#E6CF97">신채널 홈페이지 1탄 · v2.9 (2026.11.05)</p>
+        <p class="ver" style="margin-top:6px;font-size:12px;color:#E6CF97">신채널 홈페이지 1탄 · v3.0 (2026.11.11)</p>
       </div>
     </div>
   </div>
@@ -2482,15 +2491,13 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.6);font-size:14px;paddin
   if(reduce){var v=document.querySelector('.vip video');if(v){v.removeAttribute('autoplay');v.pause();}}
 })();
 
-/* 간편 지원: 아직 접수처가 연결되지 않아 안내만 띄움 */
-function applyForm(e){e.preventDefault();var t=document.getElementById('toast');t.textContent='초안 화면입니다. 접수처(구글 폼 등)를 연결하면 실제로 신청됩니다.';t.classList.add('show');setTimeout(function(){t.classList.remove('show')},3500);return false;}
 </script>
-<script src="js/sound.js?b=20261105181906"></script>
-<script src="js/branches.js?b=20261105181906"></script>
-<script src="js/korea-map.js?b=20261105181906"></script>
-<script src="js/kmap.js?b=20261105181906"></script>
-<script src="js/reveal-lib.js?b=20261105181906"></script>
-<script src="js/present.js?b=20261105181906"></script>
+<script src="js/sound.js?b=20261111180806"></script>
+<script src="js/branches.js?b=20261111180806"></script>
+<script src="js/korea-map.js?b=20261111180806"></script>
+<script src="js/kmap.js?b=20261111180806"></script>
+<script src="js/reveal-lib.js?b=20261111180806"></script>
+<script src="js/present.js?b=20261111180806"></script>
 <script>
 /* 당신 곁에 한국보험금융: 지도 2개 + 지사 카드 (카드 ↔ 지도 점 함께 강조) */
 (function(){
@@ -2502,7 +2509,7 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
   B.forEach(function(b,i){
     var a=document.createElement('a'); a.className='nb-card'; a.href=KMAP.link(b); a.dataset.id=b.id; a.style.transitionDelay=(i*0.04)+'s';
     a.innerHTML='<span class="rg">'+esc(region(b.addr))+'</span><h3>'+esc(b.name)+'</h3>'+(b.video?'<span class="vid">▶ 영상 소개</span>':'')+
-      '<p><span>지사장 '+esc(b.ceo||'-')+'</span>'+(b.tel?'<a href="tel:'+esc(b.tel.replace(/[^0-9]/g,''))+'" onclick="event.stopPropagation()">'+esc(b.tel)+'</a>':'')+'</p>';
+      '<p><span>지사장 '+esc(b.ceo||'-')+'</span>'+(b.tel?'<a href="tel:'+esc(b.tel.replace(/[^0-9]/g,''))+'" onclick="event.stopPropagation()">'+esc(b.tel)+'</a>':'')+'<span class="nb-mail">이메일 '+esc(b.email||'')+'</span></p>';
     a.addEventListener('mouseenter',function(){hl(b.id,true)}); a.addEventListener('mouseleave',function(){hl(b.id,false)});
     list.appendChild(a);
   });
@@ -2739,6 +2746,17 @@ function applyForm(e){e.preventDefault();var t=document.getElementById('toast');
   function start(){if(loop)return;cycle();loop=setInterval(cycle,11000);}
   function stop(){clearInterval(loop);loop=null;}
   new IntersectionObserver(function(es){es[0].isIntersecting?start():stop();},{threshold:.3}).observe(f);
+})();
+</script>
+<script>
+/* 지원 · 문의: 지사 연락처 목록 (branches.js에서 자동으로 만듦) */
+(function(){
+  var L=document.getElementById('ctList');if(!L||!window.BRANCHES)return;
+  var B=window.BRANCHES.slice().sort(function(a,b){return (a.no||99)-(b.no||99)});
+  var e=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var link=function(b){return 'branch.html?id='+encodeURIComponent(b.id)};
+  L.innerHTML=B.map(function(b){return '<li><a class="ct-n" href="'+link(b)+'">'+e(b.name)+'</a>'+'<span>지사장 '+e(b.ceo||'-')+'</span>'+(b.tel?'<a class="ct-t" href="tel:'+e(b.tel.replace(/[^0-9]/g,''))+'">'+e(b.tel)+'</a>':'')+'<span class="ct-m">이메일 '+(b.email?'<a href="mailto:'+e(b.email)+'">'+e(b.email)+'</a>':'')+'</span></li>'}).join('');
+  var H=window.KIF_CONTACT;if(H&&H.email){[].forEach.call(document.querySelectorAll('.ct-mail'),function(a){a.href='mailto:'+H.email+'?subject=%EC%8B%A0%EC%B1%84%EB%84%90%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98';a.textContent=H.email})}
 })();
 </script>
 </body>

@@ -14,3 +14,4 @@ desktop.ini
 
 # 2탄 작업 도구 (공개 안 함)
 v2/make_single_file.py
+v2/make_offline_file.py
